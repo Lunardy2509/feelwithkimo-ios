@@ -91,7 +91,31 @@ struct StoryView: View {
                     }
                 }
             }
-            
+
+            if viewModel.index == 5 {
+                VStack {
+                    NavigationLink(
+                        destination: ClapGameViewWrapper(onCompletion: {
+                        viewModel.completeClappingExercise()
+                    })) {
+                        HStack {
+                            Image(systemName: "hands.clap")
+                                .font(.title3)
+                            Text("Mulai Bermain")
+                                .font(.title3)
+                                .fontWeight(.medium)
+                        }
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 50)
+                        .background(Color.blue)
+                        .cornerRadius(12)
+                        .padding(.horizontal, 20)
+                    }
+                    .padding(.bottom, 30)
+                    Spacer()
+                }
+            }
             // Show breathing button only on scene 13
             if viewModel.index == 13 {
                 VStack {
@@ -101,7 +125,7 @@ struct StoryView: View {
                         HStack {
                             Image(systemName: "lungs")
                                 .font(.title3)
-                            Text(viewModel.hasCompletedBreathing ? "Lanjut" : "Mulai Bermain")
+                            Text("Mulai Bermain")
                                 .font(.title3)
                                 .fontWeight(.medium)
                         }
@@ -144,10 +168,23 @@ struct FadeContentTransition: ViewModifier {
 struct BreathingViewWrapper: View {
     let onCompletion: () -> Void
     @Environment(\.dismiss) private var dismiss
-    
+
     var body: some View {
         BreathingView(onCompletion: {
             print("🎮 Breathing exercise completed, returning to story...")
+            onCompletion()
+            dismiss()
+        })
+    }
+}
+
+/// Wrapper for ClapGameView that handles completion callback
+struct ClapGameViewWrapper: View {
+    let onCompletion: () -> Void
+    @Environment(\.dismiss) private var dismiss
+
+    var body: some View {
+        ClapGameView(onCompletion: {
             onCompletion()
             dismiss()
         })

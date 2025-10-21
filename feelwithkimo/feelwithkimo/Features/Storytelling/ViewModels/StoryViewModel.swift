@@ -16,6 +16,7 @@ class StoryViewModel: ObservableObject {
         isEnd: false
     )
     @Published var hasCompletedBreathing: Bool = false
+    @Published var hasCompletedClapping: Bool = false
 
     var story: StoryModel = StoryModel(
         id: UUID(),
@@ -110,10 +111,16 @@ class StoryViewModel: ObservableObject {
             break
         }
     }
-    
+
     /// Mark breathing exercise as completed
     func completeBreathingExercise() {
         hasCompletedBreathing = true
         print("✅ Breathing exercise completed! Button text will change to 'Lanjut'")
+    }
+
+    /// Mark clapping exercise as completed
+    func completeClappingExercise() {
+        hasCompletedClapping = true
+        print("✅ Clapping exercise completed! Button text will change to 'Lanjut'")
     }
 }
