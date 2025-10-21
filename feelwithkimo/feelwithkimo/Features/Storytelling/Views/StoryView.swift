@@ -9,8 +9,9 @@ import SwiftUI
 
 struct StoryView: View {
     @StateObject var viewModel: StoryViewModel = StoryViewModel()
+    @ObservedObject private var audioManager = AudioManager.shared
     @Environment(\.dismiss) private var dismiss
-
+    
     var body: some View {
         ZStack {
             Image(viewModel.currentScene.path)
@@ -21,7 +22,6 @@ struct StoryView: View {
                 .id(viewModel.index)
                 .modifier(FadeContentTransition())
                 .animation(.easeInOut(duration: 1.5), value: viewModel.index)
-
             // Area tombol transparan kiri/kanan
             GeometryReader { geo in
                 if viewModel.currentScene.question == nil {
@@ -123,9 +123,7 @@ struct StoryView: View {
                         viewModel.completeBreathingExercise()
                     })) {
                         HStack {
-                            Image(systemName: "lungs")
-                                .font(.title3)
-                            Text("Mulai Bermain")
+                            Text("Ayo Latihan Pernapasan")
                                 .font(.title3)
                                 .fontWeight(.medium)
                         }
@@ -141,9 +139,21 @@ struct StoryView: View {
                     Spacer()
                 }
             }
+            // Mute button in top right corner
+            VStack {
+                HStack {
+                    Spacer()
+                    MusicMuteButton(audioManager: audioManager)
+                        .padding(20)
+                        .padding(.top, 10)
+                        .padding(.trailing, 20)
+                }
+                Spacer()
+            }
         }
-//        .onAppear { AudioManager.shared.startBackgroundMusic() }
-//        .onDisappear { AudioManager.shared.stop() }
+        .onAppear {
+            AudioManager.shared.startBackgroundMusic()
+        }
         .statusBarHidden(true)
     }
 }
@@ -168,13 +178,22 @@ struct FadeContentTransition: ViewModifier {
 struct BreathingViewWrapper: View {
     let onCompletion: () -> Void
     @Environment(\.dismiss) private var dismiss
-
+    @ObservedObject private var audioManager = AudioManager.shared
     var body: some View {
         BreathingView(onCompletion: {
-            print("🎮 Breathing exercise completed, returning to story...")
+            print("🎮 Breathing exercise completed via BreathingView callback")
             onCompletion()
+            // Don't manage music here - let the "Lanjut" button handle it
             dismiss()
         })
+        .navigationBarHidden(false)
+        .onDisappear {
+            // Ensure music is properly restored when leaving breathing view (fallback)
+            if audioManager.isMuted {
+                audioManager.startBackgroundMusic(volume: 1.0)
+                print("� Music restored on BreathingViewWrapper disappear (fallback)")
+            }
+        }
     }
 }
 
