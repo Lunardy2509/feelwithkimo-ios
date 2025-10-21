@@ -7,8 +7,9 @@
 
 import Foundation
 
-struct EmotionModel: Identifiable, Equatable {
+struct EmotionModel: Identifiable {
     let id: UUID
     let name: String
     let visualCharacterName: String
+    var stories: [StoryModel]
 }

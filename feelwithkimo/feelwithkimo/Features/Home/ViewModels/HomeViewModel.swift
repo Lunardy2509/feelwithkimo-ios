@@ -13,13 +13,11 @@ class HomeViewModel: ObservableObject {
     @AppStorage("identity") var identity: String = ""
 
     // MARK: - Published Properties
-
     @Published var currentUser: UserModel?
     @Published var emotions: [EmotionModel] = []
     @Published var selectedEmotion: EmotionModel?
 
     // MARK: - Lifecycle
-
     init() {
         fetchData()
     }
@@ -34,19 +32,19 @@ class HomeViewModel: ObservableObject {
 
         // Data dummy untuk daftar emosi
         self.emotions = [
-            EmotionModel(id: UUID(), name: "Seneng", visualCharacterName: "face.smiling"),
-            EmotionModel(id: UUID(), name: "Marah", visualCharacterName: "face.dashed"),
-            EmotionModel(id: UUID(), name: "Sedih", visualCharacterName: "face.rolling.eyes"),
-            EmotionModel(id: UUID(), name: "Kaget", visualCharacterName: "figure.mind.and.body"),
-            EmotionModel(id: UUID(), name: "Takut", visualCharacterName: "figure.walk.motion"),
-            EmotionModel(id: UUID(), name: "Marah", visualCharacterName: "face.dashed"),
-            EmotionModel(id: UUID(), name: "Sedih", visualCharacterName: "face.rolling.eyes"),
-            EmotionModel(id: UUID(), name: "Kaget", visualCharacterName: "figure.mind.and.body"),
-            EmotionModel(id: UUID(), name: "Takut", visualCharacterName: "figure.walk.motion"),
-            EmotionModel(id: UUID(), name: "Marah", visualCharacterName: "face.dashed"),
-            EmotionModel(id: UUID(), name: "Sedih", visualCharacterName: "face.rolling.eyes"),
-            EmotionModel(id: UUID(), name: "Kaget", visualCharacterName: "figure.mind.and.body"),
-            EmotionModel(id: UUID(), name: "Takut", visualCharacterName: "figure.walk.motion")
+            EmotionModel(id: UUID(), name: "Seneng", visualCharacterName: "face.smiling", stories: []),
+            EmotionModel(id: UUID(), name: "Marah", visualCharacterName: "face.dashed", stories: []),
+            EmotionModel(id: UUID(), name: "Sedih", visualCharacterName: "face.rolling.eyes", stories: []),
+            EmotionModel(id: UUID(), name: "Kaget", visualCharacterName: "figure.mind.and.body", stories: []),
+            EmotionModel(id: UUID(), name: "Takut", visualCharacterName: "figure.walk.motion", stories: []),
+            EmotionModel(id: UUID(), name: "Marah", visualCharacterName: "face.dashed", stories: []),
+            EmotionModel(id: UUID(), name: "Sedih", visualCharacterName: "face.rolling.eyes", stories: []),
+            EmotionModel(id: UUID(), name: "Kaget", visualCharacterName: "figure.mind.and.body", stories: []),
+            EmotionModel(id: UUID(), name: "Takut", visualCharacterName: "figure.walk.motion", stories: []),
+            EmotionModel(id: UUID(), name: "Marah", visualCharacterName: "face.dashed", stories: []),
+            EmotionModel(id: UUID(), name: "Sedih", visualCharacterName: "face.rolling.eyes", stories: []),
+            EmotionModel(id: UUID(), name: "Kaget", visualCharacterName: "figure.mind.and.body", stories: []),
+            EmotionModel(id: UUID(), name: "Takut", visualCharacterName: "figure.walk.motion", stories: [])
         ]
 
         self.selectedEmotion = emotions.first(where: { $0.name == "Sedih" })

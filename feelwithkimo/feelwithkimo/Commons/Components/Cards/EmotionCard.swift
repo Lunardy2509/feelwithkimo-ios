@@ -60,7 +60,3 @@ struct EmotionCard: View {
         }
     }
 }
-
-#Preview {
-    EmotionCard(emotion: EmotionModel(id: UUID(), name: "Marah", visualCharacterName: "Flammi"), isSelected: true)
-}

@@ -9,33 +9,29 @@ import SwiftUI
 
 struct HomeView: View {
     // MARK: - Properties
-
     @StateObject private var viewModel = HomeViewModel()
 
     // MARK: - Body
-
     var body: some View {
         ZStack {
             // Latar belakang utama
             ColorToken.additionalColorsWhite.toColor().ignoresSafeArea()
 
-            VStack(alignment: .leading) {
-                // MARK: - Header Section
-                headerView
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(alignment: .leading) {
+                    // MARK: - Header Section
+                    headerView
 
-                Spacer().frame(height: 74)
+                    Spacer().frame(height: 74)
 
-                // MARK: - Main Content
-                VStack(alignment: .center, spacing: 40) {
-                    questionView
-                    emotionSelectionView
+                    // MARK: - Main Content
+                    VStack(alignment: .center, spacing: 40) {
+                        questionView
+                        emotionSelectionView
+                    }
+                    .padding(.leading, 20)
                 }
-                .padding(.leading, 20)
-
-                Spacer()
             }
-//            .background(.red)
-//            .padding()
         }
     }
 
@@ -70,21 +66,70 @@ struct HomeView: View {
     }
 
     /// View untuk menampilkan daftar emosi yang bisa di-scroll.
+    private struct CardCenterPreferenceKey: PreferenceKey {
+        static var defaultValue: [AnyHashable: CGFloat] = [:]
+        static func reduce(value: inout [AnyHashable: CGFloat], nextValue: () -> [AnyHashable: CGFloat]) {
+            value.merge(nextValue(), uniquingKeysWith: { $1 })
+        }
+    }
+
     private var emotionSelectionView: some View {
-        ScrollViewReader { proxy in
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 100) {
-                    ForEach(viewModel.emotions) { emotion in
-                        EmotionCard(
-                            emotion: emotion,
-                            isSelected: viewModel.selectedEmotion == emotion
-                        )
-                        .id(emotion.id)
-                        .onTapGesture {
-//                            withAnimation(.easeInOut(duration: 0.5)) {
-                                viewModel.selectEmotion(emotion)
-                                proxy.scrollTo(emotion.id, anchor: .center)
-//                            }
+        GeometryReader { outerGeo in
+            // screen center X in global coordinates
+            let screenCenterX = outerGeo.frame(in: .global).midX
+
+            ScrollViewReader { proxy in
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 100) {
+                        ForEach(viewModel.emotions) { emotion in
+                            NavigationLink(destination: {
+                                EmotionStoryView(viewModel: EmotionStoryViewModel(emotion: emotion))
+                            }, label: {
+                                EmotionCard(
+                                    emotion: emotion,
+                                    isSelected: viewModel.selectedEmotion?.name == emotion.name
+                                )
+                                .id(emotion.id)
+                                // measure the card's center X and publish it via the preference key
+                                .background(
+                                    GeometryReader { geo in
+                                        Color.clear
+                                            .preference(
+                                                key: CardCenterPreferenceKey.self,
+                                                value: [AnyHashable(emotion.id): geo.frame(in: .global).midX]
+                                            )
+                                    }
+                                )
+                            })
+                        }
+                    }
+                    // optional padding so first/last items can reach exact center if you want:
+                    // .padding(.horizontal, outerGeo.size.width / 2 - (approxCardWidth / 2))
+                }
+                // react to updates of all card centers and pick the one nearest to the screen center
+                .onPreferenceChange(CardCenterPreferenceKey.self) { centers in
+                    guard !centers.isEmpty else { return }
+                    // find the id whose midX is closest to the screen center
+                    if let (closestId, _) = centers.min(by: {
+                        abs($0.value - screenCenterX) < abs($1.value - screenCenterX)
+                    }) {
+                        if let matched = viewModel.emotions.first(where: { AnyHashable($0.id) == closestId }) {
+                            // avoid repeated calls if already selected
+                            if viewModel.selectedEmotion?.id != matched.id {
+                                viewModel.selectEmotion(matched)
+                            }
+                        }
+                    }
+                }
+                // initial selection + centering: pick middle index if nothing selected yet
+                .onAppear {
+                    guard viewModel.selectedEmotion == nil, !viewModel.emotions.isEmpty else { return }
+                    let mid = viewModel.emotions[viewModel.emotions.count / 2]
+                    // select and scroll to the middle item
+                    viewModel.selectEmotion(mid)
+                    DispatchQueue.main.async {
+                        withAnimation {
+                            proxy.scrollTo(mid.id, anchor: .center)
                         }
                     }
                 }
