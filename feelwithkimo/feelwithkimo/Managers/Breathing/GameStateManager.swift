@@ -13,11 +13,9 @@ class GameStateManager: ObservableObject {
     @Published var parentBalloonProgress: Double = 0.0
     @Published var childBalloonProgress: Double = 0.0
     @Published var isGameActive = false
-    
     private let maxBalloonProgress: Double = 100.0
     private let progressPerBreath: Double = 5.0 // Reduced to make turns more frequent
     private let turnSwitchThreshold: Double = 25.0 // Switch turns every 25%
-    
     func startGame() {
         currentPhase = .parentTurn
         currentPlayer = .parent
@@ -25,14 +23,11 @@ class GameStateManager: ObservableObject {
         childBalloonProgress = 0.0
         isGameActive = true
     }
-    
     func processBreath(type: BreathType, confidence: Double) {
         guard isGameActive else { return }
-        
         // Lower confidence threshold for better responsiveness
         let minConfidence: Double = 0.1
         guard confidence > minConfidence else { return }
-        
         switch type {
         case .inhale, .exhale:
             addBreathProgress()
@@ -41,10 +36,8 @@ class GameStateManager: ObservableObject {
             break
         }
     }
-    
     private func addBreathProgress() {
         let previousProgress = getCurrentBalloonProgress()
-        
         switch currentPlayer {
         case .parent:
             parentBalloonProgress = min(parentBalloonProgress + progressPerBreath, maxBalloonProgress)
@@ -54,23 +47,19 @@ class GameStateManager: ObservableObject {
             checkForTurnSwitch(previousProgress: previousProgress, newProgress: childBalloonProgress)
         }
     }
-    
     private func checkForTurnSwitch(previousProgress: Double, newProgress: Double) {
         // Calculate which 25% milestone we've crossed
         let previousMilestone = Int(previousProgress / turnSwitchThreshold)
         let newMilestone = Int(newProgress / turnSwitchThreshold)
-        
         // Check if both balloons are complete (100%)
         if parentBalloonProgress >= maxBalloonProgress && childBalloonProgress >= maxBalloonProgress {
             completeGame()
             return
         }
-        
         // Switch turns if we've crossed a 25% milestone and haven't reached 100%
         if newMilestone > previousMilestone && newProgress < maxBalloonProgress {
             switchPlayer()
         }
-        
         // Special case: if current balloon reaches 100% but the other doesn't, switch to other player
         if newProgress >= maxBalloonProgress {
             if currentPlayer == .parent && childBalloonProgress < maxBalloonProgress {
