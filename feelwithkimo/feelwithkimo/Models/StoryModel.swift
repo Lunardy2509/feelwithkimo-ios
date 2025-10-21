@@ -15,7 +15,23 @@ struct StoryModel: Identifiable {
     var storyScene: [StorySceneModel]
 }
 
-struct StorySceneModel {
+class StorySceneModel {
     let path: String
     let text: String
+    var isEnd: Bool
+    var question: QuestionOption?
+    var nextScene: [StorySceneModel]
+
+    init(path: String, text: String, isEnd: Bool) {
+        self.path = path
+        self.text = text
+        self.isEnd = isEnd
+        self.question = nil
+        self.nextScene = []
+    }
+}
+
+struct QuestionOption {
+    let question: String
+    let option: [String]
 }

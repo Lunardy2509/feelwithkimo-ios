@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct EmotionStoryView: View {
-    @StateObject var viewModel: EmotionStoryViewModel
     @Environment(\.dismiss) private var dismiss
-    
+    @StateObject var viewModel: EmotionStoryViewModel
+
     var body: some View {
         HStack(spacing: 37) {
             ZStack {
@@ -45,7 +45,7 @@ struct EmotionStoryView: View {
                     Text("Aku gampang kesal kalau sesuatu tidak adil, tapi belajar menarik napas dan bicara baik-baik.")
                         .font(.title2)
                         .multilineTextAlignment(.center)
-                    
+
                     Spacer()
                 }
                 .padding(.horizontal, 35)

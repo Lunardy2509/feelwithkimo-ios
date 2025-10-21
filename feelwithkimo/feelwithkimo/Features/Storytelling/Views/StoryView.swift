@@ -9,10 +9,11 @@ import SwiftUI
 
 struct StoryView: View {
     @StateObject var viewModel: StoryViewModel = StoryViewModel()
+    @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         ZStack {
-            Image(viewModel.story.storyScene[viewModel.index].path)
+            Image(viewModel.currentScene.path)
                 .resizable()
                 .frame(maxHeight: .infinity)
                 .clipped()
@@ -23,30 +24,76 @@ struct StoryView: View {
 
             // Area tombol transparan kiri/kanan
             GeometryReader { geo in
-                HStack(spacing: 0) {
-                    Button {
-                        viewModel.goScene(to: -1)
-                    } label: {
-                        Color.clear.contentShape(Rectangle())
-                    }
-                    .buttonStyle(.plain)
-                    .frame(width: geo.size.width/2, height: geo.size.height)
-                    .accessibilityLabel("Previous")
+                if viewModel.currentScene.question == nil {
+                    HStack(spacing: 0) {
+                        Button {
+                            viewModel.goScene(to: -1, choice: 0)
+                        } label: {
+                            Color.clear.contentShape(Rectangle())
+                        }
+                        .buttonStyle(.plain)
+                        .frame(width: geo.size.width / 2, height: geo.size.height)
+                        .accessibilityLabel("Previous")
 
-                    Button {
-                        viewModel.goScene(to: 1)
-                    } label: {
-                        Color.clear.contentShape(Rectangle())
+                        Button {
+                            guard !viewModel.currentScene.isEnd else {
+                                dismiss()
+                                return
+                            }
+                            viewModel.goScene(to: 1, choice: 0)
+                        } label: {
+                            Color.clear.contentShape(Rectangle())
+                        }
+                        .buttonStyle(.plain)
+                        .frame(width: geo.size.width / 2, height: geo.size.height)
+                        .accessibilityLabel("Next")
                     }
-                    .buttonStyle(.plain)
-                    .frame(width: geo.size.width/2, height: geo.size.height)
-                    .accessibilityLabel("Next")
+                    .ignoresSafeArea()
+                } else {
+                    ZStack {
+                        Color.black.opacity(0.5)
+
+                        VStack {
+                            if let question = viewModel.currentScene.question {
+                                Text(question.question)
+                                    .padding()
+                                    .background(Color.blue)
+                                    .foregroundColor(Color.white)
+                                    .cornerRadius(10)
+                                    .frame(maxWidth: 0.5 * UIScreen.main.bounds.width)
+
+                                HStack(spacing: 5) {
+                                    Spacer()
+
+                                    Text(question.option[0])
+                                        .padding()
+                                        .background(Color.blue)
+                                        .foregroundColor(Color.white)
+                                        .cornerRadius(10)
+                                        .frame(width: 0.25 * UIScreen.main.bounds.width)
+                                        .onTapGesture {
+                                            viewModel.goScene(to: 1, choice: 0)
+                                        }
+
+                                    Text(question.option[1])
+                                        .padding()
+                                        .background(Color.blue)
+                                        .foregroundColor(Color.white)
+                                        .cornerRadius(10)
+                                        .frame(width: 0.25 * UIScreen.main.bounds.width)
+                                        .onTapGesture {
+                                            viewModel.goScene(to: 1, choice: 1)
+                                        }
+                                    Spacer()
+                                }
+                            }
+                        }
+                    }
                 }
-                .ignoresSafeArea()
             }
         }
-        .onAppear { AudioManager.shared.startBackgroundMusic() }
-        .onDisappear { AudioManager.shared.stop() }
+//        .onAppear { AudioManager.shared.startBackgroundMusic() }
+//        .onDisappear { AudioManager.shared.stop() }
         .statusBarHidden(true)
     }
 }
