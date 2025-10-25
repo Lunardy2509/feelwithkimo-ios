@@ -286,6 +286,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Aplikasi ini menggunakan akses kamera";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Aplikasi ini memerlukan akses mikrofon untuk mendeteksi suara napas dalam permainan latihan pernapasan Kimo.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Aplikasi ini menggunakan pengenalan suara untuk mendeteksi pola pernapasan.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -322,6 +323,7 @@
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Aplikasi ini menggunakan akses kamera";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Aplikasi ini memerlukan akses mikrofon untuk mendeteksi suara napas dalam permainan latihan pernapasan Kimo.";
 				INFOPLIST_KEY_NSSpeechRecognitionUsageDescription = "Aplikasi ini menggunakan pengenalan suara untuk mendeteksi pola pernapasan.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
