@@ -4,10 +4,10 @@
 //
 //  Created by Ferdinand Lunardy on 21/10/25.
 //
-import Foundation
 import Combine
+import Foundation
 
-class GameStateManager: ObservableObject {
+internal class GameStateManager: ObservableObject {
     @Published var currentPhase: GamePhase = .welcome
     @Published var currentPlayer: PlayerType = .parent
     @Published var parentBalloonProgress: Double = 0.0
@@ -16,6 +16,7 @@ class GameStateManager: ObservableObject {
     private let maxBalloonProgress: Double = 100.0
     private let progressPerBreath: Double = 8.0
     private let turnSwitchThreshold: Double = 25.0
+    
     func startGame() {
         currentPhase = .parentTurn
         currentPlayer = .parent
@@ -23,6 +24,7 @@ class GameStateManager: ObservableObject {
         childBalloonProgress = 0.0
         isGameActive = true
     }
+    
     func processBreath(type: BreathType, confidence: Double) {
         guard isGameActive else { return }
         // Much lower confidence threshold for easier detection - made even more sensitive

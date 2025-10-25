@@ -5,9 +5,9 @@
 //  Created by jonathan calvin sutrisna on 21/10/25.
 //
 
-import SwiftUI
-import Combine
 import AVFoundation
+import Combine
+import SwiftUI
 
 struct ClapGameView: View {
     // Cukup satu StateObject untuk ViewModel
@@ -150,7 +150,7 @@ struct CameraPreview: UIViewRepresentable {
 
 /// UIView subclass agar layer-nya otomatis menjadi AVCaptureVideoPreviewLayer
 final class PreviewView: UIView {
-    override class var layerClass: AnyClass {
+    override static var layerClass: AnyClass {
         return AVCaptureVideoPreviewLayer.self
     }
 

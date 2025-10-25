@@ -15,7 +15,7 @@ struct BreathingView: View {
     /// The runtime state that contains information about the strength of the detected breathing sounds
     @StateObject var breathingState = BreathDetectionManager()
     /// Optional completion callback
-    var onCompletion: (() -> Void)? = nil
+    var onCompletion: (() -> Void)?
 
     var body: some View {
         ZStack {

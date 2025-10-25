@@ -6,8 +6,8 @@
 //
 
 import AVFoundation
-import UIKit   // diperlukan untuk NSDataAsset
 import Combine
+import UIKit
 
 final class AudioManager: ObservableObject {
     static let shared = AudioManager()
@@ -84,7 +84,16 @@ final class AudioManager: ObservableObject {
     private func configureSession() throws {
         let session = AVAudioSession.sharedInstance()
         // Use .playAndRecord to allow both music playback and microphone recording for breathing detection
-        try session.setCategory(.playAndRecord, mode: .default, options: [.defaultToSpeaker, AVAudioSession.CategoryOptions.allowBluetooth])
+        do {
+            try session.setCategory(
+                .playAndRecord,
+                mode: .default,
+                options: [.defaultToSpeaker, .allowBluetoothHFP]
+            )
+        } catch {
+            print("Failed to set audio session category: \(error)")
+        }
+
         try session.setActive(true)
     }
     private func updateVolume() {

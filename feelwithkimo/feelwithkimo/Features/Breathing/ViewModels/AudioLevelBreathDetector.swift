@@ -4,11 +4,12 @@
 //
 //  Created by Ferdinand Lunardy on 21/10/25.
 //
-import Foundation
+
 import AVFoundation
 import Combine
+import Foundation
 
-class AudioLevelBreathDetector: ObservableObject {
+internal class AudioLevelBreathDetector: ObservableObject {
     @Published var audioLevel: Double = 0.0
     @Published var isBreathing: Bool = false
     @Published var breathType: BreathType = .none

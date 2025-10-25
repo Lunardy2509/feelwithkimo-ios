@@ -4,8 +4,8 @@
 //
 //  Created by Ferdinand Lunardy on 21/10/25.
 //
-import SwiftUI
 import AVFoundation
+import SwiftUI
 import UIKit
 
 // MARK: - KimoBreathingGameView
@@ -207,7 +207,6 @@ struct KimoBreathingGameView: View {
     }
 
     // MARK: - Helper Properties
-
     private var phaseDescription: String {
         let currentScene = gameState.getCurrentScene()
         let parentProgress = Int(gameState.parentBalloonProgress)
@@ -249,11 +248,18 @@ struct KimoBreathingGameView: View {
     // MARK: - Helper Methods
 
     private func requestMicrophonePermission() async {
-        let granted = await withCheckedContinuation { (continuation: CheckedContinuation<Bool, Never>) in
-            AVAudioSession.sharedInstance().requestRecordPermission { allowed in
-                continuation.resume(returning: allowed)
+        let granted: Bool = await withCheckedContinuation { continuation in
+            if #available(iOS 17.0, *) {
+                AVAudioApplication.requestRecordPermission { allowed in
+                    continuation.resume(returning: allowed)
+                }
+            } else {
+                AVAudioSession.sharedInstance().requestRecordPermission { allowed in
+                    continuation.resume(returning: allowed)
+                }
             }
         }
+
         await MainActor.run {
             if !granted { self.showingPermissionAlert = true }
         }
@@ -447,93 +453,6 @@ struct KimoImageView: View {
                     .shadow(radius: 2)
             }
         }
-    }
-}
-
-struct BalloonsSectionView: View {
-    @ObservedObject var gameState: GameStateManager
-    var body: some View {
-        HStack(spacing: 40) {
-            VStack {
-                Text("Ayah/Ibu")
-                    .font(.caption)
-                    .fontWeight(.medium)
-                    .foregroundColor(
-                        gameState.currentPlayer == .parent && gameState.isGameActive ? .red : .gray
-                    )
-                BalloonView(
-                    progress: gameState.parentBalloonProgress,
-                    color: .red,
-                    isActive: gameState.currentPlayer == .parent && gameState.isGameActive
-                )
-                .scaleEffect(
-                    gameState.currentPlayer == .parent && gameState.isGameActive ? 1.1 : 1.0
-                )
-                .animation(.easeInOut(duration: 0.3), value: gameState.currentPlayer == .parent)
-                if gameState.currentPlayer == .parent && gameState.isGameActive {
-                    Text("🎈 GILIRANMU!")
-                        .font(.caption2)
-                        .fontWeight(.bold)
-                        .foregroundColor(.red)
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 4)
-                        .background(Color.red.opacity(0.1))
-                        .cornerRadius(8)
-                        .animation(
-                            .easeInOut(duration: 0.5).repeatForever(autoreverses: true),
-                            value: gameState.isGameActive
-                        )
-                }
-            }
-            .accessibilityElement(children: .combine)
-            .accessibilityLabel("Balon merah untuk ayah atau ibu")
-            .accessibilityValue(
-                "Progress \(Int(gameState.parentBalloonProgress)) persen, \(gameState.currentPlayer == .parent && gameState.isGameActive ? "aktif, giliran meniup sekarang" : "menunggu giliran")"
-            )
-            if gameState.isGameActive {
-                VStack {
-                    Text("🐘").font(.title).scaleEffect(1.2)
-                    Text("Kimo").font(.caption2).foregroundColor(.gray)
-                }
-            }
-            VStack {
-                Text("Anak")
-                    .font(.caption)
-                    .fontWeight(.medium)
-                    .foregroundColor(
-                        gameState.currentPlayer == .child && gameState.isGameActive ? .blue : .gray
-                    )
-                BalloonView(
-                    progress: gameState.childBalloonProgress,
-                    color: .blue,
-                    isActive: gameState.currentPlayer == .child && gameState.isGameActive
-                )
-                .scaleEffect(
-                    gameState.currentPlayer == .child && gameState.isGameActive ? 1.1 : 1.0
-                )
-                .animation(.easeInOut(duration: 0.3), value: gameState.currentPlayer == .child)
-                if gameState.currentPlayer == .child && gameState.isGameActive {
-                    Text("🎈 GILIRANMU!")
-                        .font(.caption2)
-                        .fontWeight(.bold)
-                        .foregroundColor(.blue)
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 4)
-                        .background(Color.blue.opacity(0.1))
-                        .cornerRadius(8)
-                        .animation(
-                            .easeInOut(duration: 0.5).repeatForever(autoreverses: true),
-                            value: gameState.isGameActive
-                        )
-                }
-            }
-            .accessibilityElement(children: .combine)
-            .accessibilityLabel("Balon biru untuk anak")
-            .accessibilityValue(
-                "Progress \(Int(gameState.childBalloonProgress)) persen, \(gameState.currentPlayer == .child && gameState.isGameActive ? "aktif, giliran meniup sekarang" : "menunggu giliran")"
-            )
-        }
-        .accessibilityElement(children: .ignore)
     }
 }
 
@@ -742,7 +661,7 @@ struct ControlButtonsSectionView: View {
                 // Show only "Lanjut" button when game is completed
                 Button(action: {
                     handleContinueAction()
-                }) {
+                }, label: {
                     Text("Lanjut")
                         .font(.title2)
                         .fontWeight(.semibold)
@@ -753,7 +672,7 @@ struct ControlButtonsSectionView: View {
                         .cornerRadius(15)
                         .accessibilityLabel("Lanjut ke cerita berikutnya")
                         .accessibilityHint("Ketuk untuk melanjutkan cerita setelah latihan pernapasan selesai")
-                }
+                })
             } else {
                 Button(action: {
                     resetAction()

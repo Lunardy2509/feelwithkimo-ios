@@ -7,7 +7,7 @@
 
 import Foundation
 
-class EmotionStoryViewModel: ObservableObject {
+internal class EmotionStoryViewModel: ObservableObject {
     var emotion: EmotionModel
 
     init (emotion: EmotionModel) {

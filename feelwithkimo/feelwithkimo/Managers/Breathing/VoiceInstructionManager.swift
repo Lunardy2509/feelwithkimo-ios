@@ -4,13 +4,13 @@
 //
 //  Created by Ferdinand Lunardy on 21/10/25.
 //
-import Foundation
 import AVFoundation
 import Combine
+import Foundation
 import UIKit
 
 @MainActor
-class VoiceInstructionManager: NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
+internal class VoiceInstructionManager: NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
     private let speechSynthesizer = AVSpeechSynthesizer()
     @Published var isSpeaking = false
     
@@ -70,16 +70,22 @@ class VoiceInstructionManager: NSObject, ObservableObject, AVSpeechSynthesizerDe
     
     // MARK: - AVSpeechSynthesizerDelegate
     
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
-        isSpeaking = true
+    nonisolated func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didStart utterance: AVSpeechUtterance) {
+        Task { @MainActor in
+            self.isSpeaking = true
+        }
     }
-    
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
-        isSpeaking = false
+
+    nonisolated func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didFinish utterance: AVSpeechUtterance) {
+        Task { @MainActor in
+            self.isSpeaking = false
+        }
     }
-    
-    func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
-        isSpeaking = false
+
+    nonisolated func speechSynthesizer(_ synthesizer: AVSpeechSynthesizer, didCancel utterance: AVSpeechUtterance) {
+        Task { @MainActor in
+            self.isSpeaking = false
+        }
     }
 }
 

@@ -5,10 +5,10 @@
 //  Created by Richard Sugiharto on 20/10/25.
 //
 
-import SwiftUI
 import Foundation
+import SwiftUI
 
-class IdentityViewModel: ObservableObject {
+internal class IdentityViewModel: ObservableObject {
     @AppStorage("parentNickname") var parentNickname: String = ""
     @AppStorage("identity") var identity: String = ""
 

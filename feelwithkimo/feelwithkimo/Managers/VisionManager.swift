@@ -5,9 +5,9 @@
 //  Created by jonathan calvin sutrisna on 21/10/25.
 //
 
-import Vision
 import AVFoundation
 import Combine
+import Vision
 
 final class VisionManager: NSObject, ObservableObject {
     let session = AVCaptureSession()
@@ -100,23 +100,10 @@ extension VisionManager: AVCaptureVideoDataOutputSampleBufferDelegate {
         let leftSorted = leftHands.sorted { $0.x < $1.x }
         let rightSorted = rightHands.sorted { $0.x < $1.x }
 
-        var user1Left: CGPoint?
-        var user1Right: CGPoint?
-        var user2Left: CGPoint?
-        var user2Right: CGPoint?
-
-        if leftSorted.count > 0 {
-            user1Left = leftSorted.first
-        }
-        if rightSorted.count > 0 {
-            user1Right = rightSorted.first
-        }
-        if leftSorted.count > 1 {
-            user2Left = leftSorted.last
-        }
-        if rightSorted.count > 1 {
-            user2Right = rightSorted.last
-        }
+        let user1Left = leftSorted.count > 0 ? leftSorted.first : nil
+        let user1Right = rightSorted.count > 0 ? rightSorted.first : nil
+        let user2Left = leftSorted.count > 1 ? leftSorted.last : nil
+        let user2Right = rightSorted.count > 1 ? rightSorted.last : nil
 
         DispatchQueue.main.async {
             self.user1Hands = (user1Left, user1Right)
