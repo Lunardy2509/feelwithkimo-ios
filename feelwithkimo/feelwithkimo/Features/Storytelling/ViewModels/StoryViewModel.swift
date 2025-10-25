@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-class StoryViewModel: ObservableObject {
+internal class StoryViewModel: ObservableObject {
     @Published var index: Int = 0
     @Published var currentScene: StorySceneModel = StorySceneModel(
         path: "",

@@ -4,8 +4,8 @@
 //
 //  Created by Ferdinand Lunardy on 21/10/25.
 //
-import SwiftUI
 import AVFoundation
+import SwiftUI
 import UIKit
 
 // MARK: - KimoBreathingGameView
@@ -207,7 +207,6 @@ struct KimoBreathingGameView: View {
     }
 
     // MARK: - Helper Properties
-
     private var phaseDescription: String {
         let currentScene = gameState.getCurrentScene()
         let parentProgress = Int(gameState.parentBalloonProgress)
@@ -249,11 +248,18 @@ struct KimoBreathingGameView: View {
     // MARK: - Helper Methods
 
     private func requestMicrophonePermission() async {
-        let granted = await withCheckedContinuation { (continuation: CheckedContinuation<Bool, Never>) in
-            AVAudioSession.sharedInstance().requestRecordPermission { allowed in
-                continuation.resume(returning: allowed)
+        let granted: Bool = await withCheckedContinuation { continuation in
+            if #available(iOS 17.0, *) {
+                AVAudioApplication.requestRecordPermission { allowed in
+                    continuation.resume(returning: allowed)
+                }
+            } else {
+                AVAudioSession.sharedInstance().requestRecordPermission { allowed in
+                    continuation.resume(returning: allowed)
+                }
             }
         }
+
         await MainActor.run {
             if !granted { self.showingPermissionAlert = true }
         }
@@ -655,7 +661,7 @@ struct ControlButtonsSectionView: View {
                 // Show only "Lanjut" button when game is completed
                 Button(action: {
                     handleContinueAction()
-                }) {
+                }, label: {
                     Text("Lanjut")
                         .font(.title2)
                         .fontWeight(.semibold)
@@ -666,7 +672,7 @@ struct ControlButtonsSectionView: View {
                         .cornerRadius(15)
                         .accessibilityLabel("Lanjut ke cerita berikutnya")
                         .accessibilityHint("Ketuk untuk melanjutkan cerita setelah latihan pernapasan selesai")
-                }
+                })
             } else {
                 Button(action: {
                     resetAction()

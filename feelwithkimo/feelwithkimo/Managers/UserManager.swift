@@ -7,13 +7,11 @@
 
 import Foundation
 
-class UserManager {
+internal class UserManager {
     // MARK: - Properties
-
     static let shared = UserManager()
 
     // MARK: - Lifecycle
-
     private init() {}
 
     // MARK: - Public Methods

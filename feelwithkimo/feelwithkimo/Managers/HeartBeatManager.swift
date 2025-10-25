@@ -6,8 +6,8 @@
 //
 
 // MARK: - HeartBeatManager
-import Foundation
 import AVFoundation
+import Foundation
 
 // MARK: - HeartBeatManager
 final class HeartBeatManager: ObservableObject {

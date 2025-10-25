@@ -9,7 +9,7 @@ import Combine
 import Foundation
 import SwiftUI
 
-class HomeViewModel: ObservableObject {
+internal class HomeViewModel: ObservableObject {
     @AppStorage("identity") var identity: String = ""
 
     // MARK: - Published Properties

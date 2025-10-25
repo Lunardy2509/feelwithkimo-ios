@@ -15,7 +15,7 @@ struct StoryModel: Identifiable {
     var storyScene: [StorySceneModel]
 }
 
-class StorySceneModel {
+internal class StorySceneModel {
     let path: String
     let text: String
     var isEnd: Bool

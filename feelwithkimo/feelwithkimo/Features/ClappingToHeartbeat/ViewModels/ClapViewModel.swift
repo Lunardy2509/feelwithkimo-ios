@@ -5,9 +5,9 @@
 //  Created by jonathan calvin sutrisna on 21/10/25.
 //
 
-import Foundation
 import Combine
 import CoreGraphics
+import Foundation
 
 final class ClapViewModel: ObservableObject {
     @Published var isClapping = false

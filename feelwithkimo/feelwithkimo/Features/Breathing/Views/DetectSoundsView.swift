@@ -5,8 +5,8 @@
 //  Created by Ferdinand Lunardy on 21/10/25.
 //
 import Foundation
-import SwiftUI
 import SoundAnalysis
+import SwiftUI
 
 struct DetectSoundsView: View {
     @StateObject private var breathDetector = BreathDetectionManager()

@@ -4,8 +4,8 @@
 //
 //  Created by Ferdinand Lunardy on 21/10/25.
 //
-import Foundation
 import Combine
+import Foundation
 import SoundAnalysis
 
 final class ClassifyingResult: NSObject, SNResultsObserving {

@@ -5,8 +5,8 @@
 //  Created by jonathan calvin sutrisna on 21/10/25.
 //
 
-import SwiftUI
 import Combine
+import SwiftUI
 
 struct HeartbeatView: View {
     @Binding var isClapping: Bool

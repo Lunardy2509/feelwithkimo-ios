@@ -4,13 +4,13 @@
 //
 //  Created by Ferdinand Lunardy on 21/10/25.
 //
-import Foundation
-import Combine
-import SoundAnalysis
 import AVFoundation
+import Combine
+import Foundation
+import SoundAnalysis
 
 /// Breath detection manager using Apple's SoundAnalysis framework
-class BreathDetectionManager: ObservableObject {
+internal class BreathDetectionManager: ObservableObject {
     @Published var currentBreathType: BreathType = .none
     @Published var breathingConfidence: Double = 0.0
     @Published var isDetecting = false
@@ -18,7 +18,7 @@ class BreathDetectionManager: ObservableObject {
     @Published var detectionStates: [(SoundIdentifierModel, DetectionState)] = []
     @Published var soundDetectionIsRunning: Bool = false
     /// A cancellable object for the lifetime of the sound classification
-    private var detectionCancellable: AnyCancellable? = nil
+    private var detectionCancellable: AnyCancellable?
     /// The configuration that governs sound classification
     private var appConfig = BreathingAppConfiguration()
     /// Breathing-related sound identifiers - including sounds that resemble breathing

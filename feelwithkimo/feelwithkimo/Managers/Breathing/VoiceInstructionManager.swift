@@ -4,13 +4,13 @@
 //
 //  Created by Ferdinand Lunardy on 21/10/25.
 //
-import Foundation
 import AVFoundation
 import Combine
+import Foundation
 import UIKit
 
 @MainActor
-class VoiceInstructionManager: NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
+internal class VoiceInstructionManager: NSObject, ObservableObject, AVSpeechSynthesizerDelegate {
     private let speechSynthesizer = AVSpeechSynthesizer()
     @Published var isSpeaking = false
     

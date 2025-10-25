@@ -4,8 +4,8 @@
 //
 //  Created by Ferdinand Lunardy on 21/10/25.
 //
-import UIKit
 import SwiftUI
+import UIKit
 
 /// Helper for accessibility features and VoiceOver support
 struct AccessibilityManager {

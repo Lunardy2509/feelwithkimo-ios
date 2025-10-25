@@ -4,10 +4,10 @@
 //
 //  Created by Ferdinand Lunardy on 21/10/25.
 //
-import Foundation
 import AVFoundation
-import SoundAnalysis
 import Combine
+import Foundation
+import SoundAnalysis
 
 /// A class for performing breathing sound classification using Apple's SoundAnalysis framework
 final class BreathingSoundClassifier: NSObject {
@@ -228,7 +228,7 @@ final class BreathingSoundClassifier: NSObject {
 }
 
 /// An observer that forwards breathing sound analysis results to a combine subject
-class BreathingResultsSubject: NSObject, SNResultsObserving {
+internal class BreathingResultsSubject: NSObject, SNResultsObserving {
     private let subject: PassthroughSubject<SNClassificationResult, Error>
 
     init(subject: PassthroughSubject<SNClassificationResult, Error>) {
