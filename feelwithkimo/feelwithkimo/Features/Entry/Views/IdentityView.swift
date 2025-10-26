@@ -38,13 +38,22 @@ struct IdentityView: View {
                 
                 Spacer()
 
-                KimoButton(textLabel: "Lanjut")
-                    .onTapGesture {
-                        viewModel.submitNickname()
-                    }
-                    .padding(.top, 168)
-
-                Spacer()
+                Button(action: {
+                    viewModel.submitNickname()
+                }, label: {
+                    Text("Lanjut")
+                        .font(.body)
+                        .bold()
+                        .padding(.horizontal, 26)
+                        .padding(.vertical, 14)
+                        .frame(maxWidth: 150)
+                        .background(Color.black)
+                        .foregroundColor(Color.white)
+                        .cornerRadius(12)
+                        .padding(.vertical, 170)
+                })
+                .padding(.horizontal)
+                .disabled(viewModel.nicknameInput.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
             }
             .navigationDestination(isPresented: $viewModel.navigateToChild) {
                 ChildIdentityView(viewModel: viewModel)
@@ -60,7 +69,6 @@ struct IdentityView: View {
         }
     }
 }
-
 #Preview {
     IdentityView()
 }

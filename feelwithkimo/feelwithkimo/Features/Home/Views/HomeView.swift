@@ -13,33 +13,29 @@ struct HomeView: View {
 
     // MARK: - Body
     var body: some View {
-        ZStack {
-            // Latar belakang utama
-            ColorToken.additionalColorsWhite.toColor().ignoresSafeArea()
-
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack(alignment: .leading) {
-                    // MARK: - Header Section
-                    headerView
-
-                    Spacer().frame(height: 74)
-
-                    // MARK: - Main Content
-                    VStack(alignment: .center, spacing: 40) {
-                        questionView
-                        emotionSelectionView
-                    }
-                    .padding(.leading, 20)
-                }
+        VStack {
+            // MARK: - Header Section
+            headerView
+            
+            Spacer()
+            
+            // MARK: - Main Content
+            VStack(alignment: .center, spacing: 40) {
+                questionView
+                emotionSelectionView
             }
+            .padding(.leading, 20)
+            .padding(.top, 60)
+            
+            Spacer()
         }
-        .ignoresSafeArea()
     }
+}
 
-    // MARK: - Child Views
-
+// MARK: - Child Views
+private extension HomeView {
     /// View untuk menampilkan banner header.
-    private var headerView: some View {
+    var headerView: some View {
         KimoHeaderView {
             HStack(spacing: 23) {
                 Image(systemName: "photo.artframe.circle")
@@ -57,7 +53,7 @@ struct HomeView: View {
     }
 
     /// View untuk menampilkan teks pertanyaan.
-    private var questionView: some View {
+    var questionView: some View {
         HStack(alignment: .top, spacing: 4) {
             Text("Hari ini mau belajar emosi apa, ya?")
 //                .font(.caption)
@@ -71,14 +67,14 @@ struct HomeView: View {
     }
 
     /// View untuk menampilkan daftar emosi yang bisa di-scroll.
-    private struct CardCenterPreferenceKey: PreferenceKey {
+    struct CardCenterPreferenceKey: PreferenceKey {
         static var defaultValue: [AnyHashable: CGFloat] = [:]
         static func reduce(value: inout [AnyHashable: CGFloat], nextValue: () -> [AnyHashable: CGFloat]) {
             value.merge(nextValue(), uniquingKeysWith: { $1 })
         }
     }
 
-    private var emotionSelectionView: some View {
+    var emotionSelectionView: some View {
         GeometryReader { outerGeo in
             // screen center X in global coordinates
             let screenCenterX = outerGeo.frame(in: .global).midX
@@ -113,35 +109,19 @@ struct HomeView: View {
                 }
                 // react to updates of all card centers and pick the one nearest to the screen center
                 .onPreferenceChange(CardCenterPreferenceKey.self) { centers in
-                    guard !centers.isEmpty else { return }
-                    // find the id whose midX is closest to the screen center
-                    if let (closestId, _) = centers.min(by: {
-                        abs($0.value - screenCenterX) < abs($1.value - screenCenterX)
-                    }) {
-                        if let matched = viewModel.emotions.first(where: { AnyHashable($0.id) == closestId }) {
-                            // avoid repeated calls if already selected
-                            if viewModel.selectedEmotion?.id != matched.id {
-                                viewModel.selectEmotion(matched)
-                            }
-                        }
-                    }
+                    viewModel.updateSelectedEmotion(screenCenterX: screenCenterX, centers: centers)
                 }
                 // initial selection + centering: pick middle index if nothing selected yet
                 .onAppear {
-                    guard viewModel.selectedEmotion == nil, !viewModel.emotions.isEmpty else { return }
-                    let mid = viewModel.emotions[viewModel.emotions.count / 2]
-                    // select and scroll to the middle item
-                    viewModel.selectEmotion(mid)
+                    viewModel.ensureInitialSelection()
                     DispatchQueue.main.async {
-                        withAnimation {
-                            proxy.scrollTo(mid.id, anchor: .center)
-                        }
+                        viewModel.scrollToSelected(proxy: proxy)
                     }
                 }
             }
         }
+        .frame(maxHeight: 400)
     }
-
 }
 
 // MARK: - Preview
