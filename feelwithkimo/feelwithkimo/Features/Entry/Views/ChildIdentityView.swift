@@ -14,11 +14,7 @@ struct ChildIdentityView: View {
 
     var body: some View {
         VStack(spacing: 24) {
-            ZStack {
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(Color(.systemGray6))
-                    .shadow(radius: 4)
-
+            KimoHeaderView {
                 VStack(alignment: .center, spacing: 8) {
                     Text("Identitas Anak")
                         .font(.largeTitle)
@@ -28,11 +24,10 @@ struct ChildIdentityView: View {
                         .font(.title2)
                         .lineLimit(2)
                 }
-                .padding(.horizontal)
-                .padding(.vertical, 48)
             }
-            .frame(height: 140)
 
+            Spacer()
+            
             VStack(alignment: .center, spacing: 8) {
                 Text("Nama Anak:")
                     .font(.title2)
@@ -49,28 +44,15 @@ struct ChildIdentityView: View {
             }
             .padding(.horizontal)
             .padding(.top, 175)
-
-            Button(action: {
-                let success = viewModel.submitChildName()
-                if success {
-                    dismiss()
+            
+            KimoButton(textLabel: "Selesai")
+                .onTapGesture {
+                    if viewModel.submitChildName() {
+                        dismiss()
+                    }
                 }
-            }, label: {
-                Text("Lanjut")
-                    .font(.body)
-                    .bold()
-                    .padding(.horizontal, 26)
-                    .padding(.vertical, 14)
-                    .frame(maxWidth: 150)
-                    .background(Color.black)
-                    .foregroundColor(Color.white)
-                    .cornerRadius(12)
-                    .padding(.vertical, 170)
-            })
-            .padding(.horizontal)
-            .disabled(viewModel.nicknameInput.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
+                .padding(.top, 168)
 
-            Spacer()
         }
         .alert("Notice", isPresented: $viewModel.showError) {
             Button("Close", role: .cancel) { }

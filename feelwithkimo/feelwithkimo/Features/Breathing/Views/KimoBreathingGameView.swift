@@ -79,7 +79,7 @@ struct KimoBreathingGameView: View {
                 VStack {
                     HStack {
                         Spacer()
-                        MusicMuteButton(audioManager: viewModel.audioManager)
+                        KimoMuteButton(audioManager: viewModel.audioManager)
                             .padding(.top, 10)
                             .padding(.trailing, 20)
                     }

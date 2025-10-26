@@ -63,7 +63,6 @@ final class ClapGameViewModel: ObservableObject {
     func onHeartbeat() {
         if beatCount < 4 {
             beatCount += 1
-            print("Beat count: \(beatCount)")
         } else {
             stopHeartbeat()
         }

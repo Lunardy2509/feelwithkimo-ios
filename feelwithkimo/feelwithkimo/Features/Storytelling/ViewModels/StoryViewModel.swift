@@ -13,12 +13,13 @@ internal class StoryViewModel: ObservableObject {
     @Published var currentScene: StorySceneModel = StorySceneModel(
         path: "",
         text: "",
-        isEnd: false
+        isEnd: false,
+        interactionType: .normal
     )
     @Published var hasCompletedBreathing: Bool = false
     @Published var hasCompletedClapping: Bool = false
 
-    var story: StoryModel = StoryModel(
+    lazy var story: StoryModel = StoryModel(
         id: UUID(),
         name: "Story Angry 1",
         thumbnail: "Thumbnail 1",
@@ -27,18 +28,22 @@ internal class StoryViewModel: ObservableObject {
     )
 
     init() {
-        self.fetchStory()
+        Task { @MainActor in
+            await self.fetchStory()
+        }
     }
 
     /// Load story scene
-    private func fetchStory() {
+    @MainActor
+    private func fetchStory() async {
         var scenes: [StorySceneModel] = []
 
         for number in 1...17 {
             scenes.append(StorySceneModel(
                 path: "Scene \(number)",
                 text: "",
-                isEnd: false
+                isEnd: false,
+                interactionType: .normal
             ))
         }
 
@@ -64,7 +69,8 @@ internal class StoryViewModel: ObservableObject {
             branchBScene.append(StorySceneModel(
                 path: "Scene \(number)_B",
                 text: "",
-                isEnd: false
+                isEnd: false,
+                interactionType: .normal
             ))
         }
 
@@ -84,6 +90,10 @@ internal class StoryViewModel: ObservableObject {
 
         scenes[16].isEnd = true // Branch A Ending
         branchBScene[4].isEnd = true // Branch B Ending
+        
+        scenes[7].interactionType = .storyBranching
+        scenes[5].interactionType = .clapping
+        scenes[13].interactionType = .breathing
 
         self.story.storyScene = scenes
         self.currentScene = self.story.storyScene[0]
@@ -115,16 +125,12 @@ internal class StoryViewModel: ObservableObject {
     /// Mark breathing exercise as completed and move to next scene
     func completeBreathingExercise() {
         hasCompletedBreathing = true
-        print("✅ Breathing exercise completed! Moving to next scene...")
-        // Advance to the next scene when user presses "Lanjut" button
         goScene(to: 1, choice: 0)
-        print("📖 Advanced to scene \(self.index + 1) after breathing completion")
     }
 
     /// Mark clapping exercise as completed
     func completeClappingExercise() {
         hasCompletedClapping = true
         goScene(to: 1, choice: 0)
-        print("✅ Clapping exercise completed! Button text will change to 'Lanjut'")
     }
 }

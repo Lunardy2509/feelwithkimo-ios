@@ -45,7 +45,6 @@ internal class BreathDetectionManager: ObservableObject {
         // Initialize with breathing-related sounds including wind-like sounds
         do {
             let availableBreathingSounds = try BreathingSoundClassifier.getAllBreathingLabels()
-            print("🫁 Available breathing labels: \(availableBreathingSounds)")
             // Use breathing and wind-like sounds that resemble breathing but exclude speech/crowd
             let filteredSounds = availableBreathingSounds.filter { label in
                 let lowercaseLabel = label.lowercased()
@@ -68,7 +67,6 @@ internal class BreathDetectionManager: ObservableObject {
                        !lowercaseLabel.contains("talk")
             }
             appConfig.monitoredSounds = Set(filteredSounds.map { SoundIdentifierModel(labelName: $0) })
-            print("🫁 Monitoring sounds: \(appConfig.monitoredSounds.map { $0.labelName })")
         } catch {
             print("Error getting breathing labels: \(error)")
             // Fallback to expanded breathing sounds
@@ -77,7 +75,6 @@ internal class BreathDetectionManager: ObservableObject {
     }
     /// Begins detecting breathing sounds according to the configuration
     func startDetection() {
-        print("🫁 Starting breathing detection with SoundAnalysis...")
         BreathingSoundClassifier.singleton.stopSoundClassification()
 
         let classificationSubject = PassthroughSubject<SNClassificationResult, Error>()
@@ -110,7 +107,6 @@ internal class BreathDetectionManager: ObservableObject {
           overlapFactor: appConfig.overlapFactor)
     }
     func stopDetection() {
-        print("🛑 Stopping breathing detection...")
         // Stop sound classification first
         BreathingSoundClassifier.singleton.stopSoundClassification()
         
@@ -127,8 +123,6 @@ internal class BreathDetectionManager: ObservableObject {
         
         // Clear detection states to prevent memory leaks
         detectionStates.removeAll()
-        
-        print("🛑 Breathing detection fully stopped and cleaned up")
     }
     /// Processes breathing classification results and determines breath type
     private func processBreathingResult(_ result: SNClassificationResult) {
@@ -168,13 +162,11 @@ internal class BreathDetectionManager: ObservableObject {
                 // Increasing audio level indicates inhaling or start of breathing
                 if currentBreathType != .inhale {
                     currentBreathType = .inhale
-                    print("🫁 INHALE detected - Confidence: \(String(format: "%.3f", maxBreathingConfidence))")
                 }
             } else if audioLevelChange < -audioLevelThreshold && previousAudioLevel > 0.4 { // Increased threshold from 0.3 to 0.4
                 // Decreasing audio level after detection indicates exhaling
                 if currentBreathType != .exhale {
                     currentBreathType = .exhale
-                    print("💨 EXHALE detected - Confidence: \(String(format: "%.3f", maxBreathingConfidence))")
                 }
             }
         } else {

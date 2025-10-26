@@ -75,11 +75,10 @@ internal class KimoBreathingGameViewModel: ObservableObject {
     func handleViewAppear() {
         Task { await requestMicrophonePermission() }
         audioManager.startBackgroundMusic(volume: Self.breathingMusicVolume)
-        print("🎵 Breathing game music started at 30% volume")
     }
     
     func handleViewDisappear() {
-        print("🎮 KimoBreathingGameView disappeared")
+        print("KimoBreathingGameView disappeared")
     }
 
     @MainActor
@@ -167,12 +166,10 @@ internal class KimoBreathingGameViewModel: ObservableObject {
     @MainActor
     func handleContinueAction() {
         voiceManager.speak("Latihan pernapasan selesai! Melanjutkan cerita...")
-        print("🎮 Continue button pressed - calling completion callback")
         // Stop current music and restart at full volume
         audioManager.stop()
         audioManager.startBackgroundMusic(volume: Self.normalMusicVolume)
         audioManager.setVolume(Self.normalMusicVolume)
-        print("🎵 Music stopped and restarted at 100% volume from Lanjut button")
         onCompletion?()
     }
     

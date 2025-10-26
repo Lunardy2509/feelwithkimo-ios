@@ -28,14 +28,11 @@ internal class AudioLevelBreathDetector: ObservableObject {
                 self.processAudioBuffer(buffer)
             }
             try audioEngine.start()
-            print("🎤 Audio level detection started")
         } catch {
             print("Failed to start audio detection: \(error)")
         }
     }
     func stopDetection() {
-        print("🔇 Stopping audio level detection...")
-        
         // Stop the audio engine safely
         if audioEngine.isRunning {
             audioEngine.stop()
@@ -57,8 +54,6 @@ internal class AudioLevelBreathDetector: ObservableObject {
         
         // Deactivate audio session to prevent pipe errors
         try? AVAudioSession.sharedInstance().setActive(false, options: .notifyOthersOnDeactivation)
-        
-        print("🔇 Audio level detection fully stopped and cleaned up")
     }
     private func processAudioBuffer(_ buffer: AVAudioPCMBuffer) {
         guard let channelData = buffer.floatChannelData?[0] else { return }
@@ -77,10 +72,8 @@ internal class AudioLevelBreathDetector: ObservableObject {
             isBreathing = true
             if levelChange > changeThreshold {
                 breathType = .inhale
-                print("🫁 Audio Level INHALE - Level: \(level), Change: \(levelChange)")
             } else if levelChange < -changeThreshold {
                 breathType = .exhale
-                print("💨 Audio Level EXHALE - Level: \(level), Change: \(levelChange)")
             }
         } else {
             isBreathing = false
