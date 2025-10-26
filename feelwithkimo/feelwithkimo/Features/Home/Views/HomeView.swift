@@ -13,27 +13,22 @@ struct HomeView: View {
 
     // MARK: - Body
     var body: some View {
-        ZStack {
-            // Latar belakang utama
-            ColorToken.additionalColorsWhite.toColor().ignoresSafeArea()
-
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack(alignment: .leading) {
-                    // MARK: - Header Section
-                    headerView
-
-                    Spacer().frame(height: 74)
-
-                    // MARK: - Main Content
-                    VStack(alignment: .center, spacing: 40) {
-                        questionView
-                        emotionSelectionView
-                    }
-                    .padding(.leading, 20)
-                }
+        VStack {
+            // MARK: - Header Section
+            headerView
+            
+            Spacer()
+            
+            // MARK: - Main Content
+            VStack(alignment: .center, spacing: 40) {
+                questionView
+                emotionSelectionView
             }
+            .padding(.leading, 20)
+            .padding(.top, 60)
+            
+            Spacer()
         }
-        .ignoresSafeArea()
     }
 }
 
@@ -125,6 +120,7 @@ private extension HomeView {
                 }
             }
         }
+        .frame(maxHeight: 400)
     }
 }
 
