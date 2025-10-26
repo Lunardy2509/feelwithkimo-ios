@@ -60,7 +60,6 @@ final class AudioManager: ObservableObject {
             audioPlayer.prepareToPlay()
             audioPlayer.play()
             self.player = audioPlayer
-            print("🎵 Start music from URL: \(url.lastPathComponent)")
         } catch {
             assertionFailure("Audio error (URL): \(error.localizedDescription)")
         }
@@ -75,7 +74,6 @@ final class AudioManager: ObservableObject {
             audioPlayer.prepareToPlay()
             audioPlayer.play()
             self.player = audioPlayer
-            print("🎵 Start music from Data Asset")
         } catch {
             assertionFailure("Audio error (Data): \(error.localizedDescription)")
         }

@@ -21,13 +21,15 @@ internal class StorySceneModel {
     var isEnd: Bool
     var question: QuestionOption?
     var nextScene: [StorySceneModel]
+    var interactionType: InteractionType
 
-    init(path: String, text: String, isEnd: Bool) {
+    init(path: String, text: String, isEnd: Bool, interactionType: InteractionType) {
         self.path = path
         self.text = text
         self.isEnd = isEnd
         self.question = nil
         self.nextScene = []
+        self.interactionType = interactionType
     }
 }
 

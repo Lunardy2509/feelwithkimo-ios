@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct IdentityView: View {
-    @AppStorage("identity") var identity = ""
     @StateObject var viewModel: IdentityViewModel = IdentityViewModel()
 
     var body: some View {
-        if identity == "" {
+        if viewModel.identity == "" {
             VStack(spacing: 24) {
                 KimoHeaderView {
                     VStack(alignment: .center, spacing: 8) {
@@ -32,18 +31,8 @@ struct IdentityView: View {
                     Text("Nama panggilan anak terhadap orang tua:")
                         .font(.title2)
                         .fontWeight(.bold)
-
-                    TextField("Example: Papa", text: $viewModel.nicknameInput)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .frame(maxWidth: 0.5 * UIScreen.main.bounds.width)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 50)
-                                .stroke(Color.gray.opacity(0.4), lineWidth: 1)
-                        )
-                        .submitLabel(.done)
-                        .onSubmit {
-                            viewModel.submitNickname()
-                        }
+                    
+                    KimoTextField(placeholder: "Example: Papa", inputText: $viewModel.nicknameInput)
                 }
                 .padding(.horizontal)
                 
