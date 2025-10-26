@@ -57,26 +57,27 @@ struct StoryView: View {
                             if let question = viewModel.currentScene.question {
                                 Text(question.question)
                                     .padding()
+                                    .frame(maxWidth: 0.5 * UIScreen.main.bounds.width)
                                     .background(Color.blue)
                                     .foregroundColor(Color.white)
                                     .cornerRadius(10)
-                                    .frame(maxWidth: 0.5 * UIScreen.main.bounds.width)
 
                                 HStack(spacing: 5) {
                                     Spacer()
 
                                     Text(question.option[0])
                                         .padding()
+                                        .frame(width: 0.25 * UIScreen.main.bounds.width)
                                         .background(Color.blue)
                                         .foregroundColor(Color.white)
                                         .cornerRadius(10)
-                                        .frame(width: 0.25 * UIScreen.main.bounds.width)
                                         .onTapGesture {
                                             viewModel.goScene(to: 1, choice: 0)
                                         }
 
                                     Text(question.option[1])
                                         .padding()
+                                        .frame(width: 0.25 * UIScreen.main.bounds.width)
                                         .background(Color.blue)
                                         .foregroundColor(Color.white)
                                         .cornerRadius(10)
@@ -92,7 +93,31 @@ struct StoryView: View {
                 }
             }
 
-            if viewModel.index == 5 {
+            // For clapping interaction
+            switch viewModel.currentScene.interactionType {
+            case .breathing:
+                VStack {
+                    NavigationLink(destination: BreathingViewWrapper(onCompletion: {
+                        viewModel.completeBreathingExercise()
+                    })) {
+                        HStack {
+                            Text("Ayo Latihan Pernapasan")
+                                .font(.title3)
+                                .fontWeight(.medium)
+                        }
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 50)
+                        .background(Color.blue)
+                        .cornerRadius(12)
+                        .padding(.horizontal, 20)
+                    }
+                    .padding(.bottom, 30)
+                    
+                    Spacer()
+                }
+                
+            case .clapping:
                 VStack {
                     NavigationLink(
                         destination: ClapGameViewWrapper(onCompletion: {
@@ -115,30 +140,11 @@ struct StoryView: View {
                     .padding(.bottom, 30)
                     Spacer()
                 }
+                
+            default:
+                EmptyView()
             }
-            // Show breathing button only on scene 13
-            if viewModel.index == 13 {
-                VStack {
-                    NavigationLink(destination: BreathingViewWrapper(onCompletion: {
-                        viewModel.completeBreathingExercise()
-                    })) {
-                        HStack {
-                            Text("Ayo Latihan Pernapasan")
-                                .font(.title3)
-                                .fontWeight(.medium)
-                        }
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 50)
-                        .background(Color.blue)
-                        .cornerRadius(12)
-                        .padding(.horizontal, 20)
-                    }
-                    .padding(.bottom, 30)
-                    
-                    Spacer()
-                }
-            }
+            
             // Mute button in top right corner
             VStack {
                 HStack {

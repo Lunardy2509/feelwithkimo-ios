@@ -13,7 +13,8 @@ internal class StoryViewModel: ObservableObject {
     @Published var currentScene: StorySceneModel = StorySceneModel(
         path: "",
         text: "",
-        isEnd: false
+        isEnd: false,
+        interactionType: .normal
     )
     @Published var hasCompletedBreathing: Bool = false
     @Published var hasCompletedClapping: Bool = false
@@ -38,7 +39,8 @@ internal class StoryViewModel: ObservableObject {
             scenes.append(StorySceneModel(
                 path: "Scene \(number)",
                 text: "",
-                isEnd: false
+                isEnd: false,
+                interactionType: .normal
             ))
         }
 
@@ -64,7 +66,8 @@ internal class StoryViewModel: ObservableObject {
             branchBScene.append(StorySceneModel(
                 path: "Scene \(number)_B",
                 text: "",
-                isEnd: false
+                isEnd: false,
+                interactionType: .normal
             ))
         }
 
@@ -84,6 +87,10 @@ internal class StoryViewModel: ObservableObject {
 
         scenes[16].isEnd = true // Branch A Ending
         branchBScene[4].isEnd = true // Branch B Ending
+        
+        scenes[7].interactionType = .storyBranching
+        scenes[5].interactionType = .clapping
+        scenes[13].interactionType = .breathing
 
         self.story.storyScene = scenes
         self.currentScene = self.story.storyScene[0]
