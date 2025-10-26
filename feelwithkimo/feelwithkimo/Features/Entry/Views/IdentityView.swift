@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct IdentityView: View {
-    @AppStorage("identity") var identity = ""
     @StateObject var viewModel: IdentityViewModel = IdentityViewModel()
 
     var body: some View {
-        if identity == "" {
+        if viewModel.identity == "" {
             VStack(spacing: 24) {
                 KimoHeaderView {
                     VStack(alignment: .center, spacing: 8) {
@@ -61,6 +60,7 @@ struct IdentityView: View {
         }
     }
 }
+
 #Preview {
     IdentityView()
 }

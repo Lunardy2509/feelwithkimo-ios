@@ -94,13 +94,20 @@ struct StoryView: View {
                 }
             }
 
-            // For clapping interaction
+            // Switch for case interactions -> Breathing, Clapping, Mimic, and so on.
             switch viewModel.currentScene.interactionType {
             case .breathing:
                 VStack {
-                    NavigationLink(destination: BreathingViewWrapper(onCompletion: {
-                        viewModel.completeBreathingExercise()
-                    })) {
+                    NavigationLink(
+                        destination: InteractionWrapper(
+                            onCompletion: {
+                                viewModel.completeBreathingExercise()
+                            },
+                            viewFactory: { wrapperCompletion in
+                                BreathingView(onCompletion: wrapperCompletion)
+                            }
+                        )
+                    ) {
                         HStack {
                             Text("Ayo Latihan Pernapasan")
                                 .font(.title3)
@@ -121,9 +128,15 @@ struct StoryView: View {
             case .clapping:
                 VStack {
                     NavigationLink(
-                        destination: ClapGameViewWrapper(onCompletion: {
-                        viewModel.completeClappingExercise()
-                    })) {
+                        destination: InteractionWrapper(
+                            onCompletion: {
+                                viewModel.completeClappingExercise()
+                            },
+                            viewFactory: { wrapperCompletion in
+                                ClapGameView(onCompletion: wrapperCompletion)
+                            }
+                        )
+                    ) {
                         HStack {
                             Image(systemName: "hands.clap")
                                 .font(.title3)
@@ -146,11 +159,10 @@ struct StoryView: View {
                 EmptyView()
             }
             
-            // Mute button in top right corner
             VStack {
                 HStack {
                     Spacer()
-                    MusicMuteButton(audioManager: audioManager)
+                    KimoMuteButton(audioManager: audioManager)
                         .padding(20)
                         .padding(.top, 10)
                         .padding(.trailing, 20)
@@ -159,7 +171,10 @@ struct StoryView: View {
             }
         }
         .onAppear {
-            AudioManager.shared.startBackgroundMusic()
+            audioManager.startBackgroundMusic()
+        }
+        .onDisappear {
+            audioManager.stop()
         }
         .statusBarHidden(true)
     }
@@ -178,41 +193,5 @@ struct FadeContentTransition: ViewModifier {
         } else {
             content.transition(.opacity)
         }
-    }
-}
-
-/// Wrapper for BreathingView that handles completion callback
-struct BreathingViewWrapper: View {
-    let onCompletion: () -> Void
-    @Environment(\.dismiss) private var dismiss
-    @ObservedObject private var audioManager = AudioManager.shared
-    var body: some View {
-        BreathingView(onCompletion: {
-            print("🎮 Breathing exercise completed via BreathingView callback")
-            onCompletion()
-            // Don't manage music here - let the "Lanjut" button handle it
-            dismiss()
-        })
-        .navigationBarHidden(false)
-        .onDisappear {
-            // Ensure music is properly restored when leaving breathing view (fallback)
-            if audioManager.isMuted {
-                audioManager.startBackgroundMusic(volume: 1.0)
-                print("� Music restored on BreathingViewWrapper disappear (fallback)")
-            }
-        }
-    }
-}
-
-/// Wrapper for ClapGameView that handles completion callback
-struct ClapGameViewWrapper: View {
-    let onCompletion: () -> Void
-    @Environment(\.dismiss) private var dismiss
-
-    var body: some View {
-        ClapGameView(onCompletion: {
-            onCompletion()
-            dismiss()
-        })
     }
 }

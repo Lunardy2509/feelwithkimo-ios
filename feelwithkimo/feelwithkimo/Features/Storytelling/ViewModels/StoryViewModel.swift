@@ -34,6 +34,7 @@ internal class StoryViewModel: ObservableObject {
     }
 
     /// Load story scene
+    @MainActor
     private func fetchStory() async {
         var scenes: [StorySceneModel] = []
 
@@ -124,16 +125,12 @@ internal class StoryViewModel: ObservableObject {
     /// Mark breathing exercise as completed and move to next scene
     func completeBreathingExercise() {
         hasCompletedBreathing = true
-        print("✅ Breathing exercise completed! Moving to next scene...")
-        // Advance to the next scene when user presses "Lanjut" button
         goScene(to: 1, choice: 0)
-        print("📖 Advanced to scene \(self.index + 1) after breathing completion")
     }
 
     /// Mark clapping exercise as completed
     func completeClappingExercise() {
         hasCompletedClapping = true
         goScene(to: 1, choice: 0)
-        print("✅ Clapping exercise completed! Button text will change to 'Lanjut'")
     }
 }

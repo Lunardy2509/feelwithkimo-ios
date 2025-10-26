@@ -1,14 +1,14 @@
 //
-//  MusicMuteButton.swift
+//  KimoMuteButton.swift
 //  feelwithkimo
 //
-//  Created by GitHub Copilot on 21/10/25.
+//  Created by Ferdinand Lunardy on 21/10/25.
 //
 
 import SwiftUI
 
 /// A mute button for controlling background music
-struct MusicMuteButton: View {
+struct KimoMuteButton: View {
     @ObservedObject var audioManager: AudioManager
     var body: some View {
         Button(action: {
@@ -37,7 +37,7 @@ struct MusicMuteButton: View {
 }
 
 #Preview {
-    MusicMuteButton(audioManager: AudioManager.shared)
+    KimoMuteButton(audioManager: AudioManager.shared)
         .padding()
         .background(Color.blue.opacity(0.3))
 }

@@ -33,7 +33,6 @@ internal class GameStateManager: ObservableObject {
         switch type {
         case .inhale, .exhale:
             addBreathProgress()
-            print("🎯 Progress added! Current player: \(currentPlayer), Progress: \(getCurrentBalloonProgress())%")
         case .none:
             break
         }
@@ -78,7 +77,6 @@ internal class GameStateManager: ObservableObject {
         case .child:
             switchToParent()
         }
-        print("🔄 Switched to: \(currentPlayer)")
     }
     private func switchToChild() {
         currentPhase = .childTurn
@@ -91,7 +89,6 @@ internal class GameStateManager: ObservableObject {
     private func completeGame() {
         currentPhase = .gameComplete
         isGameActive = false
-        print("🎉 Game completed!")
     }
     func resetGame() {
         currentPhase = .welcome
