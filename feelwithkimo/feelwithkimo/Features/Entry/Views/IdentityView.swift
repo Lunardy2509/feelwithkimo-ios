@@ -16,11 +16,11 @@ struct IdentityView: View {
                 KimoHeaderView {
                     VStack(alignment: .center, spacing: 8) {
                         Text("Identitas Orang Tua")
-                            .font(.largeTitle)
+                            .font(.app(.largeTitle, family: .primary))
                             .fontWeight(.bold)
 
                         Text("Yuk, isi sedikit data supaya Kimo bisa mengenal keluarga kecilmu!")
-                            .font(.title2)
+                            .font(.app(.title2, family: .primary))
                             .lineLimit(2)
                     }
                 }
@@ -29,7 +29,7 @@ struct IdentityView: View {
 
                 VStack(alignment: .center, spacing: 8) {
                     Text("Nama panggilan anak terhadap orang tua:")
-                        .font(.title2)
+                        .font(.app(.title2, family: .primary))
                         .fontWeight(.bold)
                     
                     KimoTextField(placeholder: "Example: Papa", inputText: $viewModel.nicknameInput)
@@ -42,13 +42,13 @@ struct IdentityView: View {
                     viewModel.submitNickname()
                 }, label: {
                     Text("Lanjut")
-                        .font(.body)
+                        .font(.app(.body, family: .primary))
                         .bold()
                         .padding(.horizontal, 26)
                         .padding(.vertical, 14)
                         .frame(maxWidth: 150)
-                        .background(ColorToken.additionalColorsBlack.toColor())
-                        .foregroundColor(ColorToken.additionalColorsWhite.toColor())
+                        .background(ColorToken.backgroundMain.toColor())
+                        .foregroundStyle(ColorToken.textPrimary.toColor())
                         .cornerRadius(12)
                         .padding(.vertical, 170)
                 })

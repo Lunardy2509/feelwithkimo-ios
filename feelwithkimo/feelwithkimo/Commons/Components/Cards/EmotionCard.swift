@@ -36,26 +36,26 @@ struct EmotionCard: View {
             // "Karakter Visual" Placeholder
             ZStack {
                 Circle()
-                    .fill(ColorToken.grayscale50.toColor())
+                    .fill(ColorToken.backgroundCard.toColor())
                     .frame(width: cardSize, height: cardSize)
 
                 Image(systemName: emotion.visualCharacterName)
                     .font(.system(size: (cardSize)/2))
-                    .foregroundColor(ColorToken.additionalColorsBlack.toColor())
+                    .foregroundStyle(ColorToken.textPrimary.toColor())
 
             }
 
             // Label Nama Emosi
             Text(emotion.name)
-                .font(.app(.caption1))
+                .font(.app(.caption1, family: .primary))
                 .fontWeight(isSelected ? .bold : .regular)
-                .foregroundColor(ColorToken.additionalColorsBlack.toColor())
+                .foregroundStyle(ColorToken.textPrimary.toColor())
                 .padding(.horizontal, 20)
                 .padding(.vertical, 8)
                 .frame(width: capsuleWidth, height: capsuleHeight)
                 .background(
                     Capsule()
-                        .fill(ColorToken.grayscale30.toColor())
+                        .fill(ColorToken.corePrimary.toColor())
                 )
         }
     }

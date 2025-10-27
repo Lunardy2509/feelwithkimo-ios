@@ -13,7 +13,7 @@ extension ClapGameView {
         HStack {
             Spacer()
             Text("Clap the Hand")
-                .font(.largeTitle)
+                .font(.app(.largeTitle, family: .primary))
                 .fontWeight(.bold)
             Spacer()
         }
@@ -100,7 +100,7 @@ extension ClapGameView {
             .disabled(!viewModel.isHeartbeatActive)
             .padding(.bottom, 40)
         }
-        .foregroundColor(.white)
+        .foregroundStyle(ColorToken.additionalColorsWhite.toColor())
     }
     
     /// View untuk visualisasi garis penghubung dan titik tangan
@@ -145,11 +145,11 @@ extension ClapGameView {
                     VStack {
                         Image(systemName: "hand.raised.slash")
                             .font(.system(size: 80))
-                            .foregroundColor(.gray.opacity(0.4))
+                            .foregroundStyle(ColorToken.grayscale40.toColor())
                             .padding(.bottom, 8)
                         Text("No Hands Detected")
-                            .font(.headline)
-                            .foregroundColor(.gray)
+                            .font(.app(.headline, family: .primary))
+                            .foregroundStyle(ColorToken.grayscale100.toColor())
                     }
                     .transition(.opacity)
 
@@ -157,11 +157,11 @@ extension ClapGameView {
                     VStack {
                         Image(systemName: "hand.point.up.left.fill")
                             .font(.system(size: 80))
-                            .foregroundColor(.yellow.opacity(0.8))
+                            .foregroundStyle(.yellow.opacity(0.8))
                             .padding(.bottom, 8)
                         Text("One Hand Detected")
-                            .font(.headline)
-                            .foregroundColor(.yellow)
+                            .font(.app(.headline, family: .primary))
+                            .foregroundStyle(.yellow)
                     }
                     .transition(.opacity)
 
@@ -169,17 +169,17 @@ extension ClapGameView {
                     VStack {
                         Image(systemName: "hands.clap.fill")
                             .font(.system(size: 80))
-                            .foregroundColor(.green.opacity(0.9))
+                            .foregroundStyle(.green.opacity(0.9))
                             .padding(.bottom, 8)
                         Text("Both Hands Detected")
-                            .font(.headline)
-                            .foregroundColor(.green)
+                            .font(.app(.headline, family: .primary))
+                            .foregroundStyle(.green)
                     }
                     .transition(.opacity)
                 }
             }
             .padding()
-            .background(Color.black.opacity(0.3))
+            .background(ColorToken.backgroundMain.toColor())
             .cornerRadius(16)
             .shadow(radius: 4)
             .animation(.easeInOut(duration: 0.3), value: handState)

@@ -59,8 +59,8 @@ struct StoryView: View {
                                 Text(question.question)
                                     .padding()
                                     .frame(maxWidth: 0.5 * UIScreen.main.bounds.width)
-                                    .background(ColorToken.corePrimary.toColor())
-                                    .foregroundColor(ColorToken.additionalColorsWhite.toColor())
+                                    .background(ColorToken.backgroundMain.toColor())
+                                    .foregroundStyle(ColorToken.textPrimary.toColor())
                                     .cornerRadius(10)
 
                                 HStack(spacing: 5) {
@@ -69,8 +69,8 @@ struct StoryView: View {
                                     Text(question.option[0])
                                         .padding()
                                         .frame(width: 0.25 * UIScreen.main.bounds.width)
-                                        .background(ColorToken.coreAccent.toColor())
-                                        .foregroundColor(ColorToken.additionalColorsWhite.toColor())
+                                        .background(ColorToken.backgroundCard.toColor())
+                                        .foregroundStyle(ColorToken.textPrimary.toColor())
                                         .cornerRadius(10)
                                         .onTapGesture {
                                             viewModel.goScene(to: 1, choice: 0)
@@ -79,8 +79,8 @@ struct StoryView: View {
                                     Text(question.option[1])
                                         .padding()
                                         .frame(width: 0.25 * UIScreen.main.bounds.width)
-                                        .background(ColorToken.coreAccent.toColor())
-                                        .foregroundColor(ColorToken.additionalColorsWhite.toColor())
+                                        .background(ColorToken.backgroundCard.toColor())
+                                        .foregroundStyle(ColorToken.textPrimary.toColor())
                                         .cornerRadius(10)
                                         .frame(width: 0.25 * UIScreen.main.bounds.width)
                                         .onTapGesture {
@@ -110,10 +110,10 @@ struct StoryView: View {
                     ) {
                         HStack {
                             Text("Ayo Latihan Pernapasan")
-                                .font(.title3)
+                                .font(.app(.title3, family: .primary))
                                 .fontWeight(.medium)
                         }
-                        .foregroundColor(.white)
+                        .foregroundStyle(ColorToken.additionalColorsWhite.toColor())
                         .frame(maxWidth: .infinity)
                         .frame(height: 50)
                         .background(ColorToken.corePrimary.toColor())
@@ -139,12 +139,12 @@ struct StoryView: View {
                     ) {
                         HStack {
                             Image(systemName: "hands.clap")
-                                .font(.title3)
+                                .font(.app(.title3, family: .primary))
                             Text("Mulai Bermain")
-                                .font(.title3)
+                                .font(.app(.title3, family: .primary))
                                 .fontWeight(.medium)
                         }
-                        .foregroundColor(.white)
+                        .foregroundStyle(ColorToken.additionalColorsWhite.toColor())
                         .frame(maxWidth: .infinity)
                         .frame(height: 50)
                         .background(ColorToken.corePrimary.toColor())

@@ -15,13 +15,10 @@ struct EmotionStoryView: View {
     var body: some View {
         HStack(spacing: 37) {
             ZStack {
-                ColorToken.grayscale100.toColor()
-
                 VStack(alignment: .center) {
                     HStack {
                         KimoBackButton()
                             .onTapGesture {
-                                // Stop music when navigating back to main menu
                                 audioManager.stop()
                                 dismiss()
                             }
@@ -40,17 +37,20 @@ struct EmotionStoryView: View {
                         .shadow(radius: 10)
 
                     Text(viewModel.emotion.title)
-                        .font(.largeTitle)
+                        .font(.app(.largeTitle, family: .primary))
                         .fontWeight(.bold)
+                        .foregroundStyle(ColorToken.textPrimary.toColor())
 
                     Text(viewModel.emotion.description)
-                        .font(.title2)
+                        .font(.app(.title2, family: .primary))
+                        .foregroundStyle(ColorToken.textSecondary.toColor())
                         .multilineTextAlignment(.center)
                     Spacer()
                 }
                 .padding(.horizontal, 35)
             }
             .frame(maxWidth: 0.4 * UIScreen.main.bounds.width)
+            .background(ColorToken.backgroundMain.toColor())
 
             ScrollView(.vertical, showsIndicators: true) {
                 VStack(alignment: .leading) {
@@ -63,11 +63,11 @@ struct EmotionStoryView: View {
 
                                 VStack(alignment: .leading) {
                                     Text(story.name)
-                                        .font(.title2)
+                                        .font(.app(.title2, family: .primary))
                                         .fontWeight(.bold)
 
                                     Text(story.description)
-                                        .font(.body)
+                                        .font(.app(.body, family: .primary))
 
                                 }
                             }

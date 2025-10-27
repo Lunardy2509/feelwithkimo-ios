@@ -17,11 +17,11 @@ struct ChildIdentityView: View {
             KimoHeaderView {
                 VStack(alignment: .center, spacing: 8) {
                     Text("Identitas Anak")
-                        .font(.largeTitle)
+                        .font(.app(.largeTitle, family: .primary))
                         .fontWeight(.bold)
 
                     Text("Sekarang giliran si kecil nih!")
-                        .font(.title2)
+                        .font(.app(.title2, family: .primary))
                         .lineLimit(2)
                 }
             }
@@ -30,7 +30,7 @@ struct ChildIdentityView: View {
             
             VStack(alignment: .center, spacing: 8) {
                 Text("Nama Anak:")
-                    .font(.title2)
+                    .font(.app(.title2, family: .primary))
                     .fontWeight(.bold)
 
                 TextField("Example: Cynthia", text: $viewModel.childName)
@@ -53,13 +53,13 @@ struct ChildIdentityView: View {
                 }
             }, label: {
                 Text("Lanjut")
-                    .font(.body)
+                    .font(.app(.body, family: .primary))
                     .bold()
                     .padding(.horizontal, 26)
                     .padding(.vertical, 14)
                     .frame(maxWidth: 150)
-                    .background(ColorToken.additionalColorsBlack.toColor())
-                    .foregroundColor(ColorToken.additionalColorsWhite.toColor())
+                    .background(ColorToken.backgroundMain.toColor())
+                    .foregroundStyle(ColorToken.textPrimary.toColor())
                     .cornerRadius(12)
                     .padding(.vertical, 170)
             })

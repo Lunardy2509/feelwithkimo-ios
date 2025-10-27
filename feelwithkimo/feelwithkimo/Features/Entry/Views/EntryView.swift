@@ -18,12 +18,12 @@ struct EntryView: View {
                     .accessibilityHidden(true)
 
                 Text("Hai, aku Kimo!")
-                    .font(.largeTitle)
+                    .font(.app(.largeTitle, family: .primary))
                     .fontWeight(.bold)
                     .accessibilitySortPriority(1)
 
                 Text("Yuk, bantu si kecil mengenal perasaan dengan cerita dan permainan seru")
-                    .font(.title2)
+                    .font(.app(.title2, family: .primary))
                     .multilineTextAlignment(.center)
                     .frame(maxWidth: 0.5 * UIScreen.main.bounds.width)
                     .padding(.horizontal)

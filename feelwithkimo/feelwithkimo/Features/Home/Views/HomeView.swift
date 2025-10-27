@@ -43,7 +43,7 @@ private extension HomeView {
                     .foregroundStyle(ColorToken.grayscale60.toColor())
 
                 Text("Hi, \(viewModel.currentUser?.name ?? "Guest")!")
-                    .font(.largeTitle)
+                    .font(.app(.largeTitle, family: .primary))
                     .fontWeight(.bold)
                     .padding()
                 
@@ -56,12 +56,12 @@ private extension HomeView {
     var questionView: some View {
         HStack(alignment: .top, spacing: 4) {
             Text("Hari ini mau belajar emosi apa, ya?")
-//                .font(.caption)
-                .foregroundColor(ColorToken.additionalColorsBlack.toColor())
+                .font(.app(.caption1, family: .primary))
+                .foregroundStyle(ColorToken.backgroundMain.toColor())
                 .padding(0)
 
             Image(systemName: "speaker.wave.1.fill")
-                .foregroundColor(ColorToken.additionalColorsBlack.toColor())
+                .foregroundColor(ColorToken.backgroundMain.toColor())
                 .padding(0)
         }
     }
