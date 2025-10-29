@@ -23,8 +23,6 @@ struct KimoHeaderView<Content: View>: View {
                 )
             
             content()
-                .padding(.horizontal)
-                .padding(.vertical, 48)
         }
         .ignoresSafeArea(.container, edges: .top)
         .frame(height: height)

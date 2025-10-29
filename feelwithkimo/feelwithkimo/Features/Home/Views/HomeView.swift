@@ -74,7 +74,7 @@ private extension HomeView {
     var questionView: some View {
         HStack(alignment: .top, spacing: 4) {
             Text("Hari ini mau belajar emosi apa, ya?")
-                .font(.app(.caption1, family: .primary))
+                .font(.app(.title1, family: .primary))
                 .foregroundStyle(ColorToken.backgroundMain.toColor())
                 .padding(0)
                 .kimoTextAccessibility(

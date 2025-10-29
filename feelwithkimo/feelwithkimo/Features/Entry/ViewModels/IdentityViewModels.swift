@@ -13,9 +13,9 @@ internal class IdentityViewModel: ObservableObject {
     @AppStorage("identity") var identity: String = ""
 
     @Published var nicknameInput: String = ""
+    @Published var childNicknameInput: String = ""
     @Published var showError: Bool = false
     @Published var navigateToChild: Bool = false
-    @Published var childName: String = ""
 
     var alertMessage: String = ""
 
@@ -27,21 +27,27 @@ internal class IdentityViewModel: ObservableObject {
             return
         }
 
-        parentNickname = trimmed
         showError = false
         navigateToChild = true
     }
-
-    func submitChildName() -> Bool {
-        let trimmed = childName.trimmingCharacters(in: .whitespacesAndNewlines)
+    
+    func submitName() {
+        let trimmed = childNicknameInput.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else {
             alertMessage = "Nama tidak boleh kosong"
             showError = true
-            return false
+            return
+        }
+        
+        let trimmedParent = nicknameInput.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard !trimmedParent.isEmpty else {
+            showError = true
+            return
         }
 
         identity = trimmed
+        parentNickname = trimmedParent
         showError = false
-        return true
+        return
     }
 }
