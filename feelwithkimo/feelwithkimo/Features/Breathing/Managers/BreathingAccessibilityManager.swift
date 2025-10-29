@@ -10,8 +10,6 @@ import SwiftUI
 struct BreathingAccessibilityManager {
     /// Creates a breathing status announcement for accessibility
     static func announceBreathingStatus(breathType: BreathType, confidence: Double, isActive: Bool) {
-        guard AccessibilityManager.isVoiceOverRunning else { return }
-        
         var message = ""
         
         switch breathType {
@@ -34,8 +32,6 @@ struct BreathingAccessibilityManager {
     
     /// Creates a game progress announcement
     static func announceGameProgress(parentProgress: Double, childProgress: Double, currentPlayer: PlayerType) {
-        guard AccessibilityManager.isVoiceOverRunning else { return }
-        
         let parentPercent = Int(parentProgress * 100)
         let childPercent = Int(childProgress * 100)
         
@@ -60,8 +56,6 @@ struct BreathingAccessibilityManager {
     
     /// Announces game phase changes
     static func announcePhaseChange(phase: GamePhase) {
-        guard AccessibilityManager.isVoiceOverRunning else { return }
-        
         let message: String
         switch phase {
         case .welcome:
@@ -79,8 +73,6 @@ struct BreathingAccessibilityManager {
     
     /// Announces balloon progress
     static func announceBalloonProgress(progress: Double, player: PlayerType) {
-        guard AccessibilityManager.isVoiceOverRunning else { return }
-        
         let percent = Int(progress * 100)
         let playerName = player == .parent ? "Ayah atau Ibu" : "Anak"
         let balloonColor = player == .parent ? "merah" : "biru"

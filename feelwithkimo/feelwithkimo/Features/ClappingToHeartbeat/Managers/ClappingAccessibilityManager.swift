@@ -11,8 +11,6 @@ struct ClappingAccessibilityManager {
     
     /// Announces hand detection status changes
     static func announceHandDetection(handState: HandState) {
-        guard AccessibilityManager.isVoiceOverRunning else { return }
-        
         let message: String
         switch handState {
         case .noHand:
@@ -28,8 +26,6 @@ struct ClappingAccessibilityManager {
     
     /// Announces heartbeat status
     static func announceHeartbeatStatus(isActive: Bool, bpm: Int = 100) {
-        guard AccessibilityManager.isVoiceOverRunning else { return }
-        
         let message = isActive ? 
             "Detak jantung dimulai dengan \(bpm) ketukan per menit. Tepuk tangan mengikuti irama." :
             "Detak jantung berhenti."
@@ -39,24 +35,18 @@ struct ClappingAccessibilityManager {
     
     /// Announces clap feedback
     static func announceClapFeedback(isSuccessful: Bool) {
-        guard AccessibilityManager.isVoiceOverRunning else { return }
-        
         let message = isSuccessful ? "Tepukan berhasil!" : "Tepukan terlalu cepat atau lambat"
         AccessibilityManager.announce(message)
     }
     
     /// Announces game progress
     static func announceGameProgress(currentStep: Int, totalSteps: Int = 10) {
-        guard AccessibilityManager.isVoiceOverRunning else { return }
-        
         let message = "Langkah \(currentStep) dari \(totalSteps) selesai"
         AccessibilityManager.announce(message)
     }
     
     /// Announces game completion
     static func announceGameCompletion() {
-        guard AccessibilityManager.isVoiceOverRunning else { return }
-        
         let message = "Selamat! Permainan tepuk tangan selesai. Kalian berhasil mengikuti semua irama!"
         AccessibilityManager.announce(message, important: true)
     }

@@ -26,6 +26,9 @@ final class AccessibilityManager: ObservableObject {
     
     /// Posts an accessibility announcement that works well with VoiceOver
     static func announce(_ message: String, important: Bool = false) {
+        // Only announce if VoiceOver is running
+        guard isVoiceOverRunning else { return }
+        
         DispatchQueue.main.async {
             var announcement = message
             
