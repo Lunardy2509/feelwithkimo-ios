@@ -58,7 +58,7 @@ struct IdentityView: View {
                         )
                 }
                 .padding(.horizontal)
-                
+
                 Spacer()
 
                 Button(action: {
@@ -106,6 +106,7 @@ struct IdentityView: View {
         }
     }
 }
+
 #Preview {
     IdentityView()
 }
