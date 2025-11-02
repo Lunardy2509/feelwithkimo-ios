@@ -12,7 +12,7 @@ struct IdentityView: View {
     @StateObject private var accessibilityManager = AccessibilityManager.shared
 
     var body: some View {
-        if viewModel.identity == "" {
+        if viewModel.identity == "" || viewModel.parentNickname == "" {
             VStack {
                 KimoHeaderView {
                     VStack(alignment: .center, spacing: 8) {
@@ -67,15 +67,25 @@ struct IdentityView: View {
                                 sortPriority: 4
                             )
                         
+                        Text(viewModel.errorMessageChild)
+                            .font(.app(.callout, family: .primary))
+                            .foregroundColor(viewModel.showErrorChild ? ColorToken.emotionAnger.toColor() : Color.clear)
+                            .padding(.top, 7)
+                            .kimoTextAccessibility(
+                                label: viewModel.showErrorChild ? viewModel.errorMessageChild : "",
+                                identifier: "identity.errorMessageChild",
+                                sortPriority: 5
+                            )
+                        
                         Text("Nama Panggilan untuk Orang Tua:")
                             .font(.app(.title2, family: .primary))
                             .fontWeight(.bold)
                             .kimoTextAccessibility(
                                 label: "Nama Panggilan untuk Orang Tua:",
                                 identifier: "identity.nicknameLabel",
-                                sortPriority: 5
+                                sortPriority: 6
                             )
-                            .padding(.top, 41 * UIScreen.main.bounds.height / 834)
+                            .padding(.top, 12 * UIScreen.main.bounds.height / 834)
                         
                         KimoTextField(placeholder: "Misal: Ibu / Ayah / Papa / Mama", inputText: $viewModel.nicknameInput)
                             .kimoAccessibility(
@@ -83,7 +93,17 @@ struct IdentityView: View {
                                 hint: "Masukkan nama panggilan yang biasa digunakan anak untuk memanggil orang tua, contoh: Papa, Mama, Ayah, Ibu",
                                 traits: .isButton,
                                 identifier: "identity.nicknameField",
-                                sortPriority: 6
+                                sortPriority: 7
+                            )
+                        
+                        Text(viewModel.errorMessageNickname)
+                            .font(.app(.callout, family: .primary))
+                            .foregroundColor(viewModel.showErrorNickname ? ColorToken.emotionAnger.toColor() : Color.clear)
+                            .padding(.top, 7)
+                            .kimoTextAccessibility(
+                                label: viewModel.showErrorNickname ? viewModel.errorMessageNickname : "",
+                                identifier: "identity.errorMessageNickname",
+                                sortPriority: 8
                             )
                     }
                 }
@@ -130,11 +150,6 @@ struct IdentityView: View {
                 }
             }
             .navigationBarBackButtonHidden(true)
-            .alert("Notice", isPresented: $viewModel.showError) {
-                Button("Ok", role: .cancel) { }
-            } message: {
-                Text(viewModel.alertMessage)
-            }
         } else {
             HomeView()
         }
