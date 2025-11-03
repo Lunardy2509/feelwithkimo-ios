@@ -12,6 +12,7 @@ struct EmotionStoryView: View {
     @ObservedObject private var audioManager = AudioManager.shared
     @StateObject var viewModel: EmotionStoryViewModel
     @StateObject private var accessibilityManager = AccessibilityManager.shared
+    @State private var navigateToStory = false
     
     var body: some View {
         ZStack {
@@ -51,49 +52,29 @@ struct EmotionStoryView: View {
                 .padding(.horizontal, 57 * UIScreen.main.bounds.width / 1194)
                 .padding(.top, 50 * UIScreen.main.bounds.height / 834)
                 
-                HStack(spacing: 39) {
-                    Image("KimoEmotionStory")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 512 * UIScreen.main.bounds.width / 1194)
-                    
-                    VStack(spacing: 0) {
-                        Text("Hari ini, Kimo mau bermain dengan teman Kimo, namanya Lala.")
-                            .frame(maxWidth: 500 * UIScreen.main.bounds.width / 1194)
-                            .padding(.horizontal, 49 * UIScreen.main.bounds.width / 1194)
-                            .padding(.vertical, 42.5 * UIScreen.main.bounds.height / 834)
-                            .background(ColorToken.corePinkDialogue.toColor())
-                            .cornerRadius(30)
-                        
-                        HStack {
-                            Image("KimoDialogue")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(maxWidth: 157 * UIScreen.main.bounds.width / 1194)
-                            
-                            Spacer()
-                        }
-                        
-                        HStack {
-                            Spacer()
-                            
-                            NavigationLink(destination: {
-                                StoryView()
-                            }, label: {
-                                Text("Mulai bermain")
-                                    .font(.app(.title1, family: .primary))
-                                    .frame(maxWidth: 234 * UIScreen.main.bounds.width / 1194)
-                                    .foregroundStyle(ColorToken.additionalColorsWhite.toColor())
-                                    .padding(.horizontal, 20)
-                                    .padding(.vertical, 15.5)
-                                    .background(ColorToken.backgroundCard.toColor())
-                                    .cornerRadius(30)
-                            })
-                        }
-                    }
-                }
+                KimoDialogueView(
+                    kimoDialogueIcon: "KimoEmotionStory",
+                    textDialogue: "Hari ini, Kimo mau bermain dengan teman Kimo, namanya Lala.",
+                    textDialogueTriangle: "KimoDialogue",
+                    buttonLayout: .single(
+                        KimoDialogueButtonConfig(
+                            title: "Mulai Bermain",
+                            action: {
+                                navigateToStory = true
+                            }
+                        )
+                    )
+                )
                 .padding(.top, 53)
                 .padding(.horizontal, 72)
+                
+                // navigationDestination with a boolean binding
+                Color.clear
+                    .frame(width: 0, height: 0)
+                    .accessibilityHidden(true)
+                    .navigationDestination(isPresented: $navigateToStory) {
+                        StoryView()
+                    }
                 
                 Spacer()
             }

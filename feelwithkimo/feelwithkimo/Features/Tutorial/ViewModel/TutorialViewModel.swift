@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TutorialViewModel: ObservableObject {
+internal class TutorialViewModel: ObservableObject {
     @Published var tutorialStep: Int = 1
     
     func nextStep() -> Bool {

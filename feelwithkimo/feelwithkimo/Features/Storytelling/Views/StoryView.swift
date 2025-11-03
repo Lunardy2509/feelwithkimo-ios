@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct StoryView: View {
+    @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: StoryViewModel = StoryViewModel()
     @ObservedObject private var audioManager = AudioManager.shared
-    @StateObject var viewModel: StoryViewModel = StoryViewModel()
     @StateObject private var accessibilityManager = AccessibilityManager.shared
     
     var body: some View {
