@@ -144,7 +144,7 @@ struct StoryView: View {
                                 accessibilityManager.announce("Latihan pernapasan selesai. Melanjutkan cerita.")
                             },
                             viewFactory: { wrapperCompletion in
-                                BreathingView(onCompletion: wrapperCompletion)
+                                BreathingModuleView(onCompletion: wrapperCompletion)
                             }
                         )
                     ) {
