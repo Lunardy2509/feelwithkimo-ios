@@ -9,25 +9,14 @@ import SwiftUI
 
 struct EmotionStoryView: View {
     @Environment(\.dismiss) private var dismiss
-    @StateObject var viewModel: EmotionStoryViewModel
     @ObservedObject private var audioManager = AudioManager.shared
+    @StateObject var viewModel: EmotionStoryViewModel
     @StateObject private var accessibilityManager = AccessibilityManager.shared
     
     var body: some View {
         HStack(spacing: 37) {
             ZStack {
                 VStack(alignment: .center) {
-//                    HStack {
-//                        KimoBackButton()
-//                            .onTapGesture {
-//                                audioManager.stop()
-//                                dismiss()
-//                            }
-//                        
-//                        Spacer()
-//                    }
-//                    .padding(.top, 35)
-
                     Spacer().frame(height: 115)
 
                     Image(viewModel.emotion.emotionImage)
