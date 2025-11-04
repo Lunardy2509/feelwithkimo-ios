@@ -12,6 +12,7 @@ struct EmotionStoryView: View {
     @ObservedObject private var audioManager = AudioManager.shared
     @StateObject var viewModel: EmotionStoryViewModel
     @StateObject private var accessibilityManager = AccessibilityManager.shared
+    @State private var navigateToStory = false
     
     var body: some View {
         ZStack {
@@ -51,42 +52,67 @@ struct EmotionStoryView: View {
                 .padding(.horizontal, 57.getWidth())
                 .padding(.top, 50.getHeight())
                 
-                HStack(spacing: 39) {
-                    Image("KimoEmotionStory")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 512.getWidth())
+                // TODO: Move this code to KimoDialogueView
+                 HStack(spacing: 39) {
+                     Image("KimoEmotionStory")
+                         .resizable()
+                         .scaledToFit()
+                         .frame(width: 512.getWidth())
                     
-                    VStack(spacing: 0) {
-                        Text("Hari ini, Kimo mau bermain dengan teman Kimo, namanya Lala.")
-                            .frame(maxWidth: 500.getWidth())
-                            .padding(.horizontal, 49.getWidth())
-                            .padding(.vertical, 42.getHeight())
-                            .background(ColorToken.corePinkDialogue.toColor())
-                            .cornerRadius(30)
+                     VStack(spacing: 0) {
+                         Text("Hari ini, Kimo mau bermain dengan teman Kimo, namanya Lala.")
+                             .frame(maxWidth: 500.getWidth())
+                             .padding(.horizontal, 49.getWidth())
+                             .padding(.vertical, 42.getHeight())
+                             .background(ColorToken.corePinkDialogue.toColor())
+                             .cornerRadius(30)
                         
-                        HStack {
-                            Image("KimoDialogue")
-                                .resizable()
-                                .scaledToFit()
-                                .frame(maxWidth: 157.getWidth())
+                         HStack {
+                             Image("KimoDialogue")
+                                 .resizable()
+                                 .scaledToFit()
+                                 .frame(maxWidth: 157.getWidth())
                             
-                            Spacer()
-                        }
+                             Spacer()
+                         }
                         
-                        HStack {
-                            Spacer()
+                         HStack {
+                             Spacer()
                             
-                            NavigationLink(destination: {
-                                StoryView()
-                            }, label: {
-                                KimoBubbleButton(buttonLabel: "Mulai bermain")
-                            })
-                        }
-                    }
-                }
-                .padding(.top, 53.getHeight())
-                .padding(.horizontal, 72.getWidth())
+                             NavigationLink(destination: {
+                                 StoryView()
+                             }, label: {
+                                 KimoBubbleButton(buttonLabel: "Mulai bermain")
+                             })
+                         }
+                     }
+                 }
+                 .padding(.top, 53.getHeight())
+                 .padding(.horizontal, 72.getWidth())
+                
+//                KimoDialogueView(
+//                    kimoDialogueIcon: "KimoEmotionStory",
+//                    textDialogue: "Hari ini, Kimo mau bermain dengan teman Kimo, namanya Lala.",
+//                    textDialogueTriangle: "KimoDialogue",
+//                    buttonLayout: .single(
+//                        KimoDialogueButtonConfig(
+//                            title: "Mulai Bermain",
+//                            action: {
+//                                navigateToStory = true
+//                            }
+//                        )
+//                    )
+//                )
+//                .padding(.top, 53)
+//                .padding(.horizontal, 72)
+                
+                // navigationDestination with a boolean binding
+//                Color.clear
+//                    .frame(width: 0, height: 0)
+//                    .accessibilityHidden(true)
+//                    .navigationDestination(isPresented: $navigateToStory) {
+//                        StoryView()
+//                    }
                 
                 Spacer()
             }

@@ -170,6 +170,9 @@ struct StoryView: View {
                 .ignoresSafeArea()
             }
             
+            // Add KimoAskView overlay
+            KimoAskView()
+            
             VStack {
                 HStack {
                     Image(systemName: "xmark")
@@ -213,7 +216,7 @@ struct StoryView: View {
                 default: EmptyView()
                 }
             }
-
+          
             if viewModel.currentScene.isEnd {
                 endSceneOverlay(
                     dismiss: { dismiss() },
@@ -289,7 +292,7 @@ struct StoryView: View {
                 .background(Color(red: 217 / 255, green: 217 / 255, blue: 217 / 255))
                 .cornerRadius(20)
                 
-                Image("TextDialogue")
+                Image("textDialogueLeft")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 59.getWidth())
@@ -350,7 +353,7 @@ struct StoryView: View {
                     .padding(.top, 51 )
                     .padding(.trailing, 9)
                 
-                Image("TextDialogue_2")
+                Image("textDialogueRight")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 59.getWidth())
@@ -406,7 +409,7 @@ struct StoryView: View {
                     .padding(.top, 51.getHeight())
                     .padding(.trailing, 9)
                 
-                Image("TextDialogue_2")
+                Image("textDialogueRight")
                     .resizable()
                     .scaledToFit()
                     .frame(width: 59.getWidth())
