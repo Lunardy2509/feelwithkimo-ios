@@ -161,6 +161,7 @@ internal class StoryViewModel: ObservableObject {
             self.tutorialStep += 1
         }
     }
+  
     func replayStory() {
         DispatchQueue.main.async {
             self.index = 0

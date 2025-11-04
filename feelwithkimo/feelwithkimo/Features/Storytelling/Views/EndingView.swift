@@ -69,3 +69,7 @@ extension StoryView {
         }
     }
 }
+
+#Preview {
+    StoryView()
+}
