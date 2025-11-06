@@ -1,5 +1,5 @@
 //
-//  EntryView.swift
+//  NewEntryView.swift
 //  feelwithkimo
 //
 //  Created by Ferdinand Lunardy on 05/11/25.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EntryView: View {
+struct NewEntryView: View {
     @StateObject private var accessibilityManager = AccessibilityManager.shared
     
     var body: some View {
@@ -66,18 +66,21 @@ struct EntryView: View {
     
     private func mainBackgroundView(geometry: GeometryProxy) -> some View {
         ZStack(alignment: .bottomLeading) {
-            KimoEllipseView()
-                .offset(y: geometry.size.height * 0.675)
+            Ellipse()
+                .trim(from: 0.5, to: 1)
+                .fill(ColorToken.backgroundEntry.toColor().opacity(0.5))
+                .frame(width: geometry.size.width, height: geometry.size.height * 0.74)
+                .offset(y: geometry.size.height * 0.55)
             
             Image("KimoDefault")
                 .resizable()
                 .scaledToFit()
                 .frame(width: geometry.size.width * 0.587, height: geometry.size.height * 0.687)
-                .offset(x: geometry.size.width * 0.042, y: geometry.size.height * 0.055)
+                .offset(x: geometry.size.width * 0.042, y: geometry.size.height * 0.18)
         }
     }
 }
 
 #Preview {
-    EntryView()
+    NewEntryView()
 }

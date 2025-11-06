@@ -28,13 +28,11 @@ struct EmotionStoryView: View {
             
             VStack(alignment: .center, spacing: 0) {
                 HStack {
-                    Image("xmark")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 80.getWidth())
-                        .onTapGesture {
-                            dismiss()
-                        }
+                    Button(action: {
+                        dismiss()
+                    }, label: {
+                        KimoImage(image: "xmark", width: 80.getWidth())
+                    })
                     
                     Spacer()
                     
@@ -45,18 +43,17 @@ struct EmotionStoryView: View {
                             identifier: "story.muteButton"
                         )
                 }
-                .padding(.horizontal, 57.getWidth())
-                .padding(.top, 50.getHeight())
+                .padding(.horizontal, 55.getWidth())
+                .padding(.top, 44.getHeight())
                 
                 // TODO: Move this code to KimoDialogueView
                  HStack(spacing: 39) {
-                     Image("KimoTutorialAsset")
-                         .resizable()
-                         .scaledToFit()
-                         .frame(width: 512.getWidth())
+                     KimoImage(image: "KimoTutorialAsset", width: 512.getWidth())
                     
                      VStack(spacing: 0) {
                          Text("Hari ini, Kimo mau bermain dengan teman Kimo, namanya Lala.")
+                             .font(.app(.title2, family: .primary))
+                             .fontWeight(.regular)
                              .frame(maxWidth: 500.getWidth())
                              .padding(.horizontal, 49.getWidth())
                              .padding(.vertical, 42.getHeight())
@@ -64,11 +61,7 @@ struct EmotionStoryView: View {
                              .cornerRadius(30)
                         
                          HStack {
-                             Image("KimoDialogue")
-                                 .resizable()
-                                 .scaledToFit()
-                                 .frame(maxWidth: 157.getWidth())
-                            
+                             KimoImage(image: "KimoDialogue", width: 157.getWidth())
                              Spacer()
                          }
                         
@@ -85,34 +78,9 @@ struct EmotionStoryView: View {
                  }
                  .padding(.top, 53.getHeight())
                  .padding(.horizontal, 72.getWidth())
-                
-//                KimoDialogueView(
-//                    kimoDialogueIcon: "KimoTutorialAsset",
-//                    textDialogue: "Hari ini, Kimo mau bermain dengan teman Kimo, namanya Lala.",
-//                    textDialogueTriangle: "KimoDialogue",
-//                    buttonLayout: .single(
-//                        KimoDialogueButtonConfig(
-//                            title: "Mulai Bermain",
-//                            action: {
-//                                navigateToStory = true
-//                            }
-//                        )
-//                    )
-//                )
-//                .padding(.top, 53)
-//                .padding(.horizontal, 72)
-                
-                // navigationDestination with a boolean binding
-//                Color.clear
-//                    .frame(width: 0, height: 0)
-//                    .accessibilityHidden(true)
-//                    .navigationDestination(isPresented: $navigateToStory) {
-//                        StoryView()
-//                    }
-                
+
                 Spacer()
             }
-            .padding(.horizontal, 35.getWidth())
         }
         .ignoresSafeArea()
         .navigationBarBackButtonHidden(true)
