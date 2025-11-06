@@ -10,12 +10,14 @@ struct BreathingModuleView: View {
     @StateObject private var viewModel = BreathingModuleViewModel()
     @StateObject private var accessibilityManager = AccessibilityManager.shared
     @StateObject private var audioManager = AudioManager.shared
+    @ObservedObject var storyViewModel: StoryViewModel
     @Environment(\.dismiss) var dismiss
     var onCompletion: (() -> Void)?
     
     // MARK: - Public Initializer
-    public init(onCompletion: (() -> Void)? = nil) {
+    public init(onCompletion: (() -> Void)? = nil, storyViewModel: StoryViewModel) {
         self.onCompletion = onCompletion
+        _storyViewModel = ObservedObject(wrappedValue: storyViewModel)
     }
     
     var body: some View {
@@ -263,37 +265,11 @@ struct BreathingModuleView: View {
                         style: .bubbleSecondary,
                         action: {
                             dismiss()
-                        }
-                    )
-                ])
-            )
-            KimoDialogueView(
-                textDialogue: "Hore.. kamu berhasil tarik nafas",
-                buttonLayout: .horizontal([
-                    KimoDialogueButtonConfig(
-                        title: "Coba lagi",
-                        symbol: .arrowClockwise,
-                        style: .bubbleSecondary,
-                        action: {
-                            viewModel.restartBreathing()
-                        }
-                    ),
-                    KimoDialogueButtonConfig(
-                        title: "Lanjutkan",
-                        symbol: .chevronRight,
-                        style: .bubbleSecondary,
-                        action: {
-                            dismiss()
+                            storyViewModel.goScene(to: 1, choice: 0)
                         }
                     )
                 ])
             )
         }
     }
-}
-
-#Preview {
-    BreathingModuleView(onCompletion: {
-        print("Breathing exercise completed")
-    })
 }

@@ -17,7 +17,7 @@ struct InteractionBanner: View {
             interactionLink(
                 label: "Ayo Latihan Pernapasan",
                 accessibilityId: "story.breathingButton",
-                destinationFactory: { BreathingModuleView(onCompletion: $0) },
+                destinationFactory: { BreathingModuleView(onCompletion: $0, storyViewModel: viewModel) },
                 onCompletion: viewModel.completeBreathingExercise
             )
             .kimoNavigationAccessibility(
@@ -31,7 +31,7 @@ struct InteractionBanner: View {
                 label: "Mulai Bermain",
                 accessibilityId: "story.clappingButton",
                 systemImage: "hands.clap",
-                destinationFactory: { ClapGameView(onCompletion: $0) },
+                destinationFactory: { ClapGameView(onCompletion: $0, storyViewModel: viewModel) },
                 onCompletion: viewModel.completeClappingExercise
             )
             .kimoNavigationAccessibility(
