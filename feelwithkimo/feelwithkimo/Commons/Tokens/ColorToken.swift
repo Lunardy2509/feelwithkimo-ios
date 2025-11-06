@@ -69,6 +69,12 @@ enum ColorToken {
     
     @ColorElement(light: UIColor.from("#C0B4DF"), dark: UIColor.from("#C0B4DF"))
     static var backgroundEntry: UIColor
+    
+    @ColorElement(light: UIColor.from("#FFF5C9"), dark: UIColor.from("#FFF5C9"))
+    static var backgroundHome: UIColor
+    
+    @ColorElement(light: UIColor.from("#CEE5FA"), dark: UIColor.from("#CEE5FA"))
+    static var ellipseHome: UIColor
 
     @ColorElement(light: UIColor.from("#CDF0FF"), dark: UIColor.from("#CDF0FF"))
     static var backgroundIdentity: UIColor
