@@ -15,7 +15,7 @@ struct InteractionBanner: View {
         switch viewModel.currentScene.interactionType {
         case .breathing:
             BridgingPage(textDialogue: "Ayo Latihan Pernapasan") {
-                BreathingModuleView(onCompletion: viewModel.completeBreathingExercise)
+                BreathingModuleView(onCompletion: viewModel.completeBreathingExercise, storyViewModel: viewModel)
                 .kimoNavigationAccessibility(
                     label: "Ayo Latihan Pernapasan",
                     hint: "Ketuk dua kali untuk memulai permainan latihan pernapasan",
@@ -25,7 +25,7 @@ struct InteractionBanner: View {
             
         case .clapping:
             BridgingPage(textDialogue: "Mulai bermain") {
-                ClapGameView(onCompletion: viewModel.completeClappingExercise)
+                ClapGameView(onCompletion: viewModel.completeClappingExercise, storyViewModel: viewModel)
                 .kimoNavigationAccessibility(
                     label: "Mulai Bermain tepuk tangan",
                     hint: "Ketuk dua kali untuk memulai permainan tepuk tangan mengikuti detak jantung",

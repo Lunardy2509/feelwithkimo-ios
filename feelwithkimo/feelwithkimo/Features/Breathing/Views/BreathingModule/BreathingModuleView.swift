@@ -25,16 +25,19 @@ struct BreathingModuleView: View {
             // Main breathing view
             mainBreathingView
             
-            // Completion overlay
-            if viewModel.showCompletionView {
-                completionView
-            }
-            
             KimoAskView(dialogueText: viewModel.dialogueText,
                         mark: .mark,
                         showDialogue: $viewModel.showDialogue,
                         isMascotTapped: $viewModel.isMascotTapped)
-                .offset(x: 20.getHeight(), y: 90.getWidth())
+                .offset(x: 20.getWidth(), y: 90.getHeight())
+            
+            // Completion overlay
+            if viewModel.showCompletionView {
+                Color.black.opacity(0.6)
+                    .ignoresSafeArea()
+                
+                completionView
+            }
 
             // Back button overlay - top left
             VStack {
@@ -244,32 +247,27 @@ struct BreathingModuleView: View {
     
     // MARK: - Completion View
     private var completionView: some View {
-        ZStack {
-            // Semi-transparent background
-            Color.black.opacity(0.6)
-                .ignoresSafeArea()
-            KimoDialogueView(
-                textDialogue: "Hore.. kamu berhasil tarik nafas",
-                buttonLayout: .horizontal([
-                    KimoDialogueButtonConfig(
-                        title: "Coba lagi",
-                        symbol: .arrowClockwise,
-                        style: .bubbleSecondary,
-                        action: {
-                            viewModel.restartBreathing()
-                        }
-                    ),
-                    KimoDialogueButtonConfig(
-                        title: "Lanjutkan",
-                        symbol: .chevronRight,
-                        style: .bubbleSecondary,
-                        action: {
-                            dismiss()
-                            storyViewModel.goScene(to: 1, choice: 0)
-                        }
-                    )
-                ])
-            )
-        }
+        KimoDialogueView(
+            textDialogue: "Hore.. kamu berhasil tarik nafas",
+            buttonLayout: .horizontal([
+                KimoDialogueButtonConfig(
+                    title: "Coba lagi",
+                    symbol: .arrowClockwise,
+                    style: .bubbleSecondary,
+                    action: {
+                        viewModel.restartBreathing()
+                    }
+                ),
+                KimoDialogueButtonConfig(
+                    title: "Lanjutkan",
+                    symbol: .chevronRight,
+                    style: .bubbleSecondary,
+                    action: {
+                        dismiss()
+                        storyViewModel.goScene(to: 1, choice: 0)
+                    }
+                )
+            ])
+        )
     }
 }

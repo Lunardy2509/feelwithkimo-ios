@@ -41,6 +41,7 @@ struct ClapGameView: View {
                             skeletonPairView()
                         }
                     }
+                    
                     KimoAskView(dialogueText: viewModel.dialogueText,
                                 mark: .mark,
                                 showDialogue: $viewModel.showDialogue,
@@ -54,6 +55,7 @@ struct ClapGameView: View {
                 completionView
             }
         }
+        .navigationBarBackButtonHidden(true)
         .padding(.horizontal, 65.getHeight())
         .onAppear {
             // Announce screen when it appears

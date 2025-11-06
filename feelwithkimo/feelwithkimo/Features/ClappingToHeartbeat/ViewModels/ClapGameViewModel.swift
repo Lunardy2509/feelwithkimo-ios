@@ -52,7 +52,7 @@ final class ClapGameViewModel: ObservableObject {
     }
     @Published var showDialogue: Bool = false
     @Published var isMascotTapped: Bool = false
-    @Published var showCompletionView: Bool = true
+    @Published var showCompletionView: Bool = false
 
     // Properti komputasi untuk View agar lebih bersih
     var user1HandState: HandState { detectHandState(for: user1Hands) }

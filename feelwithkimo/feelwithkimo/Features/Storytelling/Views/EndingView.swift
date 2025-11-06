@@ -10,7 +10,8 @@ import SwiftUI
 extension StoryView {
     func endSceneOverlay(dismiss: @escaping () -> Void, replay: @escaping () -> Void) -> some View {
         ZStack {
-            ColorToken.grayscale30.toColor().opacity(0.7)
+            Color.black.opacity(0.7)
+                .ignoresSafeArea()
             
             VStack {
                 Spacer()
