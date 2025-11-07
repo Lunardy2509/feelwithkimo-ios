@@ -58,6 +58,7 @@ struct KimoDialogueView: View {
         .padding(.top, 53)
         .padding(.horizontal, 72)
         .ignoresSafeArea()
+        .navigationBarBackButtonHidden(true)
     }
 }
 

@@ -52,6 +52,7 @@ final class ClapGameViewModel: ObservableObject {
     }
     @Published var showDialogue: Bool = false
     @Published var isMascotTapped: Bool = false
+    @Published var showCompletionView: Bool = false
 
     // Properti komputasi untuk View agar lebih bersih
     var user1HandState: HandState { detectHandState(for: user1Hands) }
@@ -87,6 +88,11 @@ final class ClapGameViewModel: ObservableObject {
         accessibilityManager.announceScreenChange(
             "Permainan tepuk tangan dimulai! Ayo posisikan tangan di depan kamera, dan tepuklah bersama dengan penuh semangat dan keceriaan."
         )
+    }
+    
+    func restart() {
+        self.beatCount = 0
+        self.showCompletionView = false
     }
 
     // MARK: - Private Logic
@@ -129,14 +135,17 @@ final class ClapGameViewModel: ObservableObject {
         if beatCount < totalClap {
             beatCount += 1
         } else {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                self.onCompletion?()
-            }
+            finish()
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
             self.showClapFeedback = false
         }
+    }
+    
+    private func finish() {
+        self.showCompletionView = false
+        self.onCompletion?()
     }
 
     private func detectHandState(for hands: (left: CGPoint?, right: CGPoint?)) -> HandState {

@@ -57,6 +57,38 @@ extension ClapGameView {
             .offset(y: 190.getWidth())
         }
     }
+    
+    // MARK: - Completion View
+    var completionView: some View {
+        ZStack {
+            // Semi-transparent background
+            Color.black.opacity(0.9)
+                .ignoresSafeArea()
+            
+            KimoDialogueView(
+                textDialogue: "Hore Berhasil!!!!!!",
+                buttonLayout: .horizontal([
+                    KimoDialogueButtonConfig(
+                        title: "Coba lagi",
+                        symbol: .arrowClockwise,
+                        style: .bubbleSecondary,
+                        action: {
+                            viewModel.restart()
+                        }
+                    ),
+                    KimoDialogueButtonConfig(
+                        title: "Lanjutkan",
+                        symbol: .chevronRight,
+                        style: .bubbleSecondary,
+                        action: {
+                            dismiss()
+                            storyViewModel.goScene(to: 1, choice: 0)
+                        }
+                    )
+                ])
+            )
+        }
+    }
 
     private var parentSkeleton: some View {
         VStack(spacing: 29.getWidth()) {
