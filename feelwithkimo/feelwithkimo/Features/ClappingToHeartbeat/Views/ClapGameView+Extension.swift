@@ -59,34 +59,60 @@ extension ClapGameView {
     }
     
     // MARK: - Completion View
-    var completionView: some View {
+    func completionView(skip: Bool) -> some View {
         ZStack {
             // Semi-transparent background
             Color.black.opacity(0.9)
                 .ignoresSafeArea()
             
-            KimoDialogueView(
-                textDialogue: "Hore Berhasil!!!!!!",
-                buttonLayout: .horizontal([
-                    KimoDialogueButtonConfig(
-                        title: "Coba lagi",
-                        symbol: .arrowClockwise,
-                        style: .bubbleSecondary,
-                        action: {
-                            viewModel.restart()
-                        }
-                    ),
-                    KimoDialogueButtonConfig(
-                        title: "Lanjutkan",
-                        symbol: .chevronRight,
-                        style: .bubbleSecondary,
-                        action: {
-                            dismiss()
-                            storyViewModel.goScene(to: 1, choice: 0)
-                        }
-                    )
-                ])
-            )
+            if skip {
+                KimoDialogueView(
+                    textDialogue: "Wah sepertinya kimo tidak melihat kamu tepuk tangan",
+                    buttonLayout: .horizontal([
+                        KimoDialogueButtonConfig(
+                            title: "Lewati",
+                            symbol: .chevronRight2,
+                            style: .bubbleSecondary,
+                            action: {
+                                dismiss()
+                                storyViewModel.goScene(to: 1, choice: 0)
+                            }
+                        ),
+                        KimoDialogueButtonConfig(
+                            title: "Coba lagi",
+                            symbol: .arrowClockwise,
+                            style: .bubbleSecondary,
+                            action: {
+                                viewModel.restart()
+                            }
+                        )
+                    ])
+                )
+            } else {
+                KimoDialogueView(
+                    textDialogue: "Hore Berhasil!!!!!!",
+                    buttonLayout: .horizontal([
+                        KimoDialogueButtonConfig(
+                            title: "Coba lagi",
+                            symbol: .arrowClockwise,
+                            style: .bubbleSecondary,
+                            action: {
+                                viewModel.restart()
+                            }
+                        ),
+                        KimoDialogueButtonConfig(
+                            title: "Lanjutkan",
+                            symbol: .chevronRight,
+                            style: .bubbleSecondary,
+                            action: {
+                                dismiss()
+                                storyViewModel.goScene(to: 1, choice: 0)
+                            }
+                        )
+                    ])
+                )
+            }
+            
         }
     }
 

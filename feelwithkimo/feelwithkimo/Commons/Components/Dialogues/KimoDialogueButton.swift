@@ -12,6 +12,7 @@ enum SFSymbolName: String {
     case play = "play.fill"
     case arrowClockwise = "arrow.trianglehead.2.clockwise.rotate.90"
     case chevronRight = "chevron.right"
+    case chevronRight2 = "chevron.forward.2"
 }
 
 // MARK: - Button Style Types
