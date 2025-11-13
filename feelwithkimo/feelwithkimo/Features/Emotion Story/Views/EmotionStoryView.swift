@@ -9,119 +9,82 @@ import SwiftUI
 
 struct EmotionStoryView: View {
     @Environment(\.dismiss) private var dismiss
-    @StateObject var viewModel: EmotionStoryViewModel
     @ObservedObject private var audioManager = AudioManager.shared
+    @StateObject var viewModel: EmotionStoryViewModel
     @StateObject private var accessibilityManager = AccessibilityManager.shared
+    @State private var navigateToStory = false
     
     var body: some View {
-        HStack(spacing: 37) {
-            ZStack {
-                VStack(alignment: .center) {
-//                    HStack {
-//                        KimoBackButton()
-//                            .onTapGesture {
-//                                audioManager.stop()
-//                                dismiss()
-//                            }
-//                        
-//                        Spacer()
-//                    }
-//                    .padding(.top, 35)
-
-                    Spacer().frame(height: 115)
-
-                    Image(viewModel.emotion.emotionImage)
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 186, height: 186)
-                        .clipShape(Circle())
-                        .shadow(radius: 10)
-                        .kimoImageAccessibility(
-                            label: "Gambar emosi \(viewModel.emotion.name)",
-                            isDecorative: false,
-                            identifier: "emotionStory.emotionImage"
-                        )
-
-                    VStack(spacing: 16) {
-                        Text(viewModel.emotion.title)
-                            .font(.app(.largeTitle, family: .primary))
-                            .fontWeight(.bold)
-                            .foregroundStyle(ColorToken.textPrimary.toColor())
-
-                        Text(viewModel.emotion.description)
-                            .font(.app(.title2, family: .primary))
-                            .foregroundStyle(ColorToken.textSecondary.toColor())
-                            .multilineTextAlignment(.center)
-                    }
-                    .kimoTextGroupAccessibility(
-                        combinedLabel: "Emosi \(viewModel.emotion.title). \(viewModel.emotion.description)",
-                        identifier: "emotionStory.titleAndDescription"
-                    )
-                    Spacer()
-                }
-                .padding(.horizontal, 35)
+        ZStack {
+            VStack(spacing: 0) {
+                Spacer()
+                
+                ColorToken.coreSecondary.toColor()
+                    .frame(height: 101.getHeight())
+                
+                ColorToken.coreSecondaryTwo.toColor()
+                    .frame(height: 130.getHeight())
             }
-            .frame(maxWidth: 0.4 * UIScreen.main.bounds.width)
-            .background(ColorToken.backgroundMain.toColor())
             
-            ScrollView(.vertical, showsIndicators: true) {
-                VStack(alignment: .leading) {
-                    ForEach(Array(viewModel.emotion.stories.enumerated()), id: \.element.id) { index, story in
-                        NavigationLink {
-                            StoryView()
-                        } label: {
-                            HStack {
-                                Image("Thumbnail")
-                                    .kimoImageAccessibility(
-                                        label: "Gambar thumbnail cerita",
-                                        isDecorative: true,
-                                        identifier: "emotionStory.thumbnail.\(index)"
-                                    )
-
-                                VStack(alignment: .leading) {
-                                    Text(story.name)
-                                        .font(.app(.title2, family: .primary))
-                                        .fontWeight(.bold)
-                                        .kimoTextAccessibility(
-                                            label: "Judul cerita: \(story.name)",
-                                            identifier: "emotionStory.storyName.\(index)"
-                                        )
-
-                                    Text(story.description)
-                                        .font(.app(.body, family: .primary))
-                                        .kimoTextAccessibility(
-                                            label: "Deskripsi cerita: \(story.description)",
-                                            identifier: "emotionStory.storyDescription.\(index)"
-                                        )
-
-                                }
-                            }
-                            .foregroundStyle(ColorToken.additionalColorsBlack.toColor())
-                        }
-                        .kimoNavigationAccessibility(
-                            label: "Cerita \(story.name)",
-                            hint: "Ketuk dua kali untuk membuka cerita \(story.name) tentang emosi \(viewModel.emotion.name)",
-                            identifier: "emotionStory.storyLink.\(index)"
+            VStack(alignment: .center, spacing: 0) {
+                HStack {
+                    Button(action: {
+                        dismiss()
+                    }, label: {
+                        KimoImage(image: "xmark", width: 80.getWidth())
+                    })
+                    
+                    Spacer()
+                    
+                    KimoMuteButton(audioManager: audioManager)
+                        .kimoButtonAccessibility(
+                            label: audioManager.isMuted ? "Suara dimatikan" : "Suara dinyalakan",
+                            hint: audioManager.isMuted ? "Ketuk dua kali untuk menyalakan suara" : "Ketuk dua kali untuk mematikan suara",
+                            identifier: "story.muteButton"
                         )
-
-                        Divider()
-                            .accessibilityHidden(true)
-                    }
                 }
-                .kimoAccessibility(
-                    label: "Daftar cerita tentang emosi \(viewModel.emotion.name)",
-                    hint: "Geser untuk melihat semua cerita yang tersedia",
-                    traits: .allowsDirectInteraction,
-                    identifier: "emotionStory.storiesList"
-                )
+                .padding(.horizontal, 55.getWidth())
+                .padding(.top, 44.getHeight())
+                
+                // TODO: Move this code to KimoDialogueView
+                 HStack(spacing: 39) {
+                     KimoImage(image: "KimoTutorialAsset", width: 512.getWidth())
+                    
+                     VStack(spacing: 0) {
+                         Text("Hari ini, Kimo mau bermain dengan teman Kimo, namanya Lala.")
+                             .font(.app(.title2, family: .primary))
+                             .fontWeight(.regular)
+                             .frame(maxWidth: 500.getWidth())
+                             .padding(.horizontal, 49.getWidth())
+                             .padding(.vertical, 42.getHeight())
+                             .background(ColorToken.corePinkDialogue.toColor())
+                             .cornerRadius(30)
+                        
+                         HStack {
+                             KimoImage(image: "KimoDialogue", width: 157.getWidth())
+                             Spacer()
+                         }
+                        
+                         HStack {
+                             Spacer()
+                            
+                             NavigationLink(destination: {
+                                 StoryView()
+                             }, label: {
+                                 KimoBubbleButtonPrimary(buttonLabel: "Mulai bermain")
+                             })
+                         }
+                     }
+                 }
+                 .padding(.top, 53.getHeight())
+                 .padding(.horizontal, 72.getWidth())
+
+                Spacer()
             }
-            .frame(maxWidth: 0.6 * UIScreen.main.bounds.width)
-            .padding(.top, 115)
-            Spacer()
         }
         .ignoresSafeArea()
-        .navigationBarBackButtonHidden(false)
-        .onAppear {
+        .navigationBarBackButtonHidden(true)
+        .onAppear {            
             // Announce screen when it appears
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 accessibilityManager.announceScreenChange("Halaman cerita emosi \(viewModel.emotion.name). Pilih salah satu cerita untuk dimulai.")

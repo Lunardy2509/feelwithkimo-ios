@@ -1,7 +1,8 @@
 //
 //  EntryView.swift
+//  feelwithkimo
 //
-//  Created by Richard Sugiharto on 20/10/25.
+//  Created by Ferdinand Lunardy on 05/11/25.
 //
 
 import SwiftUI
@@ -11,47 +12,12 @@ struct EntryView: View {
     
     var body: some View {
         NavigationStack {
-            VStack {
-                Image("Kimo")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 330)
-                    .padding(.bottom, 70)
-                    .kimoImageAccessibility(
-                        label: "Kimo, karakter utama aplikasi",
-                        isDecorative: false,
-                        identifier: "entry.kimoCharacter"
-                    )
-
-                // Combined text container for better VoiceOver experience
-                VStack(spacing: 16) {
-                    Text("Hai, aku Kimo!")
-                        .font(.app(.largeTitle, family: .primary))
-                        .fontWeight(.bold)
-
-                    Text("Yuk, bantu si kecil mengenal perasaan dengan cerita dan permainan seru")
-                        .font(.app(.title2, family: .primary))
-                        .multilineTextAlignment(.center)
-                        .frame(maxWidth: 0.5 * UIScreen.main.bounds.width)
-                        .padding(.horizontal)
+            GeometryReader { geometry in
+                ZStack {
+                    mainBackgroundView(geometry: geometry)
+                    
+                    mainEntryView(geometry: geometry)
                 }
-                .padding(.bottom, 35)
-                .kimoTextGroupAccessibility(
-                    combinedLabel: "Hai, aku Kimo! Yuk, bantu si kecil mengenal perasaan dengan cerita dan permainan seru",
-                    identifier: "entry.welcomeMessage",
-                    sortPriority: 1
-                )
-
-                NavigationLink {
-                    IdentityView()
-                } label: {
-                    KimoButton(textLabel: "Ayo Mulai")
-                }
-                .kimoNavigationAccessibility(
-                    label: "Ayo Mulai",
-                    hint: "Ketuk dua kali untuk mulai menggunakan aplikasi dan mengisi identitas",
-                    identifier: "entry.startButton"
-                )
             }
         }
         .onAppear {
@@ -60,5 +26,58 @@ struct EntryView: View {
                 accessibilityManager.announceScreenChange("Selamat datang di aplikasi Kimo. Halaman pembuka siap digunakan.")
             }
         }
+        .dynamicTypeSize(.xSmall ... .large)
     }
+    
+    private func mainEntryView(geometry: GeometryProxy) -> some View {
+        HStack {
+            Spacer()
+            
+            VStack(alignment: .trailing, spacing: 0) {
+                Spacer()
+                
+                Text("Hai, aku")
+                    .font(.app(.largeTitle, family: .primary))
+                    .foregroundStyle(ColorToken.backgroundSecondary.toColor())
+                    .padding(.bottom, geometry.size.height * 0.01)
+                
+                KimoImage(image: "Kimo-Pink-Wave", width: geometry.size.width * 0.51)
+                
+                Text("Aku akan menemani kamu dan si kecil belajar mengenal perasaan lewat cerita dan permainan seru.")
+                    .font(.app(.title1, family: .primary))
+                    .foregroundStyle(ColorToken.backgroundSecondary.toColor())
+                    .frame(maxWidth: geometry.size.width * 0.32)
+                    .multilineTextAlignment(.trailing)
+                    .padding(.top, geometry.size.height * 0.006)
+                
+                NavigationLink {
+                    IdentityView()
+                } label: {
+                    KimoBubbleButtonPrimary(buttonLabel: "Ayo Mulai")
+                }
+                .padding(.top, geometry.size.height * 0.084)
+                
+                Spacer()
+            }
+            .padding(.trailing, geometry.size.width * 0.067)
+            .offset(y: -geometry.size.height * 0.096)
+        }
+    }
+    
+    private func mainBackgroundView(geometry: GeometryProxy) -> some View {
+        ZStack(alignment: .bottomLeading) {
+            KimoEllipseView()
+                .offset(y: geometry.size.height * 0.675)
+            
+            Image("KimoDefault")
+                .resizable()
+                .scaledToFit()
+                .frame(width: geometry.size.width * 0.587, height: geometry.size.height * 0.687)
+                .offset(x: geometry.size.width * 0.042, y: geometry.size.height * 0.055)
+        }
+    }
+}
+
+#Preview {
+    EntryView()
 }
