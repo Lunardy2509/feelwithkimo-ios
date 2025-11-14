@@ -11,7 +11,7 @@ struct StoryView: View {
     @AppStorage("hasSeenTutorial") var seenTutorial = false
     @Environment(\.dismiss) var dismiss
     @ObservedObject private var audioManager = AudioManager.shared
-    @StateObject var viewModel: StoryViewModel = StoryViewModel()
+    @StateObject var viewModel: StoryViewModel
     @StateObject var accessibilityManager = AccessibilityManager.shared
     @State var moveButton = false
 
@@ -138,6 +138,9 @@ struct StoryView: View {
             if let sound = viewModel.currentScene.soundEffect {
                 audioManager.playSoundEffect(effectName: sound)
             }
+        }
+        .onAppear {
+            audioManager.startBackgroundMusic(assetName: viewModel.story.backsong)
         }
     }
 }

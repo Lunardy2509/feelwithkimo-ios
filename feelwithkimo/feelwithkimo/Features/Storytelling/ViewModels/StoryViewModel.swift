@@ -27,21 +27,23 @@ internal class StoryViewModel: ObservableObject {
     var isTappedMascot: Bool = false
 
     lazy var story: StoryModel = StoryModel(
-        id: UUID(),
+        id: "Episode_1",
         name: "Story Angry 1",
         thumbnail: "Thumbnail 1",
         description: "Description",
+        backsong: "Backsong_1",
         storyScene: []
     )
 
-    init() {
-        fetchStory()
+    init(story storyModel: StoryModel) {
+        self.story = storyModel
+        fetchStory(story: storyModel.id)
     }
 
     /// Load story scene
-    private func fetchStory() {
-        guard let url = Bundle.main.url(forResource: "storyScene", withExtension: "json") else {
-            print("❌ story.json not found in bundle")
+    private func fetchStory(story storyPath: String = "Episode_1") {
+        guard let url = Bundle.main.url(forResource: storyPath, withExtension: "json") else {
+            print("❌ \(storyPath).json not found in bundle")
             return
         }
 
