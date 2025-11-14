@@ -19,6 +19,7 @@ struct BridgingPage<Destination: View>: View {
                     
                     VStack(spacing: 0) {
                         Text(textDialogue)
+                            .font(.customFont(size: 20, family: .primary, weight: .regular))
                             .frame(maxWidth: 500.getWidth())
                             .padding(.horizontal, 49.getWidth())
                             .padding(.vertical, 42.getHeight())

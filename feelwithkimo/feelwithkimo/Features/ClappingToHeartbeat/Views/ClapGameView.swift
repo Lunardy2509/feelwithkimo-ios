@@ -52,7 +52,7 @@ struct ClapGameView: View {
             }
             
             if viewModel.showCompletionView {
-                completionView
+                completionView(skip: viewModel.skip)
             }
         }
         .navigationBarBackButtonHidden(true)

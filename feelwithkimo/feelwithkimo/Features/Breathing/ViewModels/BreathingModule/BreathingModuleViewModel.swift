@@ -19,10 +19,10 @@ final class BreathingModuleViewModel: ObservableObject {
     @Published var isMascotTapped = false
     @Published var showCompletionView = false
     @Published var showDialogue: Bool = false
+    @Published var maxCycles = 3 // Complete full breathing cycles before showing completion
     
     // MARK: - Private Properties
     private var timer: Timer?
-    private var maxCycles = 3 // Complete full breathing cycles before showing completion
     
     // MARK: - Lazy Computed Properties
     private lazy var breathingDuration: TimeInterval = 4.0

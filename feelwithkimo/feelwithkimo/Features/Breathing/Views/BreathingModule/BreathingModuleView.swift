@@ -150,7 +150,7 @@ struct BreathingModuleView: View {
                 VStack {
                     Spacer()
                     
-                    VStack(spacing: 20) {
+                    VStack(spacing: 20.getHeight()) {
                         if !viewModel.isActive {
                             Button(action: {
                                 viewModel.startBreathing()
@@ -160,7 +160,7 @@ struct BreathingModuleView: View {
                                     .font(.customFont(size: 28, family: .primary, weight: .bold))
                                     .foregroundColor(ColorToken.textPrimary.toColor())
                                     .padding(.horizontal, geometry.size.width * 0.035)
-                                    .padding(.vertical, 14)
+                                    .padding(.vertical, 14.getHeight())
                                     .background(ColorToken.backgroundSecondary.toColor())
                                     .cornerRadius(30)
                             })
@@ -170,13 +170,13 @@ struct BreathingModuleView: View {
                                 identifier: "breathing.startButton"
                             )
                         } else {
-                            HStack(spacing: 20) {
+                            HStack(spacing: 20.getWidth()) {
                                 // Cycle indicator - show when active
                                 Text("Latihan Tarik Nafas \(viewModel.cycleCount)/3")
                                     .font(.customFont(size: 22, family: .primary, weight: .bold))
                                     .foregroundColor(ColorToken.textPrimary.toColor())
                                     .padding(.horizontal, geometry.size.width * 0.035)
-                                    .padding(.vertical, 16)
+                                    .padding(.vertical, 16.getHeight())
                                     .background(ColorToken.backgroundSecondary.toColor())
                                     .cornerRadius(30)
                                 
@@ -189,7 +189,7 @@ struct BreathingModuleView: View {
                                         .font(.customFont(size: 28, family: .primary, weight: .bold))
                                         .foregroundColor(ColorToken.backgroundSecondary.toColor())
                                         .padding(.horizontal, geometry.size.width * 0.035)
-                                        .padding(.vertical, 14)
+                                        .padding(.vertical, 14.getHeight())
                                         .background(ColorToken.backgroundBreathing.toColor())
                                         .cornerRadius(30)
                                 })

@@ -53,6 +53,7 @@ final class ClapGameViewModel: ObservableObject {
     @Published var showDialogue: Bool = false
     @Published var isMascotTapped: Bool = false
     @Published var showCompletionView: Bool = false
+    @Published var skip: Bool = false
 
     // Properti komputasi untuk View agar lebih bersih
     var user1HandState: HandState { detectHandState(for: user1Hands) }
@@ -74,6 +75,7 @@ final class ClapGameViewModel: ObservableObject {
     private var hasAnnouncedTwoHandsUser1 = false
     private var hasAnnouncedTwoHandsUser2 = false
     private let syncTolerance: TimeInterval = 0.5
+    private var skipTimer: Timer?
 
     // MARK: - Callback
     private var onCompletion: (() -> Void)?
@@ -82,6 +84,8 @@ final class ClapGameViewModel: ObservableObject {
         self.onCompletion = onCompletion
         self.accessibilityManager = accessibilityManager
         setupSubscriptions()
+        
+        skipTimer = setTimer()
     }
     
     func announceGameStart() {
@@ -125,6 +129,33 @@ final class ClapGameViewModel: ObservableObject {
                         }
                     }
                     .store(in: &cancellables)
+        
+        Publishers.CombineLatest(clapUser1.$lastClapTime, clapUser2.$lastClapTime)
+            .sink { [weak self] last1, last2 in
+                guard let self = self else { return }
+
+                if last1 != nil || last2 != nil {
+                    self.resetSkipTimer()
+                }
+            }
+            .store(in: &cancellables)
+    }
+    
+    private func setTimer() -> Timer {
+        return Timer.scheduledTimer(withTimeInterval: 10.0, repeats: false) { [weak self] _ in
+            guard let self else { return }
+            Task { @MainActor in
+                self.skip = true
+                self.finish()
+            }
+        }
+    }
+    
+    private func resetSkipTimer() {
+        skipTimer?.invalidate()
+        skip = false
+
+        skipTimer = setTimer()
     }
 
     private func triggerBothClap() {
@@ -144,7 +175,7 @@ final class ClapGameViewModel: ObservableObject {
     }
     
     private func finish() {
-        self.showCompletionView = false
+        self.showCompletionView = true
         self.onCompletion?()
     }
 
