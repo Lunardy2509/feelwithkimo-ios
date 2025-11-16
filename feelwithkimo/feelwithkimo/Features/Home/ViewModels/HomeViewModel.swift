@@ -104,7 +104,7 @@ internal class HomeViewModel: ObservableObject {
 
     /// Buat destination view untuk NavigationLink
     func makeEmotionStoryView(for emotion: EmotionModel) -> some View {
-        EmotionStoryView(viewModel: EmotionStoryViewModel(emotion: emotion))
+        EmotionStoryView(viewModel: EmotionStoryViewModel(emotion: emotion, path: emotion.id))
     }
     
     /// Buat lagu di home

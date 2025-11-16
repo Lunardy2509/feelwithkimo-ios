@@ -102,7 +102,7 @@ internal class StoryViewModel: ObservableObject {
     }
     
     func nextTutorial() {
-        guard self.tutorialStep < 3 else {
+        guard self.tutorialStep < 1 else {
             DispatchQueue.main.async {
                 self.hasSeenTutorial = true
                 self.hasSeenTutor = true

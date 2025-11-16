@@ -8,11 +8,16 @@
 import Foundation
 
 internal class EmotionStoryViewModel: ObservableObject {
-    @Published var emotion: EmotionModel
+    @Published var emotion: EmotionModel = EmotionModel(
+        id: "",
+        title: "",
+        description: "",
+        image: "",
+        stories: []
+    )
 
-    init (emotion: EmotionModel) {
-        self.emotion = emotion
-        fetchStory(story: emotion.id)
+    init(emotion: EmotionModel? = nil, path: String) {
+        self.fetchStory(story: path)
     }
 
     private func fetchStory(story storyPath: String) {

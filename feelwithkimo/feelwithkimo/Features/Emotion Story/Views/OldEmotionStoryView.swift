@@ -71,7 +71,7 @@ struct OldEmotionStoryView: View {
                              Spacer()
                             
                              NavigationLink(destination: {
-//                                 StoryView()
+                                 StoryView(viewModel: StoryViewModel(story: viewModel.emotion.stories[0]))
                              }, label: {
                                  KimoBubbleButtonPrimary(buttonLabel: "Mulai bermain")
                              })

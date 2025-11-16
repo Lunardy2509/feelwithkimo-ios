@@ -31,7 +31,7 @@ struct HomeView: View {
             ),
             destination: {
                 if let emotion = viewModel.navigateToEmotionTarget {
-                    EmotionStoryView(viewModel: EmotionStoryViewModel(emotion: emotion))
+                    EmotionStoryView(viewModel: EmotionStoryViewModel(emotion: emotion, path: emotion.id))
                 }
             }
         )

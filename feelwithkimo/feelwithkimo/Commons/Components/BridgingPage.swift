@@ -9,8 +9,29 @@ import SwiftUI
 
 struct BridgingPage<Destination: View>: View {
     var textDialogue: String = ""
-    var destination: () -> Destination
+    var destination: (() -> Destination)?
+    var action: (() -> Void)?
+    
+    @ViewBuilder
+    private func continueLabel() -> some View {
+        HStack {
+            Image(systemName: "chevron.right")
+                .resizable()
+                .scaledToFit()
+                .foregroundStyle(ColorToken.additionalColorsWhite.toColor())
+                .frame(maxWidth: 28, maxHeight: 28)
 
+            Text("Lanjutkan")
+                .font(.customFont(size: 28, family: .primary, weight: .bold))
+                .foregroundStyle(ColorToken.additionalColorsWhite.toColor())
+        }
+        .frame(maxWidth: 193.getWidth())
+        .padding(.horizontal, 23)
+        .padding(.vertical, 13)
+        .background(ColorToken.emotionSurprise.toColor())
+        .cornerRadius(30)
+    }
+    
     var body: some View {
         ZStack {
             HStack {
@@ -33,26 +54,18 @@ struct BridgingPage<Destination: View>: View {
                         HStack(spacing: 50) {
                             Spacer()
                             
-                            NavigationLink {
-                                destination()
-                            } label: {
-                                HStack {
-                                    Image(systemName: "chevron.right")
-                                        .resizable()
-                                        .scaledToFit()
-                                        .foregroundStyle(ColorToken.additionalColorsWhite.toColor())
-                                        .frame(maxWidth: 28, maxHeight: 28)
-                                    
-                                    Text("Lanjutkan")
-                                        .font(.customFont(size: 28, family: .primary, weight: .bold))
-                                        .foregroundStyle(ColorToken.additionalColorsWhite.toColor())
-                                    
+                            if let destination = destination {
+                                NavigationLink {
+                                    destination()
+                                } label: {
+                                    continueLabel()
                                 }
-                                .frame(maxWidth: 193.getWidth())
-                                .padding(.horizontal, 23)
-                                .padding(.vertical, 13)
-                                .background(ColorToken.emotionSurprise.toColor())
-                                .cornerRadius(30)
+                            } else {
+                                Button(action: {
+                                    action?()
+                                }, label: {
+                                    continueLabel()
+                                })
                             }
                         }
                         .padding(.top, 20)
@@ -65,12 +78,4 @@ struct BridgingPage<Destination: View>: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .navigationBarBackButtonHidden(true)
     }
-}
-
-#Preview {
-//    CompletionPage(
-//        textDialogue: "Wihh ternyata begitu ekspresi marah.."
-//    ) {
-//        EntryView()
-//    }
 }
