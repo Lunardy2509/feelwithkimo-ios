@@ -7,11 +7,12 @@
 
 import Foundation
 
-struct StoryModel: Identifiable {
-    let id: UUID
+struct StoryModel: Decodable {
+    let id: String
     let name: String
     let thumbnail: String
     let description: String
+    let backsong: String
     var storyScene: [StorySceneModel]
 }
 

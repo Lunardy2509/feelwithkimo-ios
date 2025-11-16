@@ -51,7 +51,7 @@ struct EntryView: View {
                     .padding(.top, geometry.size.height * 0.006)
                 
                 NavigationLink {
-                    IdentityView()
+                    OldEmotionStoryView(viewModel: EmotionStoryViewModel(path: "Balok"))
                 } label: {
                     KimoBubbleButtonPrimary(buttonLabel: "Ayo Mulai")
                 }

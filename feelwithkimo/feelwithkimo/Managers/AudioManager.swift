@@ -74,7 +74,6 @@ final class AudioManager: NSObject, ObservableObject {
         // Stop existing effect (we only keep a single effect player in this manager)
         effectPlayer?.stop()
         effectPlayer = nil
-        print("Play Sound effect")
 
         guard let url = Bundle.main.url(forResource: effectName, withExtension: soundExtension)
                 ?? Bundle.main.url(forResource: effectName, withExtension: nil) else {
