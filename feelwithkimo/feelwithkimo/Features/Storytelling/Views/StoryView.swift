@@ -16,8 +16,8 @@ struct StoryView: View {
     @StateObject var accessibilityManager = AccessibilityManager.shared
     @State var moveButton = false
 
-    @State private var charPos = CGPoint(x: 100, y: 200)
-    
+    @State private var charPos = CGPoint(x: UIScreen.main.bounds.width * 0.9, y: UIScreen.main.bounds.height * 0.55)
+
     var body: some View {
         ZStack {
             Image(viewModel.currentScene.path)
@@ -127,13 +127,15 @@ struct StoryView: View {
         .navigationBarBackButtonHidden(true)
         .onChange(of: viewModel.index) {
             // Announce scene changes
-            charPos = CGPoint(x: UIScreen.main.bounds.width * 0.9, y: UIScreen.main.bounds.height * 0.55)
+            if viewModel.index == 6 {
+                charPos = CGPoint(x: UIScreen.main.bounds.width * 0.9, y: UIScreen.main.bounds.height * 0.55)
 
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                
-                withAnimation(.easeInOut(duration: 2)) {
-                    // compute a target using container size, so it's responsive
-                    charPos = CGPoint(x: UIScreen.main.bounds.width * 0.5, y: UIScreen.main.bounds.height * 0.55)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                    
+                    withAnimation(.easeInOut(duration: 2)) {
+                        // compute a target using container size, so it's responsive
+                        charPos = CGPoint(x: UIScreen.main.bounds.width * 0.5, y: UIScreen.main.bounds.height * 0.55)
+                    }
                 }
             }
 
@@ -150,7 +152,7 @@ struct StoryView: View {
                 accessibilityManager.announce(announcement)
             }
             
-            if viewModel.currentScene.path == "Scene 6" {
+            if viewModel.index == 6 {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                     withAnimation(.easeInOut(duration: 0.5)) {
                         viewModel.currentScene.path = "Scene 6_2"

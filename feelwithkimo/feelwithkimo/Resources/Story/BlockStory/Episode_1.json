@@ -72,7 +72,7 @@
     "soundEffect": "FallingBlock"
   },
   {
-    "path": "Scene 6",
+    "path": "Scene 6_2",
     "text": "Oh tidak! Jack baru saja menendang menara balok Lala yang indah, dan semuanya runtuh!",
     "nextScene": [6, 8],
     "kimoVisual": "star",
@@ -82,7 +82,7 @@
     "isEnd": false
   },
   {
-    "path": "Scene 6",
+    "path": "Scene 6_2",
     "text": "Menurutmu, bagaimana perasaan Lala saat ini?",
     "nextScene": [7, 9, 9],
     "kimoVisual": "normal",
@@ -203,5 +203,5 @@
     "question": null,
     "interactionType": "normal",
     "isEnd": true
-  },
+  }
 ]
