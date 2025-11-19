@@ -47,7 +47,7 @@
     "kimoVisual": "star",
     "kimoText": "",
     "question": null,
-    "interactionType": "breathing",
+    "interactionType": "normal",
     "isEnd": false
   },
   {
@@ -69,7 +69,7 @@
     "question": null,
     "interactionType": "normal",
     "isEnd": false,
-    "soundEffect": "HardPop"
+    "soundEffect": "FallingBlock"
   },
   {
     "path": "Scene 6",
