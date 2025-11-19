@@ -1,8 +1,9 @@
 {
   "data" : [
     {
-      "filename" : "FallinBlock.mp3",
-      "idiom" : "universal"
+      "filename" : "FallingBlock.mp3",
+      "idiom" : "universal",
+      "universal-type-identifier" : "public.mp3"
     }
   ],
   "info" : {
