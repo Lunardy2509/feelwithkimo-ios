@@ -62,6 +62,7 @@ struct BlocksGameView: View {
                                     .frame(height: 658.getHeight())
                                 Spacer()
                                 renderShapesOutline()
+                                    .id(viewModel.resetCounter)
                             }
                             .frame(width: 854.getWidth())
                         }
