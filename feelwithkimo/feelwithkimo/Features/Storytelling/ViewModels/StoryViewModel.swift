@@ -9,9 +9,6 @@ import Foundation
 import SwiftUI
 
 internal class StoryViewModel: ObservableObject {
-    @AppStorage("hasSeenTutorial") var hasSeenTutorial = false
-    @Published var hasSeenTutor: Bool = false
-    
     @Published var index: Int = 0
     @Published var currentScene: StorySceneModel = StorySceneModel(
         path: "Scene 1",
@@ -22,10 +19,11 @@ internal class StoryViewModel: ObservableObject {
     @Published var hasCompletedBreathing: Bool = false
     @Published var hasCompletedClapping: Bool = false
     @Published var hasCompletedBlockGame: Bool = false
-    @Published var currentBlockGamePhase: Int = 1  // Track which phase should be played
+    @Published var currentBlockGamePhase: Int = 1
     @Published var tutorialStep: Int = 1
-    
     @Published var showDialogue: Bool = false
+    @Published var quitStory: Bool = false
+    
     var isTappedMascot: Bool = false
 
     var story: StoryModel = StoryModel(
@@ -114,20 +112,6 @@ internal class StoryViewModel: ObservableObject {
     func completeBlockGame() {
         completeBlockGamePhase()
     }
-    
-    func nextTutorial() {
-        guard self.tutorialStep < 1 else {
-            DispatchQueue.main.async {
-                self.hasSeenTutorial = true
-                self.hasSeenTutor = true
-            }
-            return
-        }
-        
-        DispatchQueue.main.async {
-            self.tutorialStep += 1
-        }
-    }
   
     func replayStory() {
         DispatchQueue.main.async {
@@ -136,7 +120,7 @@ internal class StoryViewModel: ObservableObject {
             self.hasCompletedBreathing = false
             self.hasCompletedClapping = false
             self.hasCompletedBlockGame = false
-            self.currentBlockGamePhase = 1  // Reset to phase 1 when replaying
+            self.currentBlockGamePhase = 1
         }
     }
 }
