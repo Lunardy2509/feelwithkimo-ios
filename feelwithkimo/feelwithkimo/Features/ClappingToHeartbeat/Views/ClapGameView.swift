@@ -27,7 +27,6 @@ struct ClapGameView: View {
         ZStack {
             VStack {
                 headerView()
-                    .padding(.top, 44.getHeight())
                 
                 ZStack {
                     RoundedContainer {
@@ -38,12 +37,13 @@ struct ClapGameView: View {
                             // MARK: - ProgressBar
                             ClapProgressBarView(value: viewModel.progress)
                                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
-                                .padding(.top, 33.getHeight())
+                                .padding(.top, 60.getHeight())
                                 .padding(.horizontal, 181.getWidth())
                                 .animation(.spring(duration: 0.5), value: viewModel.progress)
                             
                             skeletonPairView()
                         }
+                        .frame(width: 1002.getWidth(), height: 645.getHeight())
                     }
                 }
                 .padding(.horizontal, 31.getWidth())
