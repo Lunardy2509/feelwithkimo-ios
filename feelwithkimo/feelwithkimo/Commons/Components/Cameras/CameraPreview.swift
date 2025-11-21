@@ -10,29 +10,50 @@ import SwiftUI
 
 struct CameraPreview: UIViewRepresentable {
     let session: AVCaptureSession
+    @Binding var orientation: UIDeviceOrientation
 
     func makeUIView(context: Context) -> PreviewView {
         let view = PreviewView()
         let previewLayer = view.videoPreviewLayer
         previewLayer.session = session
         previewLayer.videoGravity = .resizeAspectFill
-
-        if let connection = previewLayer.connection {
-            #if compiler(>=5.9)
-            if connection.isVideoRotationAngleSupported(180) {
-                connection.videoRotationAngle = 180
-            }
-            #else
-            if connection.isVideoOrientationSupported {
-                connection.videoOrientation = .landscapeRight
-            }
-            #endif
-        }
-
         return view
     }
 
-    func updateUIView(_ uiView: PreviewView, context: Context) {}
+    func updateUIView(_ uiView: PreviewView, context: Context) {
+        guard let connection = uiView.videoPreviewLayer.connection else { return }
+
+        #if compiler(>=5.9)
+        
+        if connection.isVideoRotationAngleSupported(0),
+           connection.isVideoRotationAngleSupported(180) {
+            
+            switch orientation {
+            case .landscapeLeft:
+                connection.videoRotationAngle = 180
+
+            case .landscapeRight:
+                connection.videoRotationAngle = 0
+
+            default:
+                break
+            }
+        }
+        #else
+        if connection.isVideoOrientationSupported {
+            let orientation = UIDevice.current.orientation
+
+            switch orientation {
+            case .landscapeLeft:
+                connection.videoOrientation = .landscapeLeft
+            case .landscapeRight:
+                connection.videoOrientation = .landscapeRight
+            default:
+                break
+            }
+        }
+        #endif
+    }
 }
 
 /// UIView subclass agar layer-nya otomatis menjadi AVCaptureVideoPreviewLayer

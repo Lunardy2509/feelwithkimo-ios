@@ -41,13 +41,16 @@ extension ClapGameView {
 
     var cameraContentView: some View {
         ZStack {
-            CameraPreview(session: viewModel.avSession)
+            CameraPreview(session: viewModel.avSession, orientation: $orientation)
                 .kimoAccessibility(
                     label: "Kamera untuk deteksi tangan",
                     hint: "Posisikan kedua tangan di depan kamera untuk bermain",
                     traits: .allowsDirectInteraction,
                     identifier: "clapping.cameraPreview"
                 )
+                .onReceive(NotificationCenter.default.publisher(for: UIDevice.orientationDidChangeNotification)) { _ in
+                                orientation = UIDevice.current.orientation
+                            }
 
 //            // Debugging overlays
 //            handDebugOverlays

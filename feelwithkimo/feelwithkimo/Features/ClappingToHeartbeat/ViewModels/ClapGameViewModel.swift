@@ -143,7 +143,7 @@ final class ClapGameViewModel: ObservableObject {
     }
     
     private func setTimer() -> Timer {
-        return Timer.scheduledTimer(withTimeInterval: 10.0, repeats: false) { [weak self] _ in
+        return Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { [weak self] _ in
             guard let self else { return }
             Task { @MainActor in
                 self.skip = true

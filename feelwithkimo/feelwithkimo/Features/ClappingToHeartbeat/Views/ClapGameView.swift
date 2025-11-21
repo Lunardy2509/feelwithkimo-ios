@@ -13,6 +13,9 @@ struct ClapGameView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var viewModel: ClapGameViewModel
     @ObservedObject var storyViewModel: StoryViewModel
+    
+    @State var orientation = UIDevice.current.orientation
+    
     var onCompletion: (() -> Void)?
 
     init(onCompletion: @escaping () -> Void, storyViewModel: StoryViewModel) {
@@ -24,6 +27,7 @@ struct ClapGameView: View {
         ZStack {
             VStack {
                 headerView()
+                    .padding(.top, 44.getHeight())
                 
                 ZStack {
                     RoundedContainer {
