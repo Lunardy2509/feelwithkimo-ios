@@ -38,7 +38,9 @@ struct StoryView: View {
             }
             
             if viewModel.currentScene.question == nil {
-                storySceneView()
+                if viewModel.currentScene.interactionType == .normal {
+                    storySceneView()
+                }
             } else {
                 Color.black.opacity(0.8)
                     .ignoresSafeArea()
