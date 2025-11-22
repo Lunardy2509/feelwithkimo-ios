@@ -8,7 +8,7 @@
     "question": null,
     "interactionType": "normal",
     "isEnd": false,
-    "soundEffect": "LalaSound"
+    "soundEffect": "LalaSoundEn"
   },
   {
     "path": "Scene 2",
@@ -19,7 +19,7 @@
     "question": null,
     "interactionType": "normal",
     "isEnd": false,
-    "soundEffect": "TinaSound"
+    "soundEffect": "TinaSoundEn"
   },
   {
     "path": "Scene 3",
@@ -30,7 +30,7 @@
     "question": null,
     "interactionType": "normal",
     "isEnd": false,
-    "soundEffect": "JackSound"
+    "soundEffect": "JackSoundEn"
   },
   {
     "path": "Scene 4",
