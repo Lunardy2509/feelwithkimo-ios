@@ -38,7 +38,8 @@ internal class StoryViewModel: ObservableObject {
 
     init(story storyModel: StoryModel) {
         self.story = storyModel
-        fetchStory(story: storyModel.id)
+        let language: String = Locale.current.language.languageCode?.identifier ?? "id"
+        fetchStory(story: storyModel.id + "_\(language)")
     }
 
     /// Load story scene
@@ -128,4 +129,3 @@ internal class StoryViewModel: ObservableObject {
         }
     }
 }
-

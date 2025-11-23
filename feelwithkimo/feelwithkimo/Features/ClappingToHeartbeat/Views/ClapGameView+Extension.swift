@@ -78,10 +78,10 @@ extension ClapGameView {
             
             if skip {
                 KimoDialogueView(
-                    textDialogue: "Wah sepertinya kimo tidak melihat kamu tepuk tangan",
+                    textDialogue: NSLocalizedString("ClappingSkip", comment: ""),
                     buttonLayout: .horizontal([
                         KimoDialogueButtonConfig(
-                            title: "Lewati",
+                            title: NSLocalizedString("Skip", comment: ""),
                             symbol: .chevronRight2,
                             style: .bubbleSecondary,
                             action: {
@@ -90,7 +90,7 @@ extension ClapGameView {
                             }
                         ),
                         KimoDialogueButtonConfig(
-                            title: "Coba lagi",
+                            title: NSLocalizedString("Coba Lagi", comment: ""),
                             symbol: .arrowClockwise,
                             style: .bubbleSecondary,
                             action: {
