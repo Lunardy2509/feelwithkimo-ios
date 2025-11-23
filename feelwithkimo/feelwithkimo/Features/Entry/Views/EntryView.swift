@@ -52,7 +52,12 @@ struct EntryView: View {
                 NavigationLink {
                     OldEmotionStoryView(viewModel: EmotionStoryViewModel(path: "Balok"))
                 } label: {
-                    KimoBubbleButtonPrimary(buttonLabel: NSLocalizedString("Ayo_Mulai", comment: ""))
+                    KimoBubbleButtonPrimary(
+                        buttonLabel: Locale.current.language.languageCode?.identifier == "id" ? "Ayo Mulai" :
+                            (Locale.current.language.languageCode?.identifier == "zh") ?
+                        (Locale.current.language.script?.identifier == "Hant" ? "開始" : "开始") :
+                            "Let's Start"
+                    )
                 }
                 .padding(.top, geometry.size.height * 0.084)
                 

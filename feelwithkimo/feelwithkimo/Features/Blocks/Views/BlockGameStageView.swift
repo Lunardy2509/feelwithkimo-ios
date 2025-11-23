@@ -21,7 +21,23 @@ struct BlockGameStageView: View {
     }
     
     var completionTitle: String {
-        return phase == 1 ? NSLocalizedString("Stage_Complete", comment: "") : NSLocalizedString("Hooray!!!", comment: "")
+        let lang = Locale.current.language.languageCode?.identifier ?? "en"
+        let script = Locale.current.language.script?.identifier ?? ""
+
+        if lang == "en" {
+            return phase == 1 ? "Stage Complete" : "Hooray !!!"
+        } else if lang == "zh" {
+            if script == "Hant" {
+                // Traditional Chinese
+                return phase == 1 ? "階段完成" : "好耶！！！"
+            } else {
+                // Simplified Chinese (Default)
+                return phase == 1 ? "阶段完成" : "好耶！！！"
+            }
+        } else {
+            // Default to Indonesian
+            return phase == 1 ? "Tahap 1 Selesai!!!" : "Hore Berhasil!!!"
+        }
     }
     
     var body: some View {
@@ -36,8 +52,14 @@ struct BlockGameStageView: View {
             if showCompletion {
                 CompletionPageView(
                     title: completionTitle,
-                    primaryButtonLabel: NSLocalizedString("Coba Lagi", comment: ""),
-                    secondaryButtonLabel: NSLocalizedString("Lanjutkan", comment: ""),
+                    primaryButtonLabel: (Locale.current.language.languageCode?.identifier == "en") ? "Try again" :
+                        (Locale.current.language.languageCode?.identifier.starts(with: "zh") ?? false) ?
+                    (Locale.current.language.script?.identifier == "Hant" ? "再試一次" : "再试一次") :
+                        "Coba lagi",
+                    secondaryButtonLabel: (Locale.current.language.languageCode?.identifier == "en") ? "Continue" :
+                        (Locale.current.language.languageCode?.identifier.starts(with: "zh") ?? false) ?
+                    (Locale.current.language.script?.identifier == "Hant" ? "繼續" : "继续") :
+                        "Lanjutkan",
                     onPrimaryAction: {
                         /// Retry current phase
                         showCompletion = false

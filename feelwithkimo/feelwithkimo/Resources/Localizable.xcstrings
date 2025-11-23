@@ -31,6 +31,18 @@
             "state" : "translated",
             "value" : "Bacakan cerita ini untuk si kecil, ya!"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你把这个故事讲给你孩子听哦！"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你把這個故事講給你孩子聽哦！"
+          }
         }
       }
     },
@@ -46,6 +58,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Berhenti"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "停"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "停"
           }
         }
       }
@@ -145,7 +169,19 @@
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Coba lagi"
+            "value" : "Coba Lagi"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "再试一次"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "再試一次"
           }
         }
       }
@@ -163,6 +199,18 @@
             "state" : "translated",
             "value" : "dan juga komentar seru untuk menemani si kecil sepanjang cerita!..."
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "然后给一些有趣的评论，陪伴你的孩子度过整个故事！"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "然後給一些有趣的評論，陪伴你的孩子度過整個故事！"
+          }
         }
       }
     },
@@ -172,13 +220,53 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Exhale"
+            "value" : "second"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Buang Nafas"
+            "value" : "detik"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "秒"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "秒"
+          }
+        }
+      }
+    },
+    "Exit" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exit"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keluar"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "离开"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "離開"
           }
         }
       }
@@ -195,6 +283,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gunakan suara dan ekspresi supaya si kecil ikut merasakannya"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请使用声音和表情，让你的孩子也能感觉到"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "請使用聲音和表情，讓你的孩子也能感覺到"
           }
         }
       }
@@ -278,6 +378,18 @@
             "state" : "translated",
             "value" : "Keluar"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "离开"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "離開"
+          }
         }
       }
     },
@@ -286,13 +398,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Get to know"
+            "value" : "Let's be"
           }
         },
         "id" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Kenalan"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "认识"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "認識"
           }
         }
       }
@@ -310,6 +434,47 @@
             "state" : "translated",
             "value" : "Ketuk bagian mana pun di layar untuk lanjut"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "按屏幕上的任意位置继续"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "按螢幕上的任何位置繼續"
+          }
+        }
+      }
+    },
+    "Key" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Key"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kunci"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "钥匙"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "鑰匙"
+          }
         }
       }
     },
@@ -325,6 +490,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Kimo akan memberikan petunjuk saat si kecil butuh bantuan"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "当你的孩子需要帮助时，Kimo会提供指导"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "當你的孩子需要幫助時，Kimo會提供指導"
           }
         }
       }
@@ -342,6 +519,18 @@
             "state" : "translated",
             "value" : "Kimo akan menemani kamu dan si kecil belajar mengenal perasaan"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kimo将陪伴你和你的孩子学习识别感受。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kimo將陪伴你和你的孩子學習辨識感受。"
+          }
         }
       }
     },
@@ -357,6 +546,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Klik ikon Kimo, ya!"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "按Kimo图标"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "按Kimo圖標"
           }
         }
       }
@@ -374,6 +575,18 @@
             "state" : "translated",
             "value" : "Lanjutkan"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "继续"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "繼續"
+          }
         }
       }
     },
@@ -389,6 +602,18 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mulai"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开始"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開始"
           }
         }
       }
@@ -406,6 +631,18 @@
             "state" : "translated",
             "value" : "Nama Panggilan untuk Orang Tua:"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "父母的昵称："
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "父母的暱稱："
+          }
         }
       }
     },
@@ -422,6 +659,18 @@
             "state" : "translated",
             "value" : "Nama Panggilan untuk si Kecil:"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你孩子的昵称："
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "你孩子的暱稱："
+          }
         }
       }
     },
@@ -436,7 +685,19 @@
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "No Hands Detected"
+            "value" : "Tangan Tidak Terdeteksi"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未检测到手"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "未偵測到手"
           }
         }
       }
@@ -452,7 +713,19 @@
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "One Hand Detected"
+            "value" : "Satu Tangan Terdeteksi"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "检测到一只手"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "偵測到一隻手"
           }
         }
       }
@@ -552,7 +825,19 @@
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mulai Bermain"
+            "value" : "Tarik\\nNafas"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "吸入"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "吸入"
           }
         }
       }
@@ -570,6 +855,46 @@
             "state" : "translated",
             "value" : "Tepuk Tangan"
           }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "拍手"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "拍手"
+          }
+        }
+      }
+    },
+    "Try Again" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try Again"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Coba Lagi"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "再试一次"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "再試一次"
+          }
         }
       }
     },
@@ -578,13 +903,109 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Let’s"
+            "value" : "Friends!"
           }
         },
         "id" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Yuk!"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "走吧！"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "走吧！"
+          }
+        }
+      }
+    },
+    "再試一次" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try Again"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Coba Lagi"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "再试一次"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "再試一次"
+          }
+        }
+      }
+    },
+    "再试一次" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try Again"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Coba Lagi"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "再试一次"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "再試一次"
+          }
+        }
+      }
+    },
+    "退出" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exit"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Keluar"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "退出"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "退出"
           }
         }
       }

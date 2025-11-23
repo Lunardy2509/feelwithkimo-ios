@@ -46,7 +46,6 @@ struct OldEmotionStoryView: View {
                 .padding(.horizontal, 55.getWidth())
                 .padding(.top, 44.getHeight())
                 
-                // TODO: Move this code to KimoDialogueView
                  HStack(spacing: 39) {
                     KimoImage(image: "KimoTutorialAsset", width: 0.429 * UIScreen.main.bounds.width)
                      
@@ -71,7 +70,12 @@ struct OldEmotionStoryView: View {
                              NavigationLink(destination: {
                                  StoryView(viewModel: StoryViewModel(story: viewModel.emotion.stories[0]))
                              }, label: {
-                                 KimoBubbleButtonPrimary(buttonLabel: NSLocalizedString("StartPlaying", comment: ""))
+                                 KimoBubbleButtonPrimary(
+                                    buttonLabel: (Locale.current.language.languageCode?.identifier == "en") ? "Start Play" :
+                                        (Locale.current.language.languageCode?.identifier.starts(with: "zh") ?? false) ?
+                                    (Locale.current.language.script?.identifier == "Hant" ? "開始遊戲" : "开始游戏") :
+                                        "Mulai Bermain"
+                                 )
                              })
                          }
                      }

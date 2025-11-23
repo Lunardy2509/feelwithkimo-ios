@@ -218,7 +218,12 @@ struct IdentityView: View {
                 viewModel.submitName()
                 accessibilityManager.announce("Nama panggilan berhasil disimpan.")
             }, label: {
-                KimoBubbleButtonPrimary(buttonLabel: "Simpan")
+                KimoBubbleButtonPrimary(
+                    buttonLabel: (Locale.current.language.languageCode?.identifier == "en") ? "Save" :
+                        (Locale.current.language.languageCode?.identifier.starts(with: "zh") ?? false) ?
+                    (Locale.current.language.script?.identifier == "Hant" ? "儲存" : "保存") :
+                        "Simpan"
+                )
             })
             .kimoButtonAccessibility(
                 label: viewModel.nicknameInput.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?

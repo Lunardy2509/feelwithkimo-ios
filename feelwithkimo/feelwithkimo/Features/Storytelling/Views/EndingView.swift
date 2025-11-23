@@ -12,11 +12,11 @@ extension StoryView {
         ZStack {
             ColorToken.additionalColorsBlack.toColor().opacity(0.8)
                 .ignoresSafeArea()
-
+            
             ZStack {
                 HStack(spacing: 39) {
                     KimoImage(image: "KimoTutorialAsset", width: 400.getWidth())
-
+                    
                     VStack(spacing: 0) {
                         Text(textDialogue)
                             .frame(maxWidth: 500.getWidth(), alignment: .leading)
@@ -24,13 +24,14 @@ extension StoryView {
                             .padding(.vertical, 42.getHeight())
                             .background(ColorToken.corePinkDialogue.toColor())
                             .cornerRadius(30)
-
+                        
                         HStack {
                             KimoImage(image: "KimoDialogue", width: 157.getWidth())
                             Spacer()
                         }
-
+                        
                         HStack(spacing: 50) {
+                            // Button 1: Replay
                             Button(action: replay) {
                                 HStack {
                                     Image(systemName: "arrow.trianglehead.2.clockwise")
@@ -38,10 +39,15 @@ extension StoryView {
                                         .scaledToFit()
                                         .frame(maxWidth: 22, maxHeight: 22)
                                         .foregroundStyle(ColorToken.additionalColorsWhite.toColor())
-
-                                    Text("Coba Lagi")
-                                        .font(.customFont(size: 22, family: .primary, weight: .bold))
-                                        .foregroundStyle(ColorToken.additionalColorsWhite.toColor())
+                                    
+                                    Text(
+                                        (Locale.current.language.languageCode?.identifier == "en") ? "Try Again" :
+                                            (Locale.current.language.languageCode?.identifier.starts(with: "zh") ?? false) ?
+                                        (Locale.current.language.script?.identifier == "Hant" ? "再試一次" : "再试一次") :
+                                            "Coba Lagi"
+                                    )
+                                    .font(.customFont(size: 22, family: .primary, weight: .bold))
+                                    .foregroundStyle(ColorToken.additionalColorsWhite.toColor())
                                 }
                                 .frame(maxWidth: 193.getWidth())
                                 .padding(.horizontal, 23)
@@ -49,7 +55,8 @@ extension StoryView {
                                 .background(ColorToken.emotionSurprise.toColor())
                                 .cornerRadius(30)
                             }
-
+                            
+                            // Button 2: Dismiss/Exit
                             Button(action: dismiss) {
                                 HStack {
                                     Image(systemName: "chevron.right")
@@ -57,10 +64,15 @@ extension StoryView {
                                         .scaledToFit()
                                         .frame(maxWidth: 22, maxHeight: 22)
                                         .foregroundStyle(ColorToken.additionalColorsWhite.toColor())
-
-                                    Text("Keluar")
-                                        .font(.customFont(size: 22, family: .primary, weight: .bold))
-                                        .foregroundStyle(ColorToken.additionalColorsWhite.toColor())
+                                    
+                                    Text(
+                                        (Locale.current.language.languageCode?.identifier == "en") ? "Exit" :
+                                            (Locale.current.language.languageCode?.identifier.starts(with: "zh") ?? false) ?
+                                        (Locale.current.language.script?.identifier == "Hant" ? "退出" : "退出") :
+                                            "Keluar"
+                                    )
+                                    .font(.customFont(size: 22, family: .primary, weight: .bold))
+                                    .foregroundStyle(ColorToken.additionalColorsWhite.toColor())
                                 }
                                 .frame(maxWidth: 193.getWidth())
                                 .padding(.horizontal, 23)
