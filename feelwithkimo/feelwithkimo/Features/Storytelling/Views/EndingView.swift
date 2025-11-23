@@ -41,10 +41,13 @@ extension StoryView {
                                         .foregroundStyle(ColorToken.additionalColorsWhite.toColor())
                                     
                                     Text(
-                                        (Locale.current.language.languageCode?.identifier == "en") ? "Try Again" :
+                                        NSLocalizedString(
+                                            (Locale.current.language.languageCode?.identifier == "en") ? "Try Again" :
                                             (Locale.current.language.languageCode?.identifier.starts(with: "zh") ?? false) ?
-                                        (Locale.current.language.script?.identifier == "Hant" ? "再試一次" : "再试一次") :
-                                            "Coba Lagi"
+                                            (Locale.current.language.script?.identifier == "Hant" ? "再試一次" : "再试一次") :
+                                            "Coba Lagi",
+                                            comment: ""
+                                        )
                                     )
                                     .font(.customFont(size: 22, family: .primary, weight: .bold))
                                     .foregroundStyle(ColorToken.additionalColorsWhite.toColor())
@@ -66,10 +69,13 @@ extension StoryView {
                                         .foregroundStyle(ColorToken.additionalColorsWhite.toColor())
                                     
                                     Text(
-                                        (Locale.current.language.languageCode?.identifier == "en") ? "Exit" :
+                                        NSLocalizedString(
+                                            (Locale.current.language.languageCode?.identifier == "en") ? "Exit" :
                                             (Locale.current.language.languageCode?.identifier.starts(with: "zh") ?? false) ?
-                                        (Locale.current.language.script?.identifier == "Hant" ? "退出" : "退出") :
-                                            "Keluar"
+                                            (Locale.current.language.script?.identifier == "Hant" ? "退出" : "退出") :
+                                            "Keluar",
+                                            comment: ""
+                                        )
                                     )
                                     .font(.customFont(size: 22, family: .primary, weight: .bold))
                                     .foregroundStyle(ColorToken.additionalColorsWhite.toColor())

@@ -53,10 +53,13 @@ struct EntryView: View {
                     OldEmotionStoryView(viewModel: EmotionStoryViewModel(path: "Balok"))
                 } label: {
                     KimoBubbleButtonPrimary(
-                        buttonLabel: Locale.current.language.languageCode?.identifier == "id" ? "Ayo Mulai" :
-                            (Locale.current.language.languageCode?.identifier == "zh") ?
-                        (Locale.current.language.script?.identifier == "Hant" ? "開始" : "开始") :
-                            "Let's Start"
+                        buttonLabel: NSLocalizedString(
+                            (Locale.current.language.languageCode?.identifier == "en") ? "Let's Start" :
+                            (Locale.current.language.languageCode?.identifier.starts(with: "zh") ?? false) ?
+                            (Locale.current.language.script?.identifier == "Hant" ? "開始" : "开始") :
+                            "Ayo Mulai",
+                            comment: ""
+                        )
                     )
                 }
                 .padding(.top, geometry.size.height * 0.084)

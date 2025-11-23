@@ -316,6 +316,7 @@
       }
     },
     "Exit" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -487,6 +488,7 @@
       }
     },
     "Keluar" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1052,6 +1054,7 @@
       }
     },
     "Try Again" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1108,6 +1111,7 @@
       }
     },
     "再試一次" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1136,6 +1140,7 @@
       }
     },
     "再试一次" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1164,6 +1169,7 @@
       }
     },
     "退出" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {

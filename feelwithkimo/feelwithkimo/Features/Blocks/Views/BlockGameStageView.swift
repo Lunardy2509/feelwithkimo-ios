@@ -52,14 +52,20 @@ struct BlockGameStageView: View {
             if showCompletion {
                 CompletionPageView(
                     title: completionTitle,
-                    primaryButtonLabel: (Locale.current.language.languageCode?.identifier == "en") ? "Try again" :
+                    primaryButtonLabel: NSLocalizedString(
+                        (Locale.current.language.languageCode?.identifier == "en") ? "Try again" :
                         (Locale.current.language.languageCode?.identifier.starts(with: "zh") ?? false) ?
-                    (Locale.current.language.script?.identifier == "Hant" ? "再試一次" : "再试一次") :
+                        (Locale.current.language.script?.identifier == "Hant" ? "再試一次" : "再试一次") :
                         "Coba lagi",
-                    secondaryButtonLabel: (Locale.current.language.languageCode?.identifier == "en") ? "Continue" :
+                        comment: ""
+                    ),
+                    secondaryButtonLabel: NSLocalizedString(
+                        (Locale.current.language.languageCode?.identifier == "en") ? "Continue" :
                         (Locale.current.language.languageCode?.identifier.starts(with: "zh") ?? false) ?
-                    (Locale.current.language.script?.identifier == "Hant" ? "繼續" : "继续") :
+                        (Locale.current.language.script?.identifier == "Hant" ? "繼續" : "继续") :
                         "Lanjutkan",
+                        comment: ""
+                    ),
                     onPrimaryAction: {
                         /// Retry current phase
                         showCompletion = false

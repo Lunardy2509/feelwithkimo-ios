@@ -219,10 +219,13 @@ struct IdentityView: View {
                 accessibilityManager.announce("Nama panggilan berhasil disimpan.")
             }, label: {
                 KimoBubbleButtonPrimary(
-                    buttonLabel: (Locale.current.language.languageCode?.identifier == "en") ? "Save" :
+                    buttonLabel: NSLocalizedString(
+                        (Locale.current.language.languageCode?.identifier == "en") ? "Save" :
                         (Locale.current.language.languageCode?.identifier.starts(with: "zh") ?? false) ?
-                    (Locale.current.language.script?.identifier == "Hant" ? "儲存" : "保存") :
-                        "Simpan"
+                        (Locale.current.language.script?.identifier == "Hant" ? "儲存" : "保存") :
+                        "Simpan",
+                        comment: ""
+                    )
                 )
             })
             .kimoButtonAccessibility(

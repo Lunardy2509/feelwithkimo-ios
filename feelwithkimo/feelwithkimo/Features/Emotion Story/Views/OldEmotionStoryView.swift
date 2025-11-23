@@ -71,10 +71,13 @@ struct OldEmotionStoryView: View {
                                  StoryView(viewModel: StoryViewModel(story: viewModel.emotion.stories[0]))
                              }, label: {
                                  KimoBubbleButtonPrimary(
-                                    buttonLabel: (Locale.current.language.languageCode?.identifier == "en") ? "Start Play" :
+                                    buttonLabel: NSLocalizedString(
+                                        (Locale.current.language.languageCode?.identifier == "en") ? "Start Play" :
                                         (Locale.current.language.languageCode?.identifier.starts(with: "zh") ?? false) ?
-                                    (Locale.current.language.script?.identifier == "Hant" ? "開始遊戲" : "开始游戏") :
-                                        "Mulai Bermain"
+                                        (Locale.current.language.script?.identifier == "Hant" ? "開始遊戲" : "开始游戏") :
+                                        "Mulai Bermain",
+                                        comment: ""
+                                    )
                                  )
                              })
                          }
