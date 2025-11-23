@@ -13,7 +13,6 @@
   {
     "path": "Scene 2",
     "text": "This is Miss Tina, she is Lala's teacher.",
-    "text": "This is Miss Tina, she is Lala's teacher.",
     "nextScene": [0, 2],
     "kimoVisual": "star",
     "kimoText": "",
