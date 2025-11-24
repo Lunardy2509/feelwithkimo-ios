@@ -1,5 +1,5 @@
 //
-//  BlocksGamePauseView.swift
+//  PauseView.swift
 //  feelwithkimo
 //
 //  Created by Adeline Charlotte Augustinne on 18/11/25.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct BlocksGamePauseView: View {
+struct PauseView: View {
     let onReset: () -> Void
     let onHome: () -> Void
     let onResume: () -> Void
@@ -15,7 +15,7 @@ struct BlocksGamePauseView: View {
     
     var body: some View {
         ZStack {
-            Color.black.opacity(0.7)
+            ColorToken.additionalColorsBlack.toColor().opacity(0.8)
             
             VStack(alignment: .center) {
                 HStack {
@@ -24,7 +24,7 @@ struct BlocksGamePauseView: View {
                 }
                 
                 HStack {
-                    KimoPauseItemButton(imagePath: "BackButton", action: onBack)
+                    KimoBackButton(imagePath: "BackButton", action: onBack)
                     KimoReplayButton(isLarge: true, action: onReset)
                     KimoMuteButton(isLarge: true, audioManager: AudioManager.shared)
                 }
@@ -35,7 +35,7 @@ struct BlocksGamePauseView: View {
 }
 
 #Preview {
-    BlocksGamePauseView(
+    PauseView(
         onReset: { print("Reset") },
         onHome: { print("Home") },
         onResume: { print("Resume") },

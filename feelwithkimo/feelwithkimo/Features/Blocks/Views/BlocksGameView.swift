@@ -77,7 +77,7 @@ struct BlocksGameView: View {
             .padding(.horizontal, 55.getWidth())
             
             if viewModel.isPaused {
-                BlocksGamePauseView(
+                PauseView(
                     onReset: {
                         viewModel.resetGame()
                         viewModel.onPausePressed()

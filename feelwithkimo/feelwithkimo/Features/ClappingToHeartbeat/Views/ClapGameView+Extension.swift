@@ -11,7 +11,7 @@ import SwiftUI
 extension ClapGameView {
     func headerView() -> some View {
         HStack {
-            KimoBackButton {
+            KimoBackButton(imagePath: "Back") {
                 dismiss()
             }
             
