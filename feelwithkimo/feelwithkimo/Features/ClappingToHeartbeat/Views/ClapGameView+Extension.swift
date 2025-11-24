@@ -11,7 +11,7 @@ import SwiftUI
 extension ClapGameView {
     func headerView() -> some View {
         HStack {
-            KimoBackButton {
+            KimoBackButton(imagePath: "Back", isLarge: false) {
                 dismiss()
             }
             
@@ -259,6 +259,7 @@ extension ClapGameView {
                             .font(.system(size: 80))
                             .foregroundStyle(ColorToken.grayscale40.toColor())
                             .padding(.bottom, 8)
+                            
                         Text(NSLocalizedString("No_Hands_Detected", comment: ""))
                             .font(.customFont(size: 17, family: .primary, weight: .semibold))
                             .foregroundStyle(ColorToken.grayscale100.toColor())

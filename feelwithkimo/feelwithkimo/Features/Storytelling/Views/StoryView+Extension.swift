@@ -98,7 +98,7 @@ extension StoryView {
                 }
             }
         }
-    }
+    }   
     
     func questionView() -> some View {
         VStack(spacing: 0) {
