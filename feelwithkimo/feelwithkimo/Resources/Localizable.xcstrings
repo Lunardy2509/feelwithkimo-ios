@@ -1,103 +1,19 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "Ayo_Mulai" : {
+    "Both_Hands_Detected" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Let’s Start"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ayo Mulai"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "开始"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "開始"
-          }
-        }
-      }
-    },
-    "Bacakan cerita ini untuk si kecil, ya!" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tell this story to your child"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bacakan cerita ini untuk si kecil, ya!"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "你把这个故事讲给你孩子听哦！"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "你把這個故事講給你孩子聽哦！"
-          }
-        }
-      }
-    },
-    "Berhenti" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Stop"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Berhenti"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "停"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "停"
-          }
-        }
-      }
-    },
-    "Both Hands Detected" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
             "value" : "Both Hands Detected"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Both Hands Detected"
+            "value" : "Kedua Tangan Terdeteksi"
           }
         },
         "zh-Hans" : {
@@ -110,6 +26,35 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "偵測到雙手"
+          }
+        }
+      }
+    },
+    "Breathing_Exercise" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Breathing Exercise"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Latihan Pernapasan"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "呼吸练习"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "呼吸練習"
           }
         }
       }
@@ -143,35 +88,6 @@
         }
       }
     },
-    "BreathingPractice" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Breathing Exercise"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Latihan Pernapasan"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "呼吸练习"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "呼吸練習"
-          }
-        }
-      }
-    },
     "BreathingSuccess" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -197,6 +113,35 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "太好了...你成功地呼吸了呀"
+          }
+        }
+      }
+    },
+    "Choose_Emotion" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose Emotion!"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pilih Emosi!"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择情感！"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選擇情感！"
           }
         }
       }
@@ -230,58 +175,176 @@
         }
       }
     },
-    "Coba Lagi" : {
+    "Completion_Text" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Try again"
+            "value" : "Stage 1 Complete!!!"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Coba Lagi"
+            "value" : "Tahap 1 Selesai!!!"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "再试一次"
+            "value" : "阶段完成！"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "再試一次"
+            "value" : "階段完成！"
           }
         }
       }
     },
-    "dan juga komentar seru untuk menemani si kecil sepanjang cerita!..." : {
+    "Congratulate_Text" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "and also fun comments to accompany your child throughout the story!"
+            "value" : "Hooray !!!"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "dan juga komentar seru untuk menemani si kecil sepanjang cerita!..."
+            "value" : "Hore berhasil !!!"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "然后给一些有趣的评论，陪伴你的孩子度过整个故事！"
+            "value" : "好耶！"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "然後給一些有趣的評論，陪伴你的孩子度過整個故事！"
+            "value" : "好耶！"
+          }
+        }
+      }
+    },
+    "Continue" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lanjutkan"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "继续"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "繼續"
+          }
+        }
+      }
+    },
+    "EmotionStoryViewDialogueText" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Today, Kimo wants to play with Kimo's friend, her name is Lala."
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hari ini, Kimo mau bermain bersama teman kimo, namanya adalah Lala."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今天，Kimo想和Kimo的朋友玩，她的名字叫Lala。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "今天，Kimo想和Kimo的朋友玩，她的名字叫Lala。"
+          }
+        }
+      }
+    },
+    "Entry_Title_1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome to school"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selamat datang di sekolah"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "欢迎来到学校"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "歡迎來到學校"
+          }
+        }
+      }
+    },
+    "Entry_Title_2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kimo will accompany you and your little one to learn to recognize feelings."
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kimo akan menemani kamu dan si kecil belajar mengenal perasaan."
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kimo将陪伴你和你的孩子学习识别感受。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kimo將陪伴你和你的孩子學習辨識感受。"
           }
         }
       }
@@ -298,7 +361,7 @@
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hembus Nafas"
+            "value" : "Hembus"
           }
         },
         "zh-Hans" : {
@@ -344,63 +407,7 @@
         }
       }
     },
-    "Gunakan suara dan ekspresi supaya si kecil ikut merasakannya" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Use voice and expressions so that your little one can feel it too"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Gunakan suara dan ekspresi supaya si kecil ikut merasakannya"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "请使用声音和表情，让你的孩子也能感觉到"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "請使用聲音和表情，讓你的孩子也能感覺到"
-          }
-        }
-      }
-    },
-    "Hari ini, Kimo mau bermain dengan teman Kimo, namanya Lala." : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Today, Kimo wants to play with Kimo's friend, her name is Lala.\n"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hari ini, Kimo mau bermain dengan teman Kimo, namanya Lala."
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "今天，Kimo想和Kimo的朋友玩，她的名字叫Lala。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "今天，Kimo想和Kimo的朋友玩，她的名字叫Lala。"
-          }
-        }
-      }
-    },
-    "Hold" : {
+    "Hold_Breath" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -411,49 +418,136 @@
         },
         "id" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tahan Nafas"
+            "state" : "needs_review",
+            "value" : "Tahan"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "屏息"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "屏息"
           }
         }
       }
     },
-    "Hooray!!!" : {
+    "Identity_TextField_Child" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hooray !!!"
+            "value" : "Nickname for Child:"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hore berhasil !!!"
+            "value" : "Nama Panggilan untuk si Kecil:"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "好耶！"
+            "value" : "你孩子的昵称："
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "好耶！"
+            "value" : "你孩子的暱稱："
+          }
+        }
+      }
+    },
+    "Identity_TextField_Parent" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nickname for Parents:"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"Nama Panggilan untuk Orang Tua:\""
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "父母的昵称："
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "父母的暱稱："
+          }
+        }
+      }
+    },
+    "Identity_Title_1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Let’s Be"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kenalan"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "互相"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "互相"
+          }
+        }
+      }
+    },
+    "Identity_Title_2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Friends!"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yuk!"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "介绍！"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "介紹！"
           }
         }
       }
@@ -470,7 +564,7 @@
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tarik Nafas"
+            "value" : "Tarik"
           }
         },
         "zh-Hans" : {
@@ -487,121 +581,66 @@
         }
       }
     },
-    "Keluar" : {
+    "Kicking_The_Blocks" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Leave"
+            "value" : "Kicking The Blocks"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Keluar"
+            "value" : "Menendang balok-baloknya"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "离开"
+            "value" : "踢玩具积木"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "離開"
+            "value" : "踢玩具積木"
           }
         }
       }
     },
-    "Kenalan" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Let's be"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kenalan"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "认识"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "認識"
-          }
-        }
-      }
-    },
-    "Ketuk bagian mana pun di layar untuk lanjut" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tap anywhere on the screen to continue"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ketuk bagian mana pun di layar untuk lanjut"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "按屏幕上的任意位置继续"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "按螢幕上的任何位置繼續"
-          }
-        }
-      }
-    },
-    "Key" : {
+    "Kimo_Tutorial_Text_1" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Key"
+            "value" : "Click the Kimo’s icon!"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kunci"
+            "value" : "Klik ikon Kimo, ya!"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "钥匙"
+            "value" : "按Kimo图标"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "鑰匙"
+            "value" : "按Kimo圖標"
           }
         }
       }
     },
-    "Kimo akan memberikan petunjuk saat si kecil butuh bantuan" : {
+    "Kimo_Tutorial_Text_2" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -629,102 +668,19 @@
         }
       }
     },
-    "Kimo akan menemani kamu dan si kecil belajar mengenal perasaan" : {
+    "Lets_Start" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kimo will accompany you and your little one to learn to recognize feelings."
+            "value" : "Let’s Start"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kimo akan menemani kamu dan si kecil belajar mengenal perasaan"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kimo将陪伴你和你的孩子学习识别感受。"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kimo將陪伴你和你的孩子學習辨識感受。"
-          }
-        }
-      }
-    },
-    "Klik ikon Kimo, ya!" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Click the Kimo icon"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Klik ikon Kimo, ya!"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "按Kimo图标"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "按Kimo圖標"
-          }
-        }
-      }
-    },
-    "Lanjutkan" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Continue"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lanjutkan"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "继续"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "繼續"
-          }
-        }
-      }
-    },
-    "Mulai" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Start"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mulai"
+            "value" : "Ayo Mulai"
           }
         },
         "zh-Hans" : {
@@ -741,68 +697,13 @@
         }
       }
     },
-    "Nama Panggilan untuk Orang Tua:" : {
+    "No_Hands_Detected" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nicknames for Parents:"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nama Panggilan untuk Orang Tua:"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "父母的昵称："
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "父母的暱稱："
-          }
-        }
-      }
-    },
-    "Nama Panggilan untuk si Kecil:" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nicknames for your little one:"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nama Panggilan untuk si Kecil:"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "你孩子的昵称："
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "你孩子的暱稱："
-          }
-        }
-      }
-    },
-    "No Hands Detected" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No Hand Detected"
+            "value" : "No Hands Detected"
           }
         },
         "id" : {
@@ -825,7 +726,8 @@
         }
       }
     },
-    "One Hand Detected" : {
+    "One_Hand_Detected" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -853,30 +755,31 @@
         }
       }
     },
-    "Pilih Emosi!" : {
+    "Save" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Choose Emotion!"
+            "value" : "Save"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pilih Emosi!"
+            "value" : "Simpan"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "选择情感！"
+            "value" : "保存"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "選擇情感！"
+            "value" : "儲存"
           }
         }
       }
@@ -906,34 +809,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "秒"
-          }
-        }
-      }
-    },
-    "Selamat datang di Sekolah" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Welcome to school"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Selamat datang di Sekolah"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "欢迎来到学校"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "歡迎來到學校"
           }
         }
       }
@@ -996,6 +871,35 @@
         }
       }
     },
+    "StartButton" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mulai"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开始"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開始"
+          }
+        }
+      }
+    },
     "StartPlaying" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1008,7 +912,7 @@
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tarik\\nNafas"
+            "value" : "Mulai Bermain"
           }
         },
         "zh-Hans" : {
@@ -1021,6 +925,64 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "開始遊戲"
+          }
+        }
+      }
+    },
+    "Stop" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stop"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Berhenti"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "停"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "停"
+          }
+        }
+      }
+    },
+    "TapAnywhere" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tap anywhere on the screen to continue"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ketuk bagian mana pun di layar untuk lanjut"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "按屏幕上的任意位置继续"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "按螢幕上的任何位置繼續"
           }
         }
       }
@@ -1053,7 +1015,7 @@
         }
       }
     },
-    "Try Again" : {
+    "Try_Again" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
@@ -1082,117 +1044,88 @@
         }
       }
     },
-    "Yuk!" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Friends!"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Yuk!"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "走吧！"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "走吧！"
-          }
-        }
-      }
-    },
-    "再試一次" : {
+    "Tutorial_Text_1" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Try Again"
+            "value" : "Tell this story to your child!"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Coba Lagi"
+            "value" : "Bacakan cerita ini untuk si kecil ya!"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "再试一次"
+            "value" : "把这个故事给你的孩子讲！"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "再試一次"
+            "value" : "把這個故事給你的孩子講！"
           }
         }
       }
     },
-    "再试一次" : {
+    "Tutorial_Text_2" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Use voice and expressions so that your little one can feel it too"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gunakan suara dan ekspresi supaya si kecil bisa merasakannya juga"
+          }
+        },
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请使用声音和表情，让你的孩子也能识别感受"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "請使用聲音和表情，讓你的孩子也能辨識感受"
+          }
+        }
+      }
+    },
+    "Tutorial_Text_3" : {
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Try Again"
+            "value" : "and also fun comments to accompany your child throughout the story!"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Coba Lagi"
+            "value" : "dan juga komentar seru untuk menemani si kecil sepanjang cerita!"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "再试一次"
+            "value" : "然后给一些有趣的评论，陪伴你的孩子度过整个故事！"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "再試一次"
-          }
-        }
-      }
-    },
-    "退出" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Exit"
-          }
-        },
-        "id" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Keluar"
-          }
-        },
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "退出"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "退出"
+            "value" : "然後給一些有趣的評論，陪伴你的孩子度過整個故事！"
           }
         }
       }

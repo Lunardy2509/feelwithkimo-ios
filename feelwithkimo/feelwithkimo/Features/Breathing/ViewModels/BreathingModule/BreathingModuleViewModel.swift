@@ -55,7 +55,7 @@ final class BreathingModuleViewModel: ObservableObject {
             case .inhale:
                 return NSLocalizedString("Inhale", comment: "")
             case .hold:
-                return NSLocalizedString("Hold", comment: "")
+                return NSLocalizedString("Hold_Breath", comment: "")
             case .exhale:
                 return NSLocalizedString("Exhale", comment: "")
             }

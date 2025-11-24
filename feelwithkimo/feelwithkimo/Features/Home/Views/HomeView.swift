@@ -54,7 +54,7 @@ struct HomeView: View {
 
     private var emotionSelectionSection: some View {
         VStack(alignment: .center, spacing: 40.getHeight()) {
-            Text("Pilih Emosi!")
+            Text(NSLocalizedString("Choose_Emotion", comment: ""))
                 .font(.customFont(size: 80, weight: .bold))
                 .foregroundStyle(ColorToken.backgroundSecondary.toColor())
                 .kimoTextAccessibility(

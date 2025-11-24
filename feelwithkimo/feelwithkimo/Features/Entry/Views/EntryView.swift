@@ -35,14 +35,14 @@ struct EntryView: View {
             VStack(alignment: .trailing, spacing: 0) {
                 Spacer()
                 
-                Text("Selamat datang di Sekolah")
+                Text("Entry_Title_1", comment: "")
                     .font(.customFont(size: 34, family: .primary, weight: .bold))
                     .foregroundStyle(ColorToken.backgroundSecondary.toColor())
                     .padding(.bottom, geometry.size.height * 0.01)
                 
                 KimoImage(image: "Kimo-Pink-Wave", width: geometry.size.width * 0.51)
                 
-                Text("Kimo akan menemani kamu dan si kecil belajar mengenal perasaan")
+                Text("Entry_Title_2", comment: "")
                     .font(.customFont(size: 28, family: .primary, weight: .bold))
                     .foregroundStyle(ColorToken.backgroundSecondary.toColor())
                     .frame(maxWidth: 356.getWidth())
@@ -53,13 +53,7 @@ struct EntryView: View {
                     OldEmotionStoryView(viewModel: EmotionStoryViewModel(path: "Balok"))
                 } label: {
                     KimoBubbleButtonPrimary(
-                        buttonLabel: NSLocalizedString(
-                            (Locale.current.language.languageCode?.identifier == "en") ? "Let's Start" :
-                            (Locale.current.language.languageCode?.identifier.starts(with: "zh") ?? false) ?
-                            (Locale.current.language.script?.identifier == "Hant" ? "開始" : "开始") :
-                            "Ayo Mulai",
-                            comment: ""
-                        )
+                        buttonLabel: NSLocalizedString("Lets_Start", comment: "")
                     )
                 }
                 .padding(.top, geometry.size.height * 0.084)

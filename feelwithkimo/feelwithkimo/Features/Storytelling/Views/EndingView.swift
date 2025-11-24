@@ -40,15 +40,7 @@ extension StoryView {
                                         .frame(maxWidth: 22, maxHeight: 22)
                                         .foregroundStyle(ColorToken.additionalColorsWhite.toColor())
                                     
-                                    Text(
-                                        NSLocalizedString(
-                                            (Locale.current.language.languageCode?.identifier == "en") ? "Try Again" :
-                                            (Locale.current.language.languageCode?.identifier.starts(with: "zh") ?? false) ?
-                                            (Locale.current.language.script?.identifier == "Hant" ? "再試一次" : "再试一次") :
-                                            "Coba Lagi",
-                                            comment: ""
-                                        )
-                                    )
+                                    Text(NSLocalizedString("Try_Again", comment: ""))
                                     .font(.customFont(size: 22, family: .primary, weight: .bold))
                                     .foregroundStyle(ColorToken.additionalColorsWhite.toColor())
                                 }
@@ -68,15 +60,7 @@ extension StoryView {
                                         .frame(maxWidth: 22, maxHeight: 22)
                                         .foregroundStyle(ColorToken.additionalColorsWhite.toColor())
                                     
-                                    Text(
-                                        NSLocalizedString(
-                                            (Locale.current.language.languageCode?.identifier == "en") ? "Exit" :
-                                            (Locale.current.language.languageCode?.identifier.starts(with: "zh") ?? false) ?
-                                            (Locale.current.language.script?.identifier == "Hant" ? "退出" : "退出") :
-                                            "Keluar",
-                                            comment: ""
-                                        )
-                                    )
+                                    Text(NSLocalizedString("Exit", comment: ""))
                                     .font(.customFont(size: 22, family: .primary, weight: .bold))
                                     .foregroundStyle(ColorToken.additionalColorsWhite.toColor())
                                 }

@@ -24,7 +24,7 @@ struct InteractionBanner: View {
             }
             
         case .clapping:
-            BridgingPage(textDialogue: NSLocalizedString("StartPlaying", comment: ""))  {
+            BridgingPage(textDialogue: NSLocalizedString("StartPlaying", comment: "")) {
                 ClapGameView(onCompletion: viewModel.completeClappingExercise, storyViewModel: viewModel)
                 .kimoNavigationAccessibility(
                     label: "Mulai Bermain tepuk tangan",

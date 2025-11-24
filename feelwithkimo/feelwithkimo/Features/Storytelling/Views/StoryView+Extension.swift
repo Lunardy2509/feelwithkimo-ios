@@ -180,7 +180,7 @@ extension StoryView {
 extension StoryView {
     func firstTutorialView() -> some View {
         VStack(alignment: .center) {
-            Text("Ketuk bagian mana pun di layar untuk lanjut")
+            Text(NSLocalizedString("TapAnywhere", comment: ""))
                 .font(.customFont(size: 28, weight: .bold))
                 .foregroundStyle(ColorToken.additionalColorsWhite.toColor())
                 .padding(.top, 60.getHeight())
@@ -239,10 +239,10 @@ extension StoryView {
                 
                 // Text
                 VStack(alignment: .leading) {
-                    Text("Klik ikon Kimo, ya!")
+                    Text(NSLocalizedString("Kimo_Tutorial_Text_1", comment: ""))
                         .font(.customFont(size: 20, family: .primary, weight: .regular))
                     
-                    Text("Kimo akan memberikan petunjuk saat si kecil butuh bantuan")
+                    Text(NSLocalizedString("Kimo_Tutorial_Text_2", comment: ""))
                         .font(.customFont(size: 20, family: .primary, weight: .regular))
                 }
                 .frame(maxWidth: 564)
@@ -287,7 +287,7 @@ extension StoryView {
                     .padding(.top, 71.getHeight())
                 
                 // Text
-                Text("dan juga komentar seru untuk menemani si kecil sepanjang cerita!...")
+                Text(NSLocalizedString("Tutorial_Text_3", comment: ""))
                     .font(.customFont(size: 20, family: .primary, weight: .regular))
                     .frame(maxWidth: 564)
                     .padding(.vertical, 24)

@@ -63,11 +63,11 @@ struct IdentityView: View {
     
     private var titleView: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text("Kenalan")
+            Text(NSLocalizedString("Identity_Title_1", comment: ""))
                 .font(.customFont(size: 104, weight: .bold))
                 .foregroundStyle(ColorToken.backgroundSecondary.toColor())
             
-            Text("Yuk!")
+            Text(NSLocalizedString("Identity_Title_2", comment: ""))
                 .font(.customFont(size: 104, weight: .bold))
                 .foregroundStyle(ColorToken.backgroundSecondary.toColor())
         }
@@ -146,7 +146,7 @@ struct IdentityView: View {
             
             // Content
             VStack(alignment: .leading, spacing: 0) {
-                Text("Nama Panggilan untuk si Kecil:")
+                Text(NSLocalizedString("Identity_TextField_Child", comment: ""))
                     .font(.customFont(size: 22, family: .primary, weight: .bold))
                     .foregroundStyle(ColorToken.backgroundSecondary.toColor())
                     .padding(.bottom, 8)
@@ -175,7 +175,7 @@ struct IdentityView: View {
                         sortPriority: 4
                     )
                 
-                Text("Nama Panggilan untuk Orang Tua:")
+                Text(NSLocalizedString("Identity_TextField_Parent", comment: ""))
                     .font(.customFont(size: 22, family: .primary, weight: .bold))
                     .foregroundStyle(ColorToken.backgroundSecondary.toColor())
                     .padding(.bottom, 8)
@@ -219,13 +219,7 @@ struct IdentityView: View {
                 accessibilityManager.announce("Nama panggilan berhasil disimpan.")
             }, label: {
                 KimoBubbleButtonPrimary(
-                    buttonLabel: NSLocalizedString(
-                        (Locale.current.language.languageCode?.identifier == "en") ? "Save" :
-                        (Locale.current.language.languageCode?.identifier.starts(with: "zh") ?? false) ?
-                        (Locale.current.language.script?.identifier == "Hant" ? "儲存" : "保存") :
-                        "Simpan",
-                        comment: ""
-                    )
+                    buttonLabel: NSLocalizedString("Save", comment: "")
                 )
             })
             .kimoButtonAccessibility(

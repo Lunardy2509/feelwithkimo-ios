@@ -94,7 +94,7 @@ struct KimoDialogueView: View {
         
         // Preview with bubble secondary buttons with SF Symbols (like in image)
 //        KimoDialogueView(
-//            textDialogue: "Hore, berhasil !",
+//            textDialogue: NSLocalizedString("Completion_Text", comment: ""),
 //            buttonLayout: .horizontal([
 //                KimoDialogueButtonConfig(
 //                    title: "Coba lagi",
