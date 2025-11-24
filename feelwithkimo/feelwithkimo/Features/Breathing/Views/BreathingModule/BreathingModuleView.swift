@@ -62,10 +62,7 @@ struct BreathingModuleView: View {
             .ignoresSafeArea(edges: .all)
             
             if showTutorial {
-                TutorialPage(textDialogue:
-                "Ikuti instruksi 'Tarik Nafas', 'Tahan Nafas', dan 'Buang Nafas' sambil menirukan Kimo." +
-                " Jangan lupa sesuaikan ritmemu dengan timer di kanan. Buang napas perlahan lewat mulut, ya!")
-                .onTapGesture {
+                BreathingModuleTutorialView()                .onTapGesture {
                     showTutorial = false
                 }
             }
@@ -99,6 +96,7 @@ struct BreathingModuleView: View {
                     HStack(alignment: .center, spacing: 60.getWidth()) {
                         Text(viewModel.currentPhase.rawValue)
                             .font(.customFont(size: 72, weight: .bold))
+                            .frame(maxWidth: 240, alignment: .leading)
                             .foregroundColor(ColorToken.backgroundSecondary.toColor())
                             .multilineTextAlignment(.leading)
                             .lineSpacing(0)
@@ -273,4 +271,20 @@ struct BreathingModuleView: View {
             stageCompleted: "Stage 1 Completed"
         )
     }
+}
+
+#Preview {
+    BreathingModuleView(
+        storyViewModel: StoryViewModel(
+            story:
+                StoryModel(
+                    id: "Episode_1",
+                    name: "Story Angry 1",
+                    thumbnail: "Thumbnail 1",
+                    description: "Description",
+                    backsong: "Backsong_1",
+                    storyScene: []
+                )
+        )
+    )
 }

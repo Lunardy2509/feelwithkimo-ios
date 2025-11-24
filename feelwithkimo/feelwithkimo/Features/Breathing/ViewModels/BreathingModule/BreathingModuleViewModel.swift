@@ -24,59 +24,33 @@ final class BreathingModuleViewModel: ObservableObject {
     // MARK: - Private Properties
     private var timer: Timer?
     
-    // MARK: - Lazy Computed Properties
-    private lazy var breathingDuration: TimeInterval = 4.0
+    // MARK: - Computed Property
+    var breathingDuration: TimeInterval {
+        return currentPhase.duration
+    }
+    
     private lazy var animationConfiguration = AnimationConfiguration()
     
     // MARK: - Animation Configuration Helper
     private struct AnimationConfiguration {
         let easeInOutDuration: TimeInterval = 0.2
-        let breathingCycleDuration: TimeInterval = 4.0
         let delayMultiplier: Double = 0.2
     }
     
     // MARK: - Completion Handler
     var onCompletion: (() -> Void)?
     
-    let dialogueText = "Ayo latihan pernafasan bersama 4 kali tarik nafas, 4 kali tahan nafas dan 4 kali buang nafas!"
+    let dialogueText = "Ayo latihan pernafasan bersama 4 kali tarik nafas, 4 kali tahan nafas dan 4 kali buang"
     
-    // MARK: - Enum
-    enum BreathingPhase: String, CaseIterable {
-        case inhale = "Tarik\nNafas"
-        case hold = "Tahan\nNafas"
-        case exhale = "Buang\nNafas"
-        
-        var duration: TimeInterval {
-            return 4.0 // 4 seconds for each phase
-        }
-        
-        var imageName: String {
-            switch self {
-            case .inhale:
-                return "Kimo-Inhale"
-            case .hold:
-                return "Kimo-Hold-Breath"
-            case .exhale:
-                return "Kimo-Exhale"
-            }
-        }
-        
-        // Lazy computed property for scale values
-        var scaleValue: CGFloat {
-            switch self {
-            case .inhale, .hold:
-                return 1.5
-            case .exhale:
-                return 1.0
-            }
-        }
+    init() {
+        remainingTime = Int(self.breathingDuration)
     }
     
     // MARK: - Breathing Functions
     func startBreathing() {
         isActive = true
         currentPhase = .inhale
-        remainingTime = 4
+        remainingTime = Int(breathingDuration)
         
         // Explicitly animate only the breathing scale
         withAnimation(.easeInOut(duration: currentPhase.duration)) {
@@ -93,7 +67,7 @@ final class BreathingModuleViewModel: ObservableObject {
         timer = nil
         animationScale = 1.0
         currentPhase = .inhale
-        remainingTime = 4
+        remainingTime = Int(breathingDuration)
         startAnimation = false
     }
     
@@ -123,7 +97,7 @@ final class BreathingModuleViewModel: ObservableObject {
                     }
                 }
                 
-                self.remainingTime = 4
+                self.remainingTime = Int(breathingDuration)
                 
                 // Explicitly animate the breathing scale changes
                 withAnimation(.easeInOut(duration: self.currentPhase.duration)) {
@@ -135,12 +109,12 @@ final class BreathingModuleViewModel: ObservableObject {
     
     private func startBreathingCycle() {
         // Initial state - breathe in
-        withAnimation(.easeInOut(duration: animationConfiguration.breathingCycleDuration)) {
+        withAnimation(.easeInOut(duration: self.breathingDuration)) {
             startAnimation = true
         }
         
         // After 4 seconds, hold breath
-        DispatchQueue.main.asyncAfter(deadline: .now() + animationConfiguration.breathingCycleDuration) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + self.breathingDuration) { [weak self] in
             guard let self = self else { return }
             if self.isActive {
                 // Continue holding the animation state
@@ -148,17 +122,17 @@ final class BreathingModuleViewModel: ObservableObject {
         }
         
         // After 8 seconds total, breathe out
-        DispatchQueue.main.asyncAfter(deadline: .now() + (animationConfiguration.breathingCycleDuration * 2)) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + (self.breathingDuration * 2)) { [weak self] in
             guard let self = self else { return }
             if self.isActive {
-                withAnimation(.easeInOut(duration: self.animationConfiguration.breathingCycleDuration)) {
+                withAnimation(.easeInOut(duration: self.breathingDuration)) {
                     self.startAnimation = false
                 }
             }
         }
         
         // Continue the cycle after 12 seconds if still active
-        DispatchQueue.main.asyncAfter(deadline: .now() + (animationConfiguration.breathingCycleDuration * 3)) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + (self.breathingDuration * 3)) { [weak self] in
             guard let self = self else { return }
             if self.isActive {
                 self.startBreathingCycle()
