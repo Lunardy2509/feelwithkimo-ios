@@ -41,8 +41,8 @@ extension StoryView {
                                         .foregroundStyle(ColorToken.additionalColorsWhite.toColor())
                                     
                                     Text(NSLocalizedString("Try_Again", comment: ""))
-                                    .font(.customFont(size: 22, family: .primary, weight: .bold))
-                                    .foregroundStyle(ColorToken.additionalColorsWhite.toColor())
+                                        .font(.customFont(size: 22, family: .primary, weight: .bold))
+                                        .foregroundStyle(ColorToken.additionalColorsWhite.toColor())
                                 }
                                 .frame(maxWidth: 193.getWidth())
                                 .padding(.horizontal, 23)
@@ -61,8 +61,8 @@ extension StoryView {
                                         .foregroundStyle(ColorToken.additionalColorsWhite.toColor())
                                     
                                     Text(NSLocalizedString("Exit", comment: ""))
-                                    .font(.customFont(size: 22, family: .primary, weight: .bold))
-                                    .foregroundStyle(ColorToken.additionalColorsWhite.toColor())
+                                        .font(.customFont(size: 22, family: .primary, weight: .bold))
+                                        .foregroundStyle(ColorToken.additionalColorsWhite.toColor())
                                 }
                                 .frame(maxWidth: 193.getWidth())
                                 .padding(.horizontal, 23)

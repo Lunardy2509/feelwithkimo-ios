@@ -24,11 +24,7 @@ struct BlockGameStageView: View {
         let completionText = NSLocalizedString("Completion_Text", comment: "")
         let congratulateText = NSLocalizedString("Congratulate_Text", comment: "")
         
-        if phase == 1 {
-            return completionText
-        } else {
-            return congratulateText
-        }
+        return phase == 1 ? completionText : congratulateText
     }
     
     var body: some View {

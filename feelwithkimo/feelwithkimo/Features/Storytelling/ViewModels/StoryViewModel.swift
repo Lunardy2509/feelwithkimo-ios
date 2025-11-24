@@ -37,186 +37,40 @@ internal class StoryViewModel: ObservableObject {
         backsong: "Backsong_1",
         storyScene: []
     )
-
+    
     init(story storyModel: StoryModel) {
         self.story = storyModel
-        fetchStory(story: storyModel.id)
-    }
-    
-    // MARK: - Private Helper Methods
-    
-    /// Determine localized suffix based on current locale
-    private func getLocalizedSuffix() -> String {
-        let languageCode = Locale.current.language.languageCode?.identifier ?? "en"
         
-        // For Chinese, check both language region and script
+        let locale = Locale.current
+
+        var languageCode: String = locale.language.languageCode?.identifier ?? "id"
+        
+        // Special handling for Chinese
         if languageCode == "zh" {
-            let regionCode = Locale.current.region?.identifier ?? ""
-            let scriptCode = Locale.current.language.script?.identifier ?? ""
-            
-            print("🔍 Debug - Language: \(languageCode), Region: \(regionCode), Script: \(scriptCode)")
-            
-            // Check script FIRST (more reliable for actual language variant)
-            if scriptCode.lowercased().contains("hant") {
-                return "_zht" // Traditional Chinese
-            } else if scriptCode.lowercased().contains("hans") {
-                return "_zhs" // Simplified Chinese
-            }
-            
-            // Fallback to region check if script is not available
-            if regionCode == "TW" || regionCode == "HK" || regionCode == "MO" {
-                return "_zht" // Traditional Chinese
-            } else if regionCode == "CN" || regionCode == "SG" {
-                return "_zhs" // Simplified Chinese
-            }
-            
-            // Default to Simplified if we can't determine
-            return "_zhs"
+            let scriptCode = locale.language.script?.identifier
+            languageCode = scriptCode == "Hant" ? "zht" : "zh"
         }
-        
-        if languageCode == "en" {
-            return "_en"
-        }
-        
-        return "_id"
+
+        fetchStory(story: storyModel.id + "_\(languageCode)")
     }
 
-    /// Find URL for story JSON file with fallback logic
-    private func findStoryURL(for storyPath: String, suffix: String) -> URL? {
-        // Attempt 1: Try specific language (e.g., "Episode_1_zhs")
-        var finalPath = "\(storyPath)\(suffix)"
-        if let url = Bundle.main.url(forResource: finalPath, withExtension: "json") {
-            print("✅ Found: \(finalPath).json")
-            return url
-        }
-        
-        // Attempt 2: For Chinese variants, try alternate Chinese version
-        print("⚠️ \(finalPath).json not found.")
-        if suffix == "_zht" {
-            print("   Trying Simplified Chinese fallback...")
-            finalPath = "\(storyPath)_zhs"
-            if let url = Bundle.main.url(forResource: finalPath, withExtension: "json") {
-                print("✅ Found fallback: \(finalPath).json")
-                return url
-            }
-        } else if suffix == "_zhs" {
-            print("   Trying Traditional Chinese fallback...")
-            finalPath = "\(storyPath)_zht"
-            if let url = Bundle.main.url(forResource: finalPath, withExtension: "json") {
-                print("✅ Found fallback: \(finalPath).json")
-                return url
-            }
-        }
-        
-        // Attempt 3: Try English fallback
-        print("   Trying English fallback...")
-        finalPath = "\(storyPath)_en"
-        if let url = Bundle.main.url(forResource: finalPath, withExtension: "json") {
-            print("✅ Found fallback: \(finalPath).json")
-            return url
-        }
-        
-        // Attempt 4: Try Indonesian fallback
-        print("   Trying Indonesian fallback...")
-        finalPath = "\(storyPath)_id"
-        if let url = Bundle.main.url(forResource: finalPath, withExtension: "json") {
-            print("✅ Found fallback: \(finalPath).json")
-            return url
-        }
-        
-        // Attempt 5: Try base filename
-        print("   Trying base file: \(storyPath)...")
-        return Bundle.main.url(forResource: storyPath, withExtension: "json")
-    }
-    
-    /// Log available story files in bundle
-    private func logAvailableFiles(for storyPath: String) {
-        print("❌ CRITICAL ERROR: Could not find ANY version of \(storyPath) in Bundle.")
-        print("📦 Available files in Bundle:")
-        if let resourcePath = Bundle.main.resourcePath {
-            let contents = try? FileManager.default.contentsOfDirectory(atPath: resourcePath)
-            contents?.filter { $0.contains(storyPath) }.forEach { print("   - \($0)") }
-        }
-    }
-    
-    /// Log detailed decoding error information
-    private func logDecodingError(_ error: Error, fileName: String) {
-        print("❌ Failed to decode \(fileName):")
-        print("   Error: \(error)")
-        
-        guard let decodingError = error as? DecodingError else { return }
-        
-        switch decodingError {
-        case .keyNotFound(let key, let context):
-            print("   Missing key: \(key.stringValue) - \(context.debugDescription)")
-        case .typeMismatch(let type, let context):
-            print("   Type mismatch: \(type) - \(context.debugDescription)")
-        case .valueNotFound(let type, let context):
-            print("   Value not found: \(type) - \(context.debugDescription)")
-        case .dataCorrupted(let context):
-            print("   Data corrupted: \(context.debugDescription)")
-        @unknown default:
-            print("   Unknown decoding error")
-        }
-    }
-    
-    /// Update story scenes on main thread
-    private func updateStoryScenes(_ scenes: [StorySceneModel], fileName: String) {
-        DispatchQueue.main.async {
-            self.story.storyScene = scenes
-            
-            if let firstScene = scenes.first {
-                self.currentScene = firstScene
-                print("✅ Successfully loaded: \(fileName) with \(scenes.count) scenes")
-            } else {
-                print("⚠️ Loaded \(fileName) but the scene list is empty!")
-            }
-        }
-    }
-    
     /// Load story scene
     private func fetchStory(story storyPath: String = "Episode_1") {
-        // Files that don't need localization
-        let nonLocalizedFiles = ["Balok", "LalaInBlockGame"]
-        
-        // Check if this file should skip localization
-        if nonLocalizedFiles.contains(storyPath) {
-            print("📦 Loading non-localized file: \(storyPath).json")
-            guard let url = Bundle.main.url(forResource: storyPath, withExtension: "json") else {
-                print("❌ File not found: \(storyPath).json")
-                return
-            }
-            
-            do {
-                let data = try Data(contentsOf: url)
-                let decoder = JSONDecoder()
-                let scenes = try decoder.decode([StorySceneModel].self, from: data)
-                updateStoryScenes(scenes, fileName: url.lastPathComponent)
-            } catch {
-                logDecodingError(error, fileName: url.lastPathComponent)
-            }
+        guard let url = Bundle.main.url(forResource: storyPath, withExtension: "json") else {
+            print("❌ \(storyPath).json not found in bundle")
             return
         }
-        
-        // Continue with localization for other files
-        let localizedSuffix = getLocalizedSuffix()
-        
-        print("🌍 Detected language suffix: \(localizedSuffix)")
-        print("📁 Looking for: \(storyPath)\(localizedSuffix).json")
-        
-        guard let validUrl = findStoryURL(for: storyPath, suffix: localizedSuffix) else {
-            logAvailableFiles(for: storyPath)
-            return
-        }
-        
+
         do {
-            let data = try Data(contentsOf: validUrl)
+            let data = try Data(contentsOf: url)
             let decoder = JSONDecoder()
             let scenes = try decoder.decode([StorySceneModel].self, from: data)
             
-            updateStoryScenes(scenes, fileName: validUrl.lastPathComponent)
+            // Assign to your properties
+            self.story.storyScene = scenes
+            self.currentScene = self.story.storyScene[0]
         } catch {
-            logDecodingError(error, fileName: validUrl.lastPathComponent)
+            print("❌ Failed to load story.json:", error)
         }
     }
 

@@ -21,14 +21,7 @@ struct BridgingPage<Destination: View>: View {
                 .foregroundStyle(ColorToken.additionalColorsWhite.toColor())
                 .frame(maxWidth: 28, maxHeight: 28)
 
-            Text(NSLocalizedString(
-                (Locale.current.language.languageCode?.identifier == "en") ? "Continue" :
-                (Locale.current.language.languageCode?.identifier.starts(with: "zh") ?? false) ?
-                (Locale.current.language.script?.identifier == "Hant" ? "繼續" : "继续") :
-                "Lanjutkan",
-                comment: ""
-                )
-            )
+            Text(NSLocalizedString("Continue", comment: ""))
                 .font(.customFont(size: 28, family: .primary, weight: .bold))
                 .foregroundStyle(ColorToken.additionalColorsWhite.toColor())
         }
