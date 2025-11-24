@@ -21,7 +21,10 @@ struct BlockGameStageView: View {
     }
     
     var completionTitle: String {
-        return phase == 1 ? NSLocalizedString("Stage_Complete", comment: "") : NSLocalizedString("Hooray!!!", comment: "")
+        let completionText = NSLocalizedString("Completion_Text", comment: "")
+        let congratulateText = NSLocalizedString("Congratulate_Text", comment: "")
+        
+        return phase == 1 ? completionText : congratulateText
     }
     
     var body: some View {
@@ -36,8 +39,8 @@ struct BlockGameStageView: View {
             if showCompletion {
                 CompletionPageView(
                     title: completionTitle,
-                    primaryButtonLabel: NSLocalizedString("Coba Lagi", comment: ""),
-                    secondaryButtonLabel: NSLocalizedString("Lanjutkan", comment: ""),
+                    primaryButtonLabel: NSLocalizedString("Try_Again", comment: ""),
+                    secondaryButtonLabel: NSLocalizedString("Continue", comment: ""),
                     onPrimaryAction: {
                         /// Retry current phase
                         showCompletion = false

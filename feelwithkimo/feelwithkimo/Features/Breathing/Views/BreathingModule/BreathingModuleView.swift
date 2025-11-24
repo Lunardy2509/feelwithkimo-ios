@@ -38,7 +38,7 @@ struct BreathingModuleView: View {
             // Back button overlay - top left
             VStack {
                 HStack {
-                    KimoBackButton(imagePath: "Back") {
+                    KimoBackButton(imagePath: "Back", isLarge: false) {
                         dismiss()
                     }
 
@@ -158,7 +158,7 @@ struct BreathingModuleView: View {
                                 viewModel.startBreathing()
                                 accessibilityManager.announce("Latihan pernapasan dimulai. Ikuti instruksi Kimo")
                             }, label: {
-                                Text("Mulai")
+                                Text(NSLocalizedString("StartButton", comment: ""))
                                     .font(.customFont(size: 28, family: .primary, weight: .bold))
                                     .foregroundColor(ColorToken.textPrimary.toColor())
                                     .padding(.horizontal, geometry.size.width * 0.035)
@@ -174,7 +174,7 @@ struct BreathingModuleView: View {
                         } else {
                             HStack(spacing: 20.getWidth()) {
                                 // Cycle indicator - show when active
-                                Text(NSLocalizedString("BreathingPractice", comment: "") + " \(viewModel.cycleCount) / 3")
+                                Text(NSLocalizedString("Breathing_Exercise", comment: "") + " \(viewModel.cycleCount) / 3")
                                     .font(.customFont(size: 22, family: .primary, weight: .bold))
                                     .foregroundColor(ColorToken.textPrimary.toColor())
                                     .padding(.horizontal, geometry.size.width * 0.035)
@@ -187,7 +187,7 @@ struct BreathingModuleView: View {
                                     viewModel.isActive = false
                                     viewModel.stopBreathing()
                                 }, label: {
-                                    Text("Berhenti")
+                                    Text(NSLocalizedString("Stop", comment: ""))
                                         .font(.customFont(size: 28, family: .primary, weight: .bold))
                                         .foregroundColor(ColorToken.backgroundSecondary.toColor())
                                         .padding(.horizontal, geometry.size.width * 0.035)
@@ -253,7 +253,7 @@ struct BreathingModuleView: View {
             textDialogue: NSLocalizedString("BreathingSuccess", comment: ""),
             buttonLayout: .horizontal([
                 KimoDialogueButtonConfig(
-                    title: NSLocalizedString("Coba Lagi", comment: ""),
+                    title: NSLocalizedString("Try_Again", comment: ""),
                     symbol: .arrowClockwise,
                     style: .bubbleSecondary,
                     action: {
@@ -261,7 +261,7 @@ struct BreathingModuleView: View {
                     }
                 ),
                 KimoDialogueButtonConfig(
-                    title: NSLocalizedString("Lanjutkan", comment: ""),
+                    title: NSLocalizedString("Continue", comment: ""),
                     symbol: .chevronRight,
                     style: .bubbleSecondary,
                     action: {

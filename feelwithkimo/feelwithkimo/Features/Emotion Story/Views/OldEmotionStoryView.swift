@@ -46,12 +46,11 @@ struct OldEmotionStoryView: View {
                 .padding(.horizontal, 55.getWidth())
                 .padding(.top, 44.getHeight())
                 
-                // TODO: Move this code to KimoDialogueView
                  HStack(spacing: 39) {
                     KimoImage(image: "KimoTutorialAsset", width: 0.429 * UIScreen.main.bounds.width)
                      
                      VStack(spacing: 0) {
-                         Text("Hari ini, Kimo mau bermain dengan teman Kimo, namanya Lala.")
+                         Text(NSLocalizedString("EmotionStoryViewDialogueText", comment: ""))
                              .font(.customFont(size: 22, family: .primary, weight: .bold))
                              .fontWeight(.regular)
                              .frame(maxWidth: 500.getWidth())

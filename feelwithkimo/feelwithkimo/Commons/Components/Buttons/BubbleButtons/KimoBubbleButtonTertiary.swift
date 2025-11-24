@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct KimoBubbleButtonTertiary: View {
-    var buttonLabel: String = NSLocalizedString("Ayo_Mulai", comment: "")
+    var buttonLabel: String = NSLocalizedString("Lets_Start", comment: "")
     
     var body: some View {
         ZStack {

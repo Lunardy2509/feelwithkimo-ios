@@ -159,8 +159,6 @@ struct StoryView: View {
                         
                         audioManager.playSoundEffect(effectName: viewModel.currentScene.soundEffect ?? "")
                     }
-                    
-                    audioManager.playSoundEffect(effectName: viewModel.currentScene.soundEffect ?? "")
                 }
             } else {
                 audioManager.playSoundEffect(effectName: viewModel.currentScene.soundEffect ?? "")

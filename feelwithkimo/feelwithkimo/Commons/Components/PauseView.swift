@@ -24,7 +24,7 @@ struct PauseView: View {
                 }
                 
                 HStack {
-                    KimoBackButton(imagePath: "BackButton", action: onBack)
+                    KimoBackButton(imagePath: "BackButton", isLarge: true, action: onBack)
                     KimoReplayButton(isLarge: true, action: onReset)
                     KimoMuteButton(isLarge: true, audioManager: AudioManager.shared)
                 }
