@@ -67,6 +67,8 @@ struct ClapGameView: View {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 viewModel.announceGameStart()
             }
+            
+            AudioManager.shared.startBackgroundMusic(assetName: "ClappingSong")
         }
     }
 }

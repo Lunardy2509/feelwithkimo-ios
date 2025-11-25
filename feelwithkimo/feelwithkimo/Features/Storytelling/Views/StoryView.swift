@@ -41,18 +41,6 @@ struct StoryView: View {
                 if viewModel.currentScene.interactionType == .normal {
                     storySceneView()
                 }
-            } else {
-                Color.black.opacity(0.8)
-                    .ignoresSafeArea()
-
-                questionView()
-            }
-            
-            if viewModel.currentScene.interactionType != .normal &&
-                viewModel.currentScene.interactionType != .storyBranching &&
-                viewModel.currentScene.interactionType != .scaffoldingOption {
-                Color.black.opacity(0.8)
-                    .ignoresSafeArea()
             }
             
             VStack(spacing: 0) {
@@ -74,12 +62,12 @@ struct StoryView: View {
                 }
                 .padding(.horizontal, 55.getWidth())
                 .padding(.top, 44.getHeight())
-                
-                InteractionBanner(viewModel: viewModel, accessibilityManager: accessibilityManager)
-                
+                                    
                 Spacer()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
+            
+            InteractionBanner(viewModel: viewModel, accessibilityManager: accessibilityManager)
           
             if viewModel.currentScene.isEnd {
                 endSceneOverlay(

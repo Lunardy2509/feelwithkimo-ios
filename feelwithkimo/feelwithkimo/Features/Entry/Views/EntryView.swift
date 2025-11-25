@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EntryView: View {
     @StateObject private var accessibilityManager = AccessibilityManager.shared
+    @State var entrySound: Bool = false
     
     var body: some View {
         NavigationStack {
@@ -24,6 +25,11 @@ struct EntryView: View {
         .onAppear {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 accessibilityManager.announceScreenChange("Selamat datang di aplikasi Kimo. Halaman pembuka siap digunakan.")
+            }
+            
+            if !entrySound {
+                AudioManager.shared.playSoundEffect(effectName: "EntrySound")
+                entrySound = true
             }
         }
     }
@@ -74,7 +80,6 @@ struct EntryView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 800.getWidth())
-
         }
     }
 }
