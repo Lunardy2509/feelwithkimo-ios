@@ -15,7 +15,10 @@ struct KimoCloseButton: View {
         Button(action: {
             action?()
         }, label: {
-            KimoImage(image: "Close", width: isLarge ? 120.getWidth() : 80.getWidth())
+            Image("xmark")
+                .resizable()
+                .scaledToFit()
+                .frame(width: isLarge ? 120.getWidth() : 80.getWidth())
                 .kimoButtonAccessibility(
                     label: "Tutup",
                     hint: "Ketuk dua kali untuk menutup halaman ini",
