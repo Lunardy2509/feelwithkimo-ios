@@ -103,7 +103,7 @@ struct KimoBreathingTutorialCard: View {
 
 struct CustomChevron: View {
     var body: some View {
-        ZStack{
+        ZStack {
             Circle()
                 .foregroundStyle(ColorToken.corePinkDialogue.toColor())
                 .frame(width: 50.getWidth(), height: 50.getHeight())

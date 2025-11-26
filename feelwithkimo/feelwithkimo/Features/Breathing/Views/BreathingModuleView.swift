@@ -16,6 +16,7 @@ struct BreathingModuleView: View {
             pauseOverlay
             completionOverlay
         }
+        .navigationBarBackButtonHidden(true)
         .onAppear {
             // Initialize to small size
             circleScale = 0.5
@@ -156,7 +157,7 @@ struct BreathingModuleView: View {
         Button(action: {
             viewModel.showTutorial = true
         }, label: {
-            Image(systemName: "questionmark.circle.fill")
+            Image("Question")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 80.getWidth(), height: 80.getHeight())
