@@ -47,6 +47,17 @@ enum BreathingPhase: String, CaseIterable {
     case hold = "Tahan Nafas"
     case exhale = "Buang Nafas"
     
+    var id: Int {
+        switch self {
+        case .inhale:
+            return 0
+        case .hold:
+            return 1
+        case .exhale:
+            return 2
+        }
+    }
+    
     var duration: TimeInterval {
         switch self {
         case .inhale:
