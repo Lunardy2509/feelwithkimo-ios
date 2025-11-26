@@ -158,7 +158,7 @@
   },
   {
     "path": "Scene 12",
-    "text": "“Come on, follow my movements!”, said the teacher.\n“Yes, Miss,” replied Lala.",
+    "text": "“Come on, follow my movements!”, said Miss Tina.\n“Yes, Miss,” replied Lala.",
     "nextScene": [14, 16],
     "kimoVisual": "star",
     "kimoText": "",
@@ -168,7 +168,7 @@
   },
   {
     "path": "Scene 13",
-    "text": "The teacher demonstrated how to take a deep breath.",
+    "text": "Miss Tina demonstrated how to take a deep breath.",
     "nextScene": [15, 17],
     "kimoVisual": "normal",
     "kimoText": null,

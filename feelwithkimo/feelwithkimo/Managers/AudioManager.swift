@@ -126,15 +126,6 @@ final class AudioManager: NSObject, ObservableObject {
 
         effectPlayer?.stop()
         effectPlayer = nil
-
-        // Deactivate session off the main thread
-        DispatchQueue.global(qos: .userInitiated).async {
-            do {
-                try AVAudioSession.sharedInstance().setActive(false)
-            } catch {
-                print("AVAudioSession setActive(false) failed: \(error)")
-            }
-        }
     }
 
     // MARK: - Private helpers
