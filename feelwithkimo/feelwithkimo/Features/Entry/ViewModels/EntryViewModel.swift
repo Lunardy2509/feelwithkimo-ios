@@ -1,13 +1,13 @@
 //
-//  EmotionStoryViewModel.swift
+//  EntryViewModel.swift
 //  feelwithkimo
 //
-//  Created by Richard Sugiharto on 20/10/25.
+//  Created by Richard Sugiharto on 27/11/25.
 //
 
 import Foundation
 
-internal class EmotionStoryViewModel: ObservableObject {
+internal class EntryViewModel: ObservableObject {
     @Published var emotion: EmotionModel = EmotionModel(
         id: "",
         title: "",

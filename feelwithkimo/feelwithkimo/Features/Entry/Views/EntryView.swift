@@ -10,6 +10,7 @@ import SwiftUI
 struct EntryView: View {
     @StateObject private var accessibilityManager = AccessibilityManager.shared
     @State var entrySound: Bool = false
+    @StateObject var viewModel: EntryViewModel
     
     var body: some View {
         NavigationStack {
@@ -57,7 +58,7 @@ struct EntryView: View {
                     .padding(.top, geometry.size.height * 0.006)
                 
                 NavigationLink {
-                    OldEmotionStoryView(viewModel: EmotionStoryViewModel(path: "Balok"))
+                    StoryView(viewModel: StoryViewModel(story: viewModel.emotion.stories[0]))
                 } label: {
                     KimoBubbleButtonPrimary(
                         buttonLabel: NSLocalizedString("Lets_Start", comment: "")
@@ -86,5 +87,5 @@ struct EntryView: View {
 }
 
 #Preview {
-    EntryView()
+    EntryView(viewModel: EntryViewModel(path: "Balok"))
 }
