@@ -102,7 +102,7 @@
         },
         "id" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Hore.. kamu berhasil tarik nafas"
           }
         },
@@ -120,8 +120,56 @@
         }
       }
     },
-    "Cara latihan pernafasan" : {
-
+    "BreathingTutorialBody" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "these breathing exercises help naturally calm the nervous system. The more regularly they are practiced, the easier it will be for children to manage anxiety and calm their bodies."
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "latihan pernapasan ini membantu menenangkan sistem saraf secara alami. Semakin rutin dilakukan, semakin mudah anak mengatur rasa cemas dan menenangkan tubuhnya."
+          }
+        }
+      }
+    },
+    "BreathingTutorialReference" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "According to Dr. Weil, "
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menurut Dokter Weil, "
+          }
+        }
+      }
+    },
+    "BreathingTutorialTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Breathing exercise methods"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cara latihan pernafasan"
+          }
+        }
+      }
     },
     "Choose_Emotion" : {
       "extractionState" : "manual",
@@ -667,9 +715,6 @@
         }
       }
     },
-    "Ketuk bagian mana pun di layar untuk lanjut." : {
-
-    },
     "Kicking_The_Blocks" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -757,9 +802,6 @@
         }
       }
     },
-    "latihan pernapasan ini membantu menenangkan sistem saraf secara alami. Semakin rutin dilakukan, semakin mudah anak mengatur rasa cemas dan menenangkan tubuhnya." : {
-
-    },
     "Lets_Start" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -791,6 +833,12 @@
     },
     "Menu" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menu"
+          }
+        },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
@@ -798,9 +846,6 @@
           }
         }
       }
-    },
-    "Menurut Dokter Weil, " : {
-
     },
     "No_Hands_Detected" : {
       "extractionState" : "manual",
@@ -860,12 +905,19 @@
         }
       }
     },
-    "Putaran %lld/%lld" : {
+    "Round" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "Putaran %1$lld/%2$lld"
+            "state" : "translated",
+            "value" : "Round"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Putaran"
           }
         }
       }
@@ -1207,6 +1259,12 @@
     },
     "TutorialClappingSecond" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clap until the progress bar is complete."
+          }
+        },
         "id" : {
           "stringUnit" : {
             "state" : "translated",

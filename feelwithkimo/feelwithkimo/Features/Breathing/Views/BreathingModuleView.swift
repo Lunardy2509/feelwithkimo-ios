@@ -74,7 +74,7 @@ struct BreathingModuleView: View {
     }
     
     private var roundCounter: some View {
-        Text("Putaran \(viewModel.currentRound)/\(viewModel.totalRounds)")
+        Text(NSLocalizedString("Round", comment: "") + " \(viewModel.currentRound)/\(viewModel.totalRounds)")
             .font(.customFont(size: 24.getWidth(), family: .primary, weight: .semibold))
             .foregroundColor(.white)
             .padding(.horizontal, 40.getWidth())
