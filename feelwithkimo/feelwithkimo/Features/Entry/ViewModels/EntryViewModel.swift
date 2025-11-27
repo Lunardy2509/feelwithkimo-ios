@@ -8,6 +8,7 @@
 import Foundation
 
 internal class EntryViewModel: ObservableObject {
+    @Published var entrySound: Bool = false
     @Published var emotion: EmotionModel = EmotionModel(
         id: "",
         title: "",

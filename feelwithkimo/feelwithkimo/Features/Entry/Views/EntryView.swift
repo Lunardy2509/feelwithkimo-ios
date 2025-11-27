@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct EntryView: View {
-    @StateObject private var accessibilityManager = AccessibilityManager.shared
-    @State var entrySound: Bool = false
     @StateObject var viewModel: EntryViewModel
+    @StateObject private var accessibilityManager = AccessibilityManager.shared
     
     var body: some View {
         NavigationStack {
@@ -28,9 +27,9 @@ struct EntryView: View {
                 accessibilityManager.announceScreenChange("Selamat datang di aplikasi Kimo. Halaman pembuka siap digunakan.")
             }
             
-            if !entrySound {
+            if !viewModel.entrySound {
                 AudioManager.shared.playSoundEffect(effectName: "EntrySound")
-                entrySound = true
+                viewModel.entrySound = true
             }
         }
         .statusBarHidden(true)

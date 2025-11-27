@@ -14,29 +14,32 @@ struct BridgingPage<Destination: View>: View {
     var action: (() -> Void)?
     
     @ViewBuilder
-    private func continueLabel() -> some View {
-        HStack {
-            Image(systemName: "chevron.right")
+    private func continueLabel(action: (() -> Void)?) -> some View {
+        ZStack {
+            Image("KimoBubbleButton")
                 .resizable()
                 .scaledToFit()
-                .foregroundStyle(ColorToken.backgroundSecondary.toColor())
-                .frame(maxWidth: 28, maxHeight: 28)
-
-            Text(NSLocalizedString("Continue", comment: ""))
-                .font(.customFont(size: 28, family: .primary, weight: .bold))
-                .foregroundStyle(ColorToken.backgroundSecondary.toColor())
+                .frame(width: 253.getWidth())
+                .padding(0)
+            
+            HStack(spacing: 20) {
+                Image(systemName: "chevron.right")
+                        .font(.customFont(size: 28, family: .primary, weight: .bold))
+                
+                Text(NSLocalizedString("Continue", comment: ""))
+                    .font(.customFont(size: 28, family: .primary, weight: .bold))
+            }
+            .foregroundStyle(ColorToken.textPrimary.toColor())
+            .padding(.bottom, 8.getHeight())
         }
-        .frame(maxWidth: 193.getWidth())
-        .padding(.horizontal, 23)
-        .padding(.vertical, 13)
-        .background(ColorToken.purpleColorButton.toColor())
-        .cornerRadius(30)
+        .frame(maxWidth: 253.getWidth())
+        .cornerRadius(100)
     }
     
     var body: some View {
         ZStack {
             ColorToken.additionalColorsBlack.toColor()
-                .opacity(0.8)
+                .opacity(0.7)
                 .ignoresSafeArea()
             
             VStack(spacing: 0) {
@@ -81,14 +84,8 @@ struct BridgingPage<Destination: View>: View {
                                 NavigationLink {
                                     destination()
                                 } label: {
-                                    continueLabel()
+                                    continueLabel(action: action)
                                 }
-                            } else {
-                                Button(action: {
-                                    action?()
-                                }, label: {
-                                    continueLabel()
-                                })
                             }
                         }
                         .padding(.top, 20)

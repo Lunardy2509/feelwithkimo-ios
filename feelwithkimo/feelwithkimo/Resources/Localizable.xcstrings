@@ -120,8 +120,56 @@
         }
       }
     },
-    "Cara latihan pernafasan" : {
-
+    "BreathingTutorialBody" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "these breathing exercises help naturally calm the nervous system. The more regularly they are practiced, the easier it will be for children to manage anxiety and calm their bodies."
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "latihan pernapasan ini membantu menenangkan sistem saraf secara alami. Semakin rutin dilakukan, semakin mudah anak mengatur rasa cemas dan menenangkan tubuhnya."
+          }
+        }
+      }
+    },
+    "BreathingTutorialReference" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "According to Dr. Weil, "
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menurut Dokter Weil, "
+          }
+        }
+      }
+    },
+    "BreathingTutorialTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Breathing exercise methods"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cara latihan pernafasan"
+          }
+        }
+      }
     },
     "Choose_Emotion" : {
       "extractionState" : "manual",
@@ -447,7 +495,7 @@
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hembus"
+            "value" : "Buang Nafas"
           }
         },
         "zh-Hans" : {
@@ -499,25 +547,42 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hold"
+            "value" : "Hold Breathe"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tahan"
+            "value" : "Tahan Nafas"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "屏息"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "屏息"
+          }
+        }
+      }
+    },
+    "Hold_Breathe" : {
+      "comment" : "Hold breath phase",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hold Breathe"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tahan Nafas"
           }
         }
       }
@@ -650,7 +715,7 @@
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Tarik"
+            "value" : "Tarik Nafas"
           }
         },
         "zh-Hans" : {
@@ -666,9 +731,6 @@
           }
         }
       }
-    },
-    "Ketuk bagian mana pun di layar untuk lanjut." : {
-
     },
     "Kicking_The_Blocks" : {
       "extractionState" : "manual",
@@ -757,9 +819,6 @@
         }
       }
     },
-    "latihan pernapasan ini membantu menenangkan sistem saraf secara alami. Semakin rutin dilakukan, semakin mudah anak mengatur rasa cemas dan menenangkan tubuhnya." : {
-
-    },
     "Lets_Start" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -791,6 +850,12 @@
     },
     "Menu" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Menu"
+          }
+        },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
@@ -798,9 +863,6 @@
           }
         }
       }
-    },
-    "Menurut Dokter Weil, " : {
-
     },
     "No_Hands_Detected" : {
       "extractionState" : "manual",
@@ -860,12 +922,19 @@
         }
       }
     },
-    "Putaran %lld/%lld" : {
+    "Round" : {
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "new",
-            "value" : "Putaran %1$lld/%2$lld"
+            "state" : "translated",
+            "value" : "Round"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Putaran"
           }
         }
       }
@@ -1207,6 +1276,12 @@
     },
     "TutorialClappingSecond" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clap until the progress bar is complete."
+          }
+        },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
