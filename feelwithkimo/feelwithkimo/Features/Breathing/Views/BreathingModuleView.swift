@@ -154,15 +154,9 @@ struct BreathingModuleView: View {
     }
     
     private var tutorialButton: some View {
-        Button(action: {
+        KimoQuestionButton {
             viewModel.showTutorial = true
-        }, label: {
-            Image("Question")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 80.getWidth(), height: 80.getHeight())
-                .foregroundStyle(ColorToken.additionalColorsLightPink.toColor())
-        })
+        }
     }
     
     private var menuButton: some View {

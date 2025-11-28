@@ -25,15 +25,9 @@ extension ClapGameView {
             
             Spacer()
             
-            Button(action: {
+            KimoQuestionButton {
                 viewModel.toggleShowTutorial()
-            }, label: {
-                Image("Question")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 80.getWidth(), height: 80.getHeight())
-                    .foregroundStyle(ColorToken.additionalColorsLightPink.toColor())
-            })
+            }
             
             KimoMenuButton(action: viewModel.onPausePressed)
         }
