@@ -21,7 +21,9 @@ struct EntryView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
                 .ignoresSafeArea()
                 .onAppear {
-                    AudioManager.shared.stopAll()
+                    if viewModel.entrySound {
+                        AudioManager.shared.stopAll()
+                    }
                 }
             }
         }
@@ -32,7 +34,10 @@ struct EntryView: View {
             
             if !viewModel.entrySound {
                 AudioManager.shared.playSoundEffect(effectName: "EntrySound")
-                viewModel.entrySound = true
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    viewModel.entrySound = true
+                }
             }
         }
         .statusBarHidden(true)
