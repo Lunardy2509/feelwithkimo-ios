@@ -26,10 +26,8 @@ struct KimoInteractionTutorialWrapper<Content: View>: View {
 
                 ZStack(alignment: .top) {
 
-                    // MARK: content container
                     mainBubble
 
-                    // MARK: title
                     floatingTitle
                     .offset(y: -35.getHeight())
                 }

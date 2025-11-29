@@ -155,7 +155,7 @@ struct BreathingModuleView: View {
     
     private var tutorialButton: some View {
         KimoQuestionButton {
-            viewModel.showTutorial = true
+            viewModel.toggleShowTutorial()
         }
     }
     
@@ -168,10 +168,44 @@ struct BreathingModuleView: View {
     @ViewBuilder
     private var tutorialOverlay: some View {
         if viewModel.showTutorial {
-            BreathingModuleTutorialView()
-                .onTapGesture {
-                    viewModel.showTutorial = false
-                }
+            KimoInteractionTutorialWrapper(
+                title: NSLocalizedString("BreathingTutorialTitle", comment: ""),
+                quotePrefix: NSLocalizedString("BreathingTutorialReference", comment: ""),
+                quoteBody: NSLocalizedString("BreathingTutorialBody", comment: ""),
+                action: viewModel.toggleShowTutorial,
+                content: { tutorialContent }
+            )
+        }
+    }
+    
+    @ViewBuilder
+    private var tutorialContent: some View {
+        HStack(spacing: 25) {
+            KimoBreathingTutorialCard(
+                kimoBreathingMode: .inhale)
+            
+            chevronLabel
+            
+            KimoBreathingTutorialCard(
+                kimoBreathingMode: .hold
+            )
+            
+            chevronLabel
+            
+            KimoBreathingTutorialCard(
+                kimoBreathingMode: .exhale
+            )
+        }
+    }
+    
+    @ViewBuilder
+    private var chevronLabel: some View {
+        KimoCircleWrapper {
+            Image(systemName: "chevron.right")
+                .resizable()
+                .scaledToFit()
+                .foregroundColor(ColorToken.backgroundSecondary.toColor())
+                .frame(width: 14.getWidth(), height: 23.getHeight())
         }
     }
     

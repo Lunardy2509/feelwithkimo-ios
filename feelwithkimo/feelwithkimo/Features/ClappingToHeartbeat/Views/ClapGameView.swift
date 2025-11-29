@@ -59,7 +59,7 @@ struct ClapGameView: View {
                     title: NSLocalizedString("ClapHowToPlay", comment: ""),
                     quotePrefix: NSLocalizedString("ClapQuotePrefix", comment: ""),
                     quoteBody: NSLocalizedString("ClapQuoteBody", comment: ""),
-                    action: { viewModel.toggleShowTutorial() },
+                    action: viewModel.toggleShowTutorial,
                     content: tutorialContentView
                 )
             }
