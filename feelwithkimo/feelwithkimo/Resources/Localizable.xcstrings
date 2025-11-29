@@ -532,25 +532,25 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kimo will accompany you and your little one to learn to recognize feelings."
+            "value" : "Kimo will accompany you and your little one to learn to recognize feelings"
           }
         },
         "id" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kimo akan menemani kamu dan si kecil belajar mengenal perasaan."
+            "value" : "Kimo akan menemani kamu dan si kecil belajar mengenal perasaan"
           }
         },
         "zh-Hans" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kimo将陪伴你和你的孩子学习识别感受。"
+            "value" : "Kimo将陪伴你和你的孩子学习识别感受"
           }
         },
         "zh-Hant" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kimo將陪伴你和你的孩子學習辨識感受。"
+            "value" : "Kimo將陪伴你和你的孩子學習辨識感受"
           }
         }
       }
