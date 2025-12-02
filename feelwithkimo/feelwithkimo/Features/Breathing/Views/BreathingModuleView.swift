@@ -180,7 +180,7 @@ struct BreathingModuleView: View {
     
     @ViewBuilder
     private var tutorialContent: some View {
-        HStack(spacing: 25) {
+        HStack(spacing: 25.getWidth()) {
             KimoBreathingTutorialCard(
                 kimoBreathingMode: .inhale)
             

@@ -35,7 +35,6 @@ struct StoryView: View {
                     identifier: "story.scene.\(viewModel.index)"
                 )
             
-            // Spotlight overlay for Scene 1, 2, and 3
             if showSpotlight {
                 if let spotlightImage = getSpotlightImageName() {
                     GeometryReader { geometry in

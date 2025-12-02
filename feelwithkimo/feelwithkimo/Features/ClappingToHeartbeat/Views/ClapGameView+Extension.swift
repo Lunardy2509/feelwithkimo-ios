@@ -111,7 +111,7 @@ extension ClapGameView {
     }
     
     func tutorialContentView() -> some View {
-        HStack(alignment: .top) {
+        HStack(alignment: .top, spacing: 25.getWidth()) {
             ClappingTutorialStep(
                 image: "TutorialClappingFirst",
                 stepNumber: "1",

@@ -199,6 +199,48 @@ extension BlocksGameView {
     }
 }
 
+extension BlocksGameView {
+    @ViewBuilder
+    var tutorialButton: some View {
+        KimoQuestionButton {
+            viewModel.toggleShowTutorial()
+        }
+    }
+    
+    @ViewBuilder
+    var tutorialOverlay: some View {
+        if viewModel.showTutorial {
+            KimoInteractionTutorialWrapper(
+                title: NSLocalizedString("BreathingTutorialTitle", comment: ""),
+                quotePrefix: NSLocalizedString("BreathingTutorialReference", comment: ""),
+                quoteBody: NSLocalizedString("BreathingTutorialBody", comment: ""),
+                action: viewModel.toggleShowTutorial,
+                content: { tutorialContent }
+            )
+        }
+    }
+    
+    @ViewBuilder
+    private var tutorialContent: some View {
+        HStack(spacing: 50.getWidth()) {
+            KimoTutorialCard(
+                imageName: "TutorialBlockFirst",
+                stepNumber: "1",
+                description: "Seret dan geser bentuk ke kotak yang sesuai.",
+                imageWidth: 236,
+                containetWidth: 236
+            )
+            
+            KimoTutorialCard(
+                imageName: "TutorialBlockSecond",
+                stepNumber: "1",
+                description: "Teruskan sampai bentuknya tersusun seperti contoh ini.",
+                imageWidth: 100, containetWidth: 230
+            )
+        }
+    }
+}
+
 struct FramePreferenceKey: PreferenceKey {
     static var defaultValue: [UUID: CGRect] = [:]
     static func reduce(value: inout [UUID: CGRect], nextValue: () -> [UUID: CGRect]) {
