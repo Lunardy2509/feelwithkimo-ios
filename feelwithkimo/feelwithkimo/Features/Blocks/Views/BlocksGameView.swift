@@ -88,6 +88,8 @@ struct BlocksGameView: View {
                     onBack: { dismiss() }
                 )
             }
+            
+            tutorialOverlay
         }
         .background(
             ZStack {

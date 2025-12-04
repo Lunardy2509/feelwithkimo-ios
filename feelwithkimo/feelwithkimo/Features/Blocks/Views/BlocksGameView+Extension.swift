@@ -211,8 +211,8 @@ extension BlocksGameView {
     var tutorialOverlay: some View {
         if viewModel.showTutorial {
             KimoInteractionTutorialWrapper(
-                title: NSLocalizedString("BreathingTutorialTitle", comment: ""),
-                quotePrefix: NSLocalizedString("BreathingTutorialReference", comment: ""),
+                title: NSLocalizedString("HowToPlay", comment: ""),
+                quotePrefix: NSLocalizedString("BlockTutorialReference", comment: ""),
                 quoteBody: NSLocalizedString("BreathingTutorialBody", comment: ""),
                 action: viewModel.toggleShowTutorial,
                 content: { tutorialContent }
@@ -226,7 +226,7 @@ extension BlocksGameView {
             KimoTutorialCard(
                 imageName: "TutorialBlockFirst",
                 stepNumber: "1",
-                description: "Seret dan geser bentuk ke kotak yang sesuai.",
+                description: NSLocalizedString("BlockFirstTip", comment: ""),
                 imageWidth: 236,
                 containetWidth: 236
             )
@@ -234,7 +234,7 @@ extension BlocksGameView {
             KimoTutorialCard(
                 imageName: "TutorialBlockSecond",
                 stepNumber: "1",
-                description: "Teruskan sampai bentuknya tersusun seperti contoh ini.",
+                description: NSLocalizedString("BlockSecondTip", comment: ""),
                 imageWidth: 100, containetWidth: 230
             )
         }
