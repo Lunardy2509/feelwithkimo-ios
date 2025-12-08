@@ -213,7 +213,7 @@ extension BlocksGameView {
             KimoInteractionTutorialWrapper(
                 title: NSLocalizedString("HowToPlay", comment: ""),
                 quotePrefix: NSLocalizedString("BlockTutorialReference", comment: ""),
-                quoteBody: NSLocalizedString("BreathingTutorialBody", comment: ""),
+                quoteBody: NSLocalizedString("BlockTutorialBody", comment: ""),
                 action: viewModel.toggleShowTutorial,
                 content: { tutorialContent }
             )
@@ -233,7 +233,7 @@ extension BlocksGameView {
             
             KimoTutorialCard(
                 imageName: "TutorialBlockSecond",
-                stepNumber: "1",
+                stepNumber: "2",
                 description: NSLocalizedString("BlockSecondTip", comment: ""),
                 imageWidth: 100, containetWidth: 230
             )

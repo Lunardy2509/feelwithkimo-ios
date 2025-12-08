@@ -144,6 +144,17 @@ struct BreathingModuleView: View {
         VStack {
             HStack {
                 Spacer()
+                Button {
+                    dismiss()
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                        onCompletion()
+                    }
+                } label: {
+                    Color.clear
+                }
+                .frame(width: 44, height: 44)
+                .contentShape(Rectangle())
+                
                 tutorialButton
                 menuButton
             }
@@ -246,7 +257,6 @@ struct BreathingModuleView: View {
                     syncAnimations()
                 },
                 onSecondaryAction: {
-                    print("DEBUG: Lanjutkan button tapped")
                     dismiss()
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                         onCompletion()
